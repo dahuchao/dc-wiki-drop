@@ -18,6 +18,6 @@ if(!fs.existsSync(repertoireSite)){
 app.use('/wiki', express.static(repertoireSite));
 //**********************************************
 // Démarrage du serveur
-var serveur = app.listen(3000, function () {
+var serveur = app.listen(80, function () {
     console.log('Ecoute sur le port %d', serveur.address().port);
 });
