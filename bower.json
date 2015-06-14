@@ -1,0 +1,33 @@
+{
+  "name": "dc-wiki-drop",
+  "version": "0.1.0",
+  "dependencies": {
+    "angular": "latest",
+    "angular-resource": "latest",
+    "angular-cookies": "latest",
+    "angular-ui-router": "~0.2.11",
+    "angular-bootstrap": "0.10.0",
+    "bootstrap": "3.0.3",
+    "fontawesome": "latest",
+    "angular-sanitize": "~1.2.26"
+  },
+  "authors": [
+    "dahuchao <dahu.chao@laposte.net>"
+  ],
+  "description": "Wiki personnel",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "lib",
+    "test",
+    "tests",
+    "public/lib"
+  ],
+  "homepage": "https://github.com/dahuchao/wikigrandjs",
+  "keywords": [
+    "wiki"
+  ],
+  "private": true
+}
