@@ -1,0 +1,10 @@
+/node_modules
+/node_modules/**
+/public/lib
+/public/lib/**
+/public/.bower-cache
+/public/.bower-cache/**
+/public/.bower-registry
+/public/.bower-registry/**
+/public/.bower-tmp
+/public/.bower-tmp/**
