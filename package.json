@@ -10,6 +10,6 @@
         "node": "0.12.4"
     },
     "scripts": {
-        "postinstall": "bower cache clean && bower install"
+        "postinstall": "cd public && bower cache clean && bower install"
     }
 }
