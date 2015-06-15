@@ -1,6 +1,6 @@
 {
     "name": "dc-wiki-drop",
-    "description": "Wiki avec une base de données en fichier texte dans dropbox.",
+    "description": "Wiki avec une base de données de fichiers textes dans dropbox.",
     "version": "0.1.0",
     "dependencies": {
         "express": "3.x",
