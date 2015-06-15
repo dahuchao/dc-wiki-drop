@@ -13,7 +13,8 @@ angular.module('dcWiki', ['ngSanitize', 'ui.router', 'ngResource', 'ngCookies'])
     $stateProvider
         .state('connexion', {
             url: "/connexion",
-            templateUrl: "connexion.html"
+            templateUrl: "connexion.html",
+            controller: 'dcWikiConnexion'
         })
         .state('wiki', {
             url: "/",

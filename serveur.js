@@ -6,7 +6,7 @@ var fs = require('fs');
 // Création de l'application express
 var app = express();
 // Définition du port d'écoute
-app.set('port', (process.env.PORT || 3000));
+app.set('port', (process.env.PORT || 80));
 // Configuration de l'application express
 app.use(express.urlencoded());
 app.use(express.json());
