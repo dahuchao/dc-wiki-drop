@@ -17,6 +17,9 @@ angular.module('dcWiki')
         } else {
             port = ':' + port
         }
+        if (host == 'dc-wiki-drop.herokuapp.com') {
+            port = '';
+        }
         var url = prot + '://' + host + port + '/wiki/';
         // Journalisation du jeton
         console.log("URL : " + url);
