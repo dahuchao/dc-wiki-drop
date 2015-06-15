@@ -5,6 +5,8 @@ var express = require('express');
 var fs = require('fs');
 // Création de l'application express
 var app = express();
+// Définition du port d'écoute
+app.set('port', (process.env.PORT || 3000));
 // Configuration de l'application express
 app.use(express.urlencoded());
 app.use(express.json());
@@ -18,6 +20,6 @@ if(!fs.existsSync(repertoireSite)){
 app.use('/wiki', express.static(repertoireSite));
 //**********************************************
 // Démarrage du serveur
-var serveur = app.listen(80, function () {
+var serveur = app.listen(app.get('port'), function () {
     console.log('Ecoute sur le port %d', serveur.address().port);
 });
