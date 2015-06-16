@@ -11,13 +11,17 @@ angular.module('dcWiki', ['ngSanitize', 'ui.router', 'ngResource', 'ngCookies'])
     //$urlRouterProvider.when("/", "/pages/homepage");
     $urlRouterProvider.when("/pages", "/pages/homepage");
     $stateProvider
+        .state('accueil', {
+            url: "/",
+            templateUrl: "accueil.html"
+        })
         .state('connexion', {
             url: "/connexion",
             templateUrl: "connexion.html",
             controller: 'dcWikiConnexion'
         })
         .state('wiki', {
-            url: "/",
+            url: "/wiki",
             templateUrl: "page.html",
             controller: 'dcPageController'
         })
@@ -47,37 +51,38 @@ angular.module('dcWiki', ['ngSanitize', 'ui.router', 'ngResource', 'ngCookies'])
 /**
  * Service d'identificaion
  */
-.service("IdentificationService", ['$cookies', function ($cookies) {
-    var jeton = null;
+.service("IdentificationService", ['$cookies',
+    function ($cookies) {
+        var jeton = null;
 
-    function isLogin() {
-        var isLogin = false;
-        if (jeton) {
-            isLogin = true
+        function isLogin() {
+            var isLogin = false;
+            if (jeton) {
+                isLogin = true
+            }
+            return isLogin;
         }
-        return isLogin;
-    }
 
-    function login(token) {
-        jeton = token;
-        $cookies.cookieJeton = token;
-    }
+        function login(token) {
+            jeton = token;
+            $cookies.cookieJeton = token;
+        }
 
-    function logout() {
-        jeton = null;
-        $cookies.cookieJeton = null;
-    }
+        function logout() {
+            jeton = null;
+            $cookies.cookieJeton = null;
+        }
 
-    function getToken() {
-        var cookieJeton = $cookies.cookieJeton;
-        return cookieJeton;
-    }
-    return {
-        isLogin: isLogin,
-        login: login,
-        logout: logout,
-        getToken: getToken
-    }
+        function getToken() {
+            var cookieJeton = $cookies.cookieJeton;
+            return cookieJeton;
+        }
+        return {
+            isLogin: isLogin,
+            login: login,
+            logout: logout,
+            getToken: getToken
+        }
 }])
 
 /** 
@@ -107,6 +112,16 @@ angular.module('dcWiki', ['ngSanitize', 'ui.router', 'ngResource', 'ngCookies'])
             IdentificationService.logout();
             // Changement d'état pour déconnexion
             $state.go('connexion');
+        };
+        $scope.edition = false;
+        $scope.onEdition = function () {
+            // Si la page a été éditée
+            if ($scope.edition === true) {
+                // Diffusion de l'évènement aux scopes enfants
+                $scope.$broadcast('onEnregistrement');
+            }
+            // Permutation du mode édition en mode lecture ou inversement
+            $scope.edition = !$scope.edition;
         };
 }])
 
@@ -166,6 +181,33 @@ angular.module('dcWiki', ['ngSanitize', 'ui.router', 'ngResource', 'ngCookies'])
             }, function (reason) {
                 // Une erreur s'est produite
                 $scope.pagehtml = "erreur";
+            });
+            // Mise à l'écoute de l'évènement d'enregistrement de la page de wiki
+            $scope.$on('onEnregistrement', function () {
+                // Calcul du nom de la page
+                var nomPage = encodeURI($routeParams.page);
+                // Si le nom de la page n'est pas définie
+                if (nomPage.match("undefined")) {
+                    // Nom de la page par défaut
+                    nomPage = 'homepage';
+                }
+                console.log('* Enregistrement de la page de wiki : ' + nomPage + '.');
+                // Chargement de la page
+                //                var page = dcWikiResource.get({
+                //                    nom: nomPage
+                //                }, function () {
+                //                    // Journalisation
+                //                    console.log('* Relecture de la page avant enregistrement.');
+                //                    // Modification du contenu de la page de wiki
+                //                    page.contenu = $scope.pagecontenu;
+                //                    // Enregistrement des modifications
+                //                    page.$save();
+                //                    console.log('* Enregistré.');
+                //                    // Calcul du code html de la page de wiki
+                //                    $scope.pagehtml = dcWikiFormateur($scope.pagecontenu);
+                //                    // Lecture de la date de mise à jour
+                //                    $scope.dateMaj = page.dateMaj;
+                //                });
             });
         });
 }]);
