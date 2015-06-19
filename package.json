@@ -10,6 +10,7 @@
         "node": "0.12.4"
     },
     "scripts": {
-        "postinstall": "cd public && bower cache clean && bower install"
+        "postinstall": "cd public && bower cache clean && bower install",
+        "start": "node serveur.js"
     }
 }

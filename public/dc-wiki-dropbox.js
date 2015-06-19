@@ -11,24 +11,24 @@ angular.module('dcWiki', ['ngSanitize', 'ui.router', 'ngResource', 'ngCookies'])
     //$urlRouterProvider.when("/", "/pages/homepage");
     $urlRouterProvider.when("/pages", "/pages/homepage");
     $stateProvider
-        .state('accueil', {
+        .state("accueil", {
             url: "/",
             templateUrl: "accueil.html"
         })
-        .state('connexion', {
+        .state("connexion", {
             url: "/connexion",
             templateUrl: "connexion.html",
-            controller: 'dcWikiConnexion'
+            controller: "dcWikiConnexion"
         })
-        .state('wiki', {
-            url: "/wiki",
+        .state("wiki", {
+            url: "/",
             templateUrl: "page.html",
-            controller: 'dcPageController'
+            controller: "dcPageController"
         })
-        .state('wiki.pages', {
+        .state("wiki.pages", {
             url: "pages/:page",
-            templateUrl: 'page.html',
-            controller: 'dcPageController'
+            templateUrl: "page.html",
+            controller: "dcPageController"
         });
     //$locationProvider.html5Mode(true);
 })
@@ -162,7 +162,7 @@ angular.module('dcWiki', ['ngSanitize', 'ui.router', 'ngResource', 'ngCookies'])
             // Appel de la page
             Pages.get({
                 page: nomPage
-            }).$promise.then(function (lettres) {
+            }, function (lettres) {
                 // Page
                 var page = "";
                 // Initialisation d'un index
