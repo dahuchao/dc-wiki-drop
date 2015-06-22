@@ -11,10 +11,6 @@ angular.module('dcWiki', ['ngSanitize', 'ui.router', 'ngResource', 'ngCookies'])
     //$urlRouterProvider.when("/", "/pages/homepage");
     $urlRouterProvider.when("/pages", "/pages/homepage");
     $stateProvider
-        .state("accueil", {
-            url: "/",
-            templateUrl: "accueil.html"
-        })
         .state("connexion", {
             url: "/connexion",
             templateUrl: "connexion.html",
@@ -65,16 +61,16 @@ angular.module('dcWiki', ['ngSanitize', 'ui.router', 'ngResource', 'ngCookies'])
 
         function login(token) {
             jeton = token;
-            $cookies.cookieJeton = token;
+            $cookies.put('cookieJeton', token);
         }
 
         function logout() {
             jeton = null;
-            $cookies.cookieJeton = null;
+            $cookies.remove('cookieJeton');
         }
 
         function getToken() {
-            var cookieJeton = $cookies.cookieJeton;
+            var cookieJeton = $cookies.get('cookieJeton');
             return cookieJeton;
         }
         return {
@@ -128,6 +124,24 @@ angular.module('dcWiki', ['ngSanitize', 'ui.router', 'ngResource', 'ngCookies'])
 // Controleur des pages de wiki
 .controller('dcPageController', ['$state', '$scope', '$resource', 'IdentificationService', 'dcWikiFormateur',
     function ($state, $scope, $resource, IdentificationService, dcWikiFormateur) {
+        // Calcul du jeton de controle d'accès
+        var token = IdentificationService.getToken();
+        // URL du service REST de dropbox
+        var urlDropbox = 'https://api-content.dropbox.com/1/files/auto';
+        // Chemin du dossier des pages dans dropbox
+        var dossierDropbox = urlDropbox + '/PersonalWiki/WM_Wiki_Pages';
+        // Ressource des pages du wiki
+        var Pages = $resource(dossierDropbox + '/:page', {
+            page: '@page'
+        }, {
+            get: {
+                method: 'GET',
+                headers: {
+                    'Authorization': token,
+                    'Accept': 'text/plain'
+                }
+            }
+        });
         $scope.$on("$stateChangeSuccess", function (event, toState, toParams, fromState, fromParams) {
             // Calcul du nom de la page demandée
             var nomPage = encodeURI($state.params.page);
@@ -141,24 +155,6 @@ angular.module('dcWiki', ['ngSanitize', 'ui.router', 'ngResource', 'ngCookies'])
             nomPage = nomPage + '.txt';
             // Journalisation
             console.log('* Lecture de la page de wiki : ' + nomPage);
-            // Calcul du jeton de controle d'accès
-            var token = IdentificationService.getToken();
-            // URL du service REST de dropbox
-            var urlDropbox = 'https://api-content.dropbox.com/1/files/auto';
-            // Chemin du dossier des pages dans dropbox
-            var dossierDropbox = urlDropbox + '/PersonalWiki/WM_Wiki_Pages';
-            // Ressource des pages du wiki
-            var Pages = $resource(dossierDropbox + '/:page', {
-                page: '@page'
-            }, {
-                get: {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': token,
-                        'Accept': 'text/plain'
-                    }
-                }
-            });
             // Appel de la page
             Pages.get({
                 page: nomPage
@@ -182,32 +178,47 @@ angular.module('dcWiki', ['ngSanitize', 'ui.router', 'ngResource', 'ngCookies'])
                 // Une erreur s'est produite
                 $scope.pagehtml = "erreur";
             });
-            // Mise à l'écoute de l'évènement d'enregistrement de la page de wiki
-            $scope.$on('onEnregistrement', function () {
-                // Calcul du nom de la page
-                var nomPage = encodeURI($routeParams.page);
-                // Si le nom de la page n'est pas définie
-                if (nomPage.match("undefined")) {
-                    // Nom de la page par défaut
-                    nomPage = 'homepage';
+        });
+        // Mise à l'écoute de l'évènement d'enregistrement de la page de wiki
+        $scope.$on('onEnregistrement', function () {
+            // URL du service REST de dropbox
+            var urlDropbox = 'https://api-content.dropbox.com/1/files_put/auto';
+            // Chemin du dossier des pages dans dropbox
+            var dossierDropbox = urlDropbox + '/PersonalWiki/WM_Wiki_Pages';
+            // Ressource des pages du wiki
+            var PagesPut = $resource(dossierDropbox + '/:page', {
+                page: '@page'
+            }, {
+                update: {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': token
+                    }
                 }
-                console.log('* Enregistrement de la page de wiki : ' + nomPage + '.');
-                // Chargement de la page
-                //                var page = dcWikiResource.get({
-                //                    nom: nomPage
-                //                }, function () {
-                //                    // Journalisation
-                //                    console.log('* Relecture de la page avant enregistrement.');
-                //                    // Modification du contenu de la page de wiki
-                //                    page.contenu = $scope.pagecontenu;
-                //                    // Enregistrement des modifications
-                //                    page.$save();
-                //                    console.log('* Enregistré.');
-                //                    // Calcul du code html de la page de wiki
-                //                    $scope.pagehtml = dcWikiFormateur($scope.pagecontenu);
-                //                    // Lecture de la date de mise à jour
-                //                    $scope.dateMaj = page.dateMaj;
-                //                });
             });
+            // Calcul du nom de la page
+            var nomPage = encodeURI($state.params.page);
+            //var nomPage = encodeURI($routeParams.page);
+            // Calcul du nom de page complet
+            nomPage = nomPage + '.txt';
+            // Si le nom de la page n'est pas définie
+            if (!nomPage.match("undefined")) {
+                console.log('* Enregistrement de la page de wiki : ' + nomPage);
+                // Chargement de la page
+                // Journalisation
+                console.log('* Relecture de la page avant enregistrement.');
+                // Modification du contenu de la page de wiki
+                var page = $scope.pagecontenu;
+                // Enregistrement des modifications
+                //page.$save();
+                PagesPut.update({
+                    page: nomPage
+                }, page);
+                console.log('* Enregistré.');
+                // Calcul du code html de la page de wiki
+                $scope.pagehtml = dcWikiFormateur($scope.pagecontenu);
+                // Lecture de la date de mise à jour
+                $scope.dateMaj = page.dateMaj;
+            }
         });
 }]);

@@ -17,6 +17,7 @@ console.log(repertoireSite);
 if(!fs.existsSync(repertoireSite)){
     console.error('Répertoire des pages indisponible');
 }
+app.use('/', express.static('.'));
 app.use('/wiki', express.static(repertoireSite));
 //**********************************************
 // Démarrage du serveur
