@@ -152,12 +152,12 @@ angular.module('dcWiki', ['ngSanitize', 'ui.router', 'ngResource', 'ngCookies'])
                 // Nom de la page par défaut
                 nomPage = 'homepage';
             }
-            nomPage = nomPage + '.txt';
+            var nomPageDropbox = nomPage + '.txt';
             // Journalisation
-            console.log('* Lecture de la page de wiki : ' + nomPage);
+            console.log('* Lecture de la page de wiki : ' + nomPageDropbox);
             // Appel de la page
             Pages.get({
-                page: nomPage
+                page: nomPageDropbox
             }, function (lettres) {
                 // Page
                 var page = "";
@@ -175,8 +175,13 @@ angular.module('dcWiki', ['ngSanitize', 'ui.router', 'ngResource', 'ngCookies'])
                 // Lecture de la date de mise à jour
                 $scope.dateMaj = page.dateMaj;
             }, function (reason) {
+                if (reason.status === 404) {
+                    $scope.pagecontenu = "+" + nomPage;
+                    $scope.edition = true;
+                }
                 // Une erreur s'est produite
                 $scope.pagehtml = "erreur";
+                console.error("Erreur : " + angular.fromJson(reason));
             });
         });
         // Mise à l'écoute de l'évènement d'enregistrement de la page de wiki
