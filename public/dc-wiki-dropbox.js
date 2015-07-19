@@ -119,6 +119,15 @@ angular.module('dcWiki', ['ngSanitize', 'ui.router', 'ngResource', 'ngCookies'])
             // Permutation du mode édition en mode lecture ou inversement
             $scope.edition = !$scope.edition;
         };
+        $scope.onEnregistrer = function () {
+            // Si la page a été éditée
+            if ($scope.edition === true) {
+                // Diffusion de l'évènement aux scopes enfants
+                $scope.$broadcast('onEnregistrement');
+            }
+            // Permutation du mode édition en mode lecture ou inversement
+            $scope.edition = !$scope.edition;
+        };
 }])
 
 // Controleur des pages de wiki
@@ -203,7 +212,11 @@ angular.module('dcWiki', ['ngSanitize', 'ui.router', 'ngResource', 'ngCookies'])
             });
             // Calcul du nom de la page
             var nomPage = encodeURI($state.params.page);
-            //var nomPage = encodeURI($routeParams.page);
+            // Si le nom de la page n'est pas définie
+            if (nomPage.match("undefined")) {
+                // Nom de la page par défaut
+                nomPage = 'homepage';
+            }
             // Calcul du nom de page complet
             nomPage = nomPage + '.txt';
             // Si le nom de la page n'est pas définie

@@ -29,26 +29,22 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Wiki</a>
+                    <a class="navbar-brand" ui-sref="wiki">Wiki</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
                         <li>
-                            <a ui-sref="wiki">
-                                <i class="fa fa-home"></i>
-                                <span>Accueil</span>
-                            </a>
+                            <a href="" ng-hide="edition" ng-click="onEdition()">Editer</a>
                         </li>
                         <li>
-                            <button ng-class="{active:edition}" class="btn btn-default navbar-btn" ng-click="onEdition()">
-                                <i class="fa fa-pencil-square-o"></i>
-                                <span>Edition</span>
-                            </button>
+                            <a href="" ng-show="edition" ng-click="onEnregistrer()">
+                                <span>Enregistrer</span>
+                            </a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <button ng-click="onDeconnexion()" class="btn btn-default navbar-btn deconnexion">Déconnecter</button>
+                            <button ng-click="onDeconnexion()" class="btn btn-inverse navbar-btn deconnexion">Déconnecter</button>
                         </li>
                     </ul>
                 </div>
