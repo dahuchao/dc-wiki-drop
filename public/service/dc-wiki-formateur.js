@@ -60,6 +60,10 @@ angular.module('dcWiki')
         var urlLabelPattern = new RegExp("\\[\\[http:\\/\\/(.*?)\\]\\[(.*?)\\]\\]");
         var urlLabelReplacement = "<a href=\"http://$1\">$2</a>";
 
+        // Images
+        var imagePattern = new RegExp("!\\(.*\\)");
+        var imageReplacement = "<img src=\"$1\">";
+
         var unorderedListDepth = 0;
         var orderedListDepth = 0;
         var profondeurHtml = 0;
@@ -90,9 +94,14 @@ angular.module('dcWiki')
                 lines[i] = ReplaceGoTo(lines[i]);
                 lines[i] = ReplaceFile(lines[i]);
                 lines[i] = AjoutRetourLigne(lines[i]);
+                lines[i] = ReplaceImage(lines[i]);
                 output += lines[i];
             }
             return $sce.trustAsHtml(output);
+        }
+
+        function ReplaceImage(data) {
+            return data.replace(imagePattern, imageReplacement);
         }
 
         function AjoutRetourLigne(data) {

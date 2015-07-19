@@ -176,7 +176,7 @@ angular.module('dcWiki', ['ngSanitize', 'ui.router', 'ngResource', 'ngCookies'])
                 $scope.dateMaj = page.dateMaj;
             }, function (reason) {
                 if (reason.status === 404) {
-                    $scope.pagecontenu = "+" + nomPage;
+                    $scope.pagecontenu = "+ " + nomPage;
                     $scope.edition = true;
                 }
                 // Une erreur s'est produite
