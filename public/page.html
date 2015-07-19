@@ -3,9 +3,11 @@
         <div ng-hide="edition">
             <p ng-bind-html="pagehtml"></p>
         </div>
-        <div ng-show="edition">
-            <textarea ng-model="pagecontenu" cols="120" rows="40"></textarea>
-        </div>
+        <form>
+            <div class="form-group" ng-show="edition">
+                <textarea ng-model="pagecontenu" class="form-control" rows="40"></textarea>
+            </div>
+        </form>
     </div>
 </div>
 <div class="well well-sm">
