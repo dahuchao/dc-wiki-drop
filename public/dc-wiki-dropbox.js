@@ -247,14 +247,13 @@ angular.module('dcWiki', ['ngSanitize', 'ui.router', 'ngResource', 'ngCookies'])
             $state.go('connexion');
         };
         $scope.edition = false;
+        $scope.onAnnuler = function () {
+            // Permutation du mode édition en mode lecture
+            $scope.edition = false;
+        };
         $scope.onEdition = function () {
-            // Si la page a été éditée
-            if ($scope.edition === true) {
-                // Diffusion de l'évènement aux scopes enfants
-                $scope.$broadcast('onEnregistrement');
-            }
-            // Permutation du mode édition en mode lecture ou inversement
-            $scope.edition = !$scope.edition;
+            // Permutation du mode lecture en mode édition
+            $scope.edition = true;
         };
         $scope.onEnregistrer = function () {
             // Si la page a été éditée
@@ -263,6 +262,6 @@ angular.module('dcWiki', ['ngSanitize', 'ui.router', 'ngResource', 'ngCookies'])
                 $scope.$broadcast('onEnregistrement');
             }
             // Permutation du mode édition en mode lecture ou inversement
-            $scope.edition = !$scope.edition;
+            $scope.edition = false;
         };
 }]);
