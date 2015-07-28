@@ -240,6 +240,10 @@ angular.module('dcWiki', ['ngSanitize', 'ui.router', 'ngResource', 'ngCookies'])
             // Changement d'état pour ouvrir le wiki
             $state.go('wiki');
         }
+        $scope.onRetour = function () {
+            // Changement d'état pour ouvrir le wiki
+            $state.go('wiki');
+        }
         $scope.onDeconnexion = function () {
             // Déconnexion du service
             IdentificationService.logout();
