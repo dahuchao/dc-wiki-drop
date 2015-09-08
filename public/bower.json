@@ -9,7 +9,9 @@
     "angular-bootstrap": "latest",
     "bootstrap": "latest",
     "fontawesome": "latest",
-    "angular-sanitize": "latest"
+    "angular-sanitize": "latest",
+    "angular-pdf-viewer": "~0.2.7",
+    "angular-file-upload": "~2.1.1"
   },
   "authors": [
     "dahuchao <dahu.chao@laposte.net>"

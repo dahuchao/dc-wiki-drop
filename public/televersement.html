@@ -1,0 +1,17 @@
+<div class="row page">
+    <div class="col-sm-12">
+        <input type="file" />
+        <input type="file" nv-file-select uploader="uploader" />
+        <br/>
+        <ul>
+            <li ng-repeat="item in uploader.queue">
+                Name: <span ng-bind="item.file.name"></span>
+                <br/>
+                <button ng-click="item.upload()">upload</button>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="well well-sm">
+    <span class="label label-default">{{dateMaj|date:'d MMM yyyy'}}</span>
+</div>
