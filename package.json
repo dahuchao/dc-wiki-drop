@@ -7,10 +7,10 @@
         "bower": "^1.4.1"
     },
     "engines": {
-        "node": "0.12.4"
+        "iojs": "1.0.x"
     },
     "scripts": {
         "postinstall": "cd public && bower cache clean && bower install",
-        "start": "node serveur.js"
+        "start": "iojs serveur.js"
     }
 }
