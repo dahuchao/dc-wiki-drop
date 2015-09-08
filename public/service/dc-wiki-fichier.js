@@ -12,9 +12,9 @@ angular.module('dcWiki')
             // Calcul du jeton de controle d'accès
             var token = IdentificationService.getToken();
             // URL du service REST de dropbox
-            var dossierDropbox = 'http://localhost/pages';
+            var dossier = 'http://localhost/pages';
             // Ressource des pages du wiki
-            var Pages = $resource(dossierDropbox + '/:page', {
+            var Pages = $resource(dossier + '/:page', {
                 page: '@page'
             }, {
                 get: {
@@ -40,26 +40,29 @@ angular.module('dcWiki')
             });
         }
 
-        function enregistrer(nomPage, page) {
-            // Calcul du jeton de controle d'accès
-            var token = IdentificationService.getToken();
+        function enregistrer(nomPage, pageAEnregistrer) {
             // URL du service REST de dropbox
-            var dossierDropbox = 'http://localhost/pages';
+            var dossier = 'http://localhost/pages';
             // Ressource des pages du wiki
-            var PagesPut = $resource(dossierDropbox + '/:nomPage', {
-                nomPage: '@nomPpage'
-            }, {
-                update: {
-                    method: 'PUT',
-                    headers: {
-                        'Authorization': token
-                    }
-                }
+            var Pages = $resource('/pages/:nom', {
+                nom: '@nom'
             });
-            //page.$save();
-            PagesPut.update({
-                nomPage: nomPage
-            }, page);
+
+            var page = Pages.get({
+                nom: nomPage
+            }, function () {
+                // Journalisation
+                console.log('* Relecture de la page avant enregistrement.');
+                // Modification du contenu de la page de wiki
+                page.contenu = pageAEnregistrer;
+                // Enregistrement des modifications
+                page.$save();
+                console.log('* Enregistré.');
+                // Calcul du code html de la page de wiki
+                $scope.pagehtml = dcWikiFormateur($scope.pagecontenu);
+                // Lecture de la date de mise à jour
+                $scope.dateMaj = page.dateMaj;
+            });
             console.log('* Enregistré.');
         }
         return {

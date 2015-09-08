@@ -81,7 +81,7 @@ angular.module('dcWiki')
 /**
  * Service pilote du service dropbox
  */
-.service("PagesService", ['$resource', 'IdentificationService',
+.service("PagesDropboxService", ['$resource', 'IdentificationService',
     function ($resource, IdentificationService) {
         function telecharger(nomPage, traitementPage, traitementErreur) {
             // Calcul du jeton de controle d'accès
