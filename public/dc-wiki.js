@@ -61,7 +61,7 @@ angular.module('dcWiki', ['angularFileUpload', 'ngSanitize', 'ui.router', 'ngRes
 })
 
 // Controleur des pages de wiki
-.controller('dcDocController', ['DocumentsLocalesService', '$state', '$scope',
+.controller('dcDocController', ['DocumentsLocalService', '$state', '$scope',
     function (DocumentsService, $state, $scope) {
         // Calcul du nom du document demandé
         var nomDoc = encodeURI($state.params.doc);
@@ -94,7 +94,13 @@ angular.module('dcWiki', ['angularFileUpload', 'ngSanitize', 'ui.router', 'ngRes
 // Controleur des pages de wiki
 .controller('dcTeleversementController', ['FileUploader', '$state', '$scope',
     function (FileUploader, $state, $scope) {
-        $scope.uploader = new FileUploader();
+        var uploader = $scope.uploader = new FileUploader({
+            url: '/docs'
+        });
+
+        uploader.onAfterAddingFile = function (fileItem) {
+            console.info('onAfterAddingFile', fileItem);
+        };
     }])
 
 // Controleur des pages de wiki

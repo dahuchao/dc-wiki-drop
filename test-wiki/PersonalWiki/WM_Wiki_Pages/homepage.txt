@@ -8,3 +8,5 @@ C'est l'�tincelle qui fait d�border le vase !
 C'est la goutte d'eau qui met le feu aux poudres !
 Petit � petit l�oiseau devient forgeron !
 Les ciseaux � bois : Les chiens aussi
+
+Document test : doc://test.pdf

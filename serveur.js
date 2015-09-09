@@ -22,13 +22,12 @@ app.use('/', express.static('.'));
 // Répertoire du wiki
 app.use('/wiki', express.static(repertoireSite));
 
-
 //**********************************************
 // Répertoire de stockage des pages du wiki
 var repertoireWiki = 'test-wiki\\PersonalWiki\\WM_Wiki_Pages\\';
 var repertoireDocs = 'test-wiki\\PersonalWiki\\Wiki_documents\\';
 //**********************************************
-// Traitement de la requête http://localhost:3000/pages/test
+// Traitement de la requête GET http://localhost/docs/nom-doc.pdf
 app.get('/docs/:nom', function (req, res) {
     // Calcul du nom de la page recherchée
     var pageNom = req.params.nom;
@@ -44,13 +43,31 @@ app.get('/docs/:nom', function (req, res) {
     }
 });
 //**********************************************
+// Traitement de la requête POST http://localhost/docs/nom-doc.pdf
+app.post('/docs', function (req, res) {
+    // Calcul du nom de la page file
+    var fichier = req.files; //.test.path;
+    debugger;
+    // Journalisation du traitement
+    console.log('*** Reception du fichier : %s ***', fichier);
+    // Calcul du contenu de la page
+    var nomfichier = req.param('file');
+    // Journalisation du traitement
+    console.log('*** Nom du fichier : %s ***', nomfichier);
+    // Enregistrement du contenu de la page
+    //fs.writeFileSync(repertoireDocs + pageNom, pageContenu, 'utf8');
+});
+//**********************************************
 // Traitement d'une requête POST d'enregistrement de la page
 app.post('/pages/:nom', function (req, res) {
     // Calcul du nom de la page
     var pageNom = req.params.nom;
+    // Journalisation du traitement
     console.log('*** Enregistrement de la page : %s ***', pageNom);
     // Calcul du contenu de la page
     var pageContenu = req.param('contenu');
+    // Journalisation du traitement
+    console.log('*** Contenu : %s ***', pageContenu);
     // Enregistrement du contenu de la page
     fs.writeFileSync(repertoireWiki + pageNom, pageContenu, 'utf8');
 });
@@ -84,7 +101,6 @@ app.get('/pages/:nom', function (req, res) {
         });
     }
 });
-
 
 //**********************************************
 // Démarrage du serveur
