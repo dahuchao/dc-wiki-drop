@@ -1,6 +1,8 @@
 'use strict';
 // Chargement du module expressjs
 var express = require('express');
+// Plugin busboy de expressjs pour les téléversement de fichier
+var multer = require('multer');
 // Chargement du module de gestion du système de fichier
 var fs = require('fs');
 // Création de l'application express
@@ -27,6 +29,21 @@ app.use('/wiki', express.static(repertoireSite));
 var repertoireWiki = 'test-wiki\\PersonalWiki\\WM_Wiki_Pages\\';
 var repertoireDocs = 'test-wiki\\PersonalWiki\\Wiki_documents\\';
 //**********************************************
+
+// Configuration de muter
+var stockage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, repertoireDocs)
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname);
+    }
+});
+
+var televersement = multer({
+    storage: stockage
+});
+
 // Traitement de la requête GET http://localhost/docs/nom-doc.pdf
 app.get('/docs/:nom', function (req, res) {
     // Calcul du nom de la page recherchée
@@ -44,19 +61,15 @@ app.get('/docs/:nom', function (req, res) {
 });
 //**********************************************
 // Traitement de la requête POST http://localhost/docs/nom-doc.pdf
-app.post('/docs', function (req, res) {
+app.post('/docs', televersement.single('file'), function (req, res, next) {
+    // req.files is array of `photos` files
+    // req.body will contain the text fields, if there were any
     // Calcul du nom de la page file
-    var fichier = req.files; //.test.path;
-    debugger;
+    var fichier = req.file; //.test.path;
     // Journalisation du traitement
-    console.log('*** Reception du fichier : %s ***', fichier);
-    // Calcul du contenu de la page
-    var nomfichier = req.param('file');
-    // Journalisation du traitement
-    console.log('*** Nom du fichier : %s ***', nomfichier);
-    // Enregistrement du contenu de la page
-    //fs.writeFileSync(repertoireDocs + pageNom, pageContenu, 'utf8');
+    console.log('*** Reception du fichier : %s ***', fichier.originalname);
 });
+
 //**********************************************
 // Traitement d'une requête POST d'enregistrement de la page
 app.post('/pages/:nom', function (req, res) {

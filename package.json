@@ -3,8 +3,9 @@
     "description": "Wiki avec une base de données de fichiers textes dans dropbox.",
     "version": "0.1.0",
     "dependencies": {
+        "bower": "^1.4.1",
         "express": "3.x",
-        "bower": "^1.4.1"
+        "multer": "^1.0.3"
     },
     "engines": {
         "iojs": "1.0.x"
