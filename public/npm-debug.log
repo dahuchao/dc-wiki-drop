@@ -1,23 +1,23 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'D:\\outils\\iojs\\node.exe',
-1 verbose cli   'D:\\outils\\iojs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli [ 'C:\\outils\\iojs\\node.exe',
+1 verbose cli   'C:\\outils\\iojs\\node_modules\\npm\\bin\\npm-cli.js',
 1 verbose cli   'stop' ]
-2 info using npm@2.13.0
-3 info using node@v2.4.0
+2 info using npm@2.13.3
+3 info using node@v3.3.0
 4 verbose stack Error: missing script: stop
-4 verbose stack     at run (D:\outils\iojs\node_modules\npm\lib\run-script.js:142:19)
-4 verbose stack     at D:\outils\iojs\node_modules\npm\lib\run-script.js:58:5
-4 verbose stack     at D:\outils\iojs\node_modules\npm\node_modules\read-package-json\read-json.js:345:5
-4 verbose stack     at checkBinReferences_ (D:\outils\iojs\node_modules\npm\node_modules\read-package-json\read-json.js:309:45)
-4 verbose stack     at final (D:\outils\iojs\node_modules\npm\node_modules\read-package-json\read-json.js:343:3)
-4 verbose stack     at then (D:\outils\iojs\node_modules\npm\node_modules\read-package-json\read-json.js:113:5)
-4 verbose stack     at D:\outils\iojs\node_modules\npm\node_modules\read-package-json\read-json.js:300:12
+4 verbose stack     at run (C:\outils\iojs\node_modules\npm\lib\run-script.js:142:19)
+4 verbose stack     at C:\outils\iojs\node_modules\npm\lib\run-script.js:58:5
+4 verbose stack     at C:\outils\iojs\node_modules\npm\node_modules\read-package-json\read-json.js:345:5
+4 verbose stack     at checkBinReferences_ (C:\outils\iojs\node_modules\npm\node_modules\read-package-json\read-json.js:309:45)
+4 verbose stack     at final (C:\outils\iojs\node_modules\npm\node_modules\read-package-json\read-json.js:343:3)
+4 verbose stack     at then (C:\outils\iojs\node_modules\npm\node_modules\read-package-json\read-json.js:113:5)
+4 verbose stack     at C:\outils\iojs\node_modules\npm\node_modules\read-package-json\read-json.js:300:12
 4 verbose stack     at FSReqWrap.readFileAfterClose [as oncomplete] (evalmachine.<anonymous>:380:3)
-5 verbose cwd D:\Travail\Chantiers divers\dc-wiki-drop\public
-6 error Windows_NT 6.1.7601
-7 error argv "D:\\outils\\iojs\\node.exe" "D:\\outils\\iojs\\node_modules\\npm\\bin\\npm-cli.js" "stop"
-8 error node v2.4.0
-9 error npm  v2.13.0
+5 verbose cwd C:\travail\Chantiers\dc-wiki-drop\public
+6 error Windows_NT 6.3.9600
+7 error argv "C:\\outils\\iojs\\node.exe" "C:\\outils\\iojs\\node_modules\\npm\\bin\\npm-cli.js" "stop"
+8 error node v3.3.0
+9 error npm  v2.13.3
 10 error missing script: stop
 11 error If you need help, you may report this error at:
 11 error     <https://github.com/npm/npm/issues>

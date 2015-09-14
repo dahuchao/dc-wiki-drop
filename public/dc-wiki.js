@@ -1,7 +1,7 @@
 'use strict';
 
 //Pages service used to communicate Pages REST endpoints
-angular.module('dcWiki', ['angularFileUpload', 'ngSanitize', 'ui.router', 'ngResource', 'ngCookies'])
+angular.module('dcWiki', ['ui.bootstrap', 'angularFileUpload', 'ngSanitize', 'ui.router', 'ngResource', 'ngCookies'])
 
 /**
  * Configuration des routes de l'application
@@ -176,6 +176,8 @@ angular.module('dcWiki', ['angularFileUpload', 'ngSanitize', 'ui.router', 'ngRes
  */
 .controller('dcWikiController', ['$state', '$rootScope', '$scope', '$location', '$resource', 'IdentificationService',
     function ($state, $rootScope, $scope, $location, $resource, IdentificationService) {
+        // Fermeture du menu
+        $scope.menuPrincipalFerme = true;
         // Calcul de l'URL
         var token = $location.url();
         // Expression régulière pour calculer le token
@@ -197,20 +199,30 @@ angular.module('dcWiki', ['angularFileUpload', 'ngSanitize', 'ui.router', 'ngRes
             // Changement d'état pour ouvrir le wiki
             $state.go('wiki');
         }
+        $scope.onOuvertureMenu = function () {
+            // Ouverture du menu
+            $scope.menuPrincipalFerme = !$scope.menuPrincipalFerme;
+        };
         $scope.onDeconnexion = function () {
             // Déconnexion du service
             IdentificationService.logout();
             // Changement d'état pour déconnexion
             $state.go('connexion');
+            // Fermeture du menu
+            $scope.menuPrincipalFerme = true;
         };
         $scope.edition = false;
         $scope.onAnnuler = function () {
             // Permutation du mode édition en mode lecture
             $scope.edition = false;
+            // Fermeture du menu
+            $scope.menuPrincipalFerme = true;
         };
         $scope.onEdition = function () {
             // Permutation du mode lecture en mode édition
             $scope.edition = true;
+            // Fermeture du menu
+            $scope.menuPrincipalFerme = true;
         };
         $scope.onEnregistrer = function () {
             // Si la page a été éditée
@@ -220,5 +232,7 @@ angular.module('dcWiki', ['angularFileUpload', 'ngSanitize', 'ui.router', 'ngRes
             }
             // Permutation du mode édition en mode lecture ou inversement
             $scope.edition = false;
+            // Fermeture du menu
+            $scope.menuPrincipalFerme = true;
         };
 }]);
