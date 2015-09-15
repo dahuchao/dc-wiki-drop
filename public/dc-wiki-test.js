@@ -4,8 +4,18 @@
 angular.module('dcWiki')
 
 // Controleur des pages de wiki
-.controller('dcPageTestController', ['$state', '$scope', 'PagesLocalesService', 'dcWikiFormateur',
-    function ($state, $scope, PagesService, dcWikiFormateur) {
+.controller('dcPageTestController', ['$rootScope', '$state', '$scope', 'PagesLocalesService', 'dcWikiFormateur',
+    function ($rootScope, $state, $scope, PagesService, dcWikiFormateur) {
+        console.info("Emission Ajouter de texte.");
+        $scope.onHPlus = function () {
+            $rootScope.$broadcast('hPlus', '+');
+        };
+        $scope.onHMoins = function () {
+            $rootScope.$broadcast('hMoins', '+');
+        };
+        $scope.onAjouterLien = function () {
+            $rootScope.$broadcast('ajouterLien');
+        };
         $scope.$on("$stateChangeSuccess", function (event, toState, toParams, fromState, fromParams) {
             // Calcul du nom de la page demandée
             var nomPage = encodeURI($state.params.page);

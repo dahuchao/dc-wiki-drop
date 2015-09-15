@@ -1,3 +1,25 @@
+<div class="row page" ng-show="edition">
+    <div id="navbar-page" class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-left">
+            <li>
+                <a ng-click="onHPlus()">
+                    <i class="fa fa-indent"></i>
+                </a>
+            </li>
+            <li>
+                <a ng-click="onHMoins()">
+                    <i class="fa fa-outdent"></i>
+                </a>
+            </li>
+            <li>
+                <a ng-click="onAjouterLien()">
+                    <i class="fa fa-link"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
 <div class="row page">
     <div class="col-sm-12">
         <div ng-hide="edition">
@@ -5,7 +27,7 @@
         </div>
         <form>
             <div class="form-group" ng-show="edition">
-                <textarea ng-model="pagecontenu" class="form-control" rows="40"></textarea>
+                <textarea dc-editeur ng-model="pagecontenu" class="form-control" rows="40"></textarea>
             </div>
         </form>
     </div>
