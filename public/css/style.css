@@ -27,3 +27,15 @@ h3 {
 .deconnexion {
     margin-right: 20px;
 }
+
+.sous-menu {
+    margin: 0px;
+    min-height: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.navbar-nav > li > a.bouton-edition {
+    padding: 5px;
+    line-height: 5px;
+}

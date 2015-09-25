@@ -110,10 +110,18 @@ angular.module('dcWiki')
         var texteAvant = htmlElement.value.substring(0, posDebSel);
         var texteSelectionne = htmlElement.value.substring(posDebSel, posFinSel);
         var texteApres = htmlElement.value.substring(posFinSel, htmlElement.value.length);
-        htmlElement.value = texteAvant + "[" + texteSelectionne + "]" + texteApres;
-        // Repositionnement du curseur
-        htmlElement.selectionStart = posFinSel + 2;
-        htmlElement.selectionEnd = posFinSel + 2;
+        // Si le texte selectionné est vide
+        if (texteSelectionne.length == 0) {
+            htmlElement.value = texteAvant + "[lien]" + texteApres;
+            // Repositionnement du curseur
+            htmlElement.selectionStart = posDebSel + 1;
+            htmlElement.selectionEnd = posDebSel + 5;
+        } else {
+            htmlElement.value = texteAvant + "[" + texteSelectionne + "]" + texteApres;
+            // Repositionnement du curseur
+            htmlElement.selectionStart = posFinSel + 2;
+            htmlElement.selectionEnd = posFinSel + 2;
+        }
         return htmlElement.value;
     };
     return {

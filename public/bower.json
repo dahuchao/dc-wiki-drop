@@ -3,15 +3,16 @@
   "version": "0.1.0",
   "dependencies": {
     "angular": "latest",
-    "angular-resource": "latest",
-    "angular-cookies": "latest",
-    "angular-ui-router": "latest",
     "angular-bootstrap": "latest",
-    "bootstrap": "latest",
-    "fontawesome": "latest",
-    "angular-sanitize": "latest",
+    "angular-cookies": "latest",
+    "angular-file-upload": "~2.1.1",
+    "angular-material": "~0.11.0",
     "angular-pdf-viewer": "~0.2.7",
-    "angular-file-upload": "~2.1.1"
+    "angular-resource": "latest",
+    "angular-sanitize": "latest",
+    "angular-ui-router": "latest",
+    "bootstrap": "latest",
+    "fontawesome": "latest"
   },
   "authors": [
     "dahuchao <dahu.chao@laposte.net>"

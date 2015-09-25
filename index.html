@@ -1,12 +1,32 @@
 <html>
 
-<head></head>
+<head>
+    <link rel="stylesheet" href="/public/lib/angular-material/angular-material.css">
+    <script src="/public/lib/angular/angular.js"></script>
+    <script src="/public/lib/angular-aria/angular-aria.js"></script>
+    <script src="/public/lib/angular-animate/angular-animate.js"></script>
+    <script src="/public/lib/angular-material/angular-material.js"></script>
+    <script>
+        // Include app dependency on ngMaterial
+        angular.module('YourApp', ['ngMaterial'])
+            .controller("YourController", YourController);
+    </script>
+</head>
 
 <body>
-    <div class="row page">
+    <div class="row page" ng-app="YourApp">
         <div class="col-sm-12">
-            <p>Bienvenu sur mon portail personnel.</p>
-            <a href="/wiki">ouvrir le wiki</a>
+            <section layout="row" layout-sm="column" layout-align="center center" layout-wrap="">
+                <md-card>
+                    <md-card-content>
+                        <h2 class="md-title">Accueil</h2>
+                        <p>Bienvenu sur mon portail personnel.</p>
+                    </md-card-content>
+                    <div class="md-actions" layout="row" layout-align="end center">
+                        <md-button ng-href="/wiki">ouvrir le wiki</md-button>
+                    </div>
+                </md-card>
+            </section>
         </div>
     </div>
 </body>

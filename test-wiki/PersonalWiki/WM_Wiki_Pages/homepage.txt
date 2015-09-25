@@ -1,6 +1,6 @@
 +Page d'accueil de test
 
-Il ne faut pas vendre la peau de l'ourse avant d'avoir crier victoire trop tot !
+Il ne faut pas [vendre] la peau de l'ourse avant d'avoir crier victoire trop tot !
 
 Tel est pris qui rira bien le dernier !
 C'est la cerise sur le pompom !
