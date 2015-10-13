@@ -17,10 +17,8 @@ angular.module('dcWiki', ['ui.bootstrap', 'angularFileUpload', 'ngSanitize', 'ui
       controller: "dcWikiConnexion"
     })
     .state("wiki", {
-      url: "/"
-        /*,
-                    templateUrl: "page.html",
-                    controller: "dcPageController"*/
+      url: "/",
+      controller: "dcWikiRedirect"
     })
     .state("televersement", {
       url: "/pages/{page}/televersement",
@@ -180,6 +178,17 @@ angular.module('dcWiki', ['ui.bootstrap', 'angularFileUpload', 'ngSanitize', 'ui
       }
     });
 }])
+
+/**
+ * Création du controleur du wiki
+ */
+.controller('dcWikiRedirect', ['$state', '$rootScope', '$scope', '$location', '$resource', 'IdentificationService',
+    function ($state, $rootScope, $scope, $location, $resource, IdentificationService) {
+    // Journalisation
+    console.log('* dcWikiRedirect sur wiki.');
+    // Changement d'état pour ouvrir le wiki
+    //$state.go('wiki');
+  }])
 
 /**
  * Création du controleur du wiki
