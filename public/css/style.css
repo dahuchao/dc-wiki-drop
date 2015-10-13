@@ -35,6 +35,11 @@ h3 {
   padding-right: 15px;
 }
 
+.page-contenu {
+  width: 100%;
+  border-style: none;
+}
+
 a.bouton-edition {
   font-size: 20px;
   padding: 5px;

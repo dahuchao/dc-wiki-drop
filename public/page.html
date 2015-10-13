@@ -1,38 +1,36 @@
-<div class="row page" ng-show="edition">
-  <div class="col-xs-12">
-    <a class="bouton-edition" ng-click="onHPlus()">
-      <i class="fa fa-indent"></i>
-    </a>
-    <a class="bouton-edition" ng-click="onHMoins()">
-      <i class="fa fa-outdent"></i>
-    </a>
-    <a class="bouton-edition" ng-click="onAjouterLien()">
-      <i class="fa fa-link"></i>
-    </a>
-    <a class="bouton-edition" ng-click="onAjouterGras()">
-      <i class="fa fa-bold"></i>
-    </a>
-    <a class="bouton-edition" ng-click="onAjouterSouligne()">
-      <i class="fa fa-underline"></i>
-    </a>
-    <a class="bouton-edition" ng-click="onAjouterItalic()">
-      <i class="fa fa-italic"></i>
-    </a>
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div ng-show="edition" class="panel-heading">
+    <div class="btn-group" role="group" aria-label="barre de bouton">
+      <button ng-click="onHPlus()" type="button" class="btn btn-default" aria-label="Left Align">
+        <i class="fa fa-indent"></i>
+      </button>
+      <button ng-click="onHMoins()" type="button" class="btn btn-default" aria-label="Left Align">
+        <i class="fa fa-outdent"></i>
+      </button>
+      <button ng-click="onAjouterLien()" type="button" class="btn btn-default" aria-label="Left Align">
+        <i class="fa fa-link"></i>
+      </button>
+      <button ng-click="onAjouterGras()" type="button" class="btn btn-default" aria-label="Left Align">
+        <i class="fa fa-bold"></i>
+      </button>
+      <button ng-click="onAjouterSouligne()" type="button" class="btn btn-default" aria-label="Left Align">
+        <i class="fa fa-underline"></i>
+      </button>
+      <button ng-click="onAjouterItalic()" type="button" class="btn btn-default" aria-label="Left Align">
+        <i class="fa fa-italic"></i>
+      </button>
+    </div>
   </div>
-</div>
-
-<div class="row page">
-  <div class="col-sm-12">
+  <div class="panel-body">
     <div ng-hide="edition">
       <p ng-bind-html="pagehtml"></p>
     </div>
-    <form>
-      <div class="form-group" ng-show="edition">
-        <textarea dc-editeur ng-model="pagecontenu" class="form-control" rows="40"></textarea>
-      </div>
-    </form>
+    <div class="form-group" ng-show="edition">
+      <textarea dc-editeur ng-model="pagecontenu" class="page-contenu" rows="40"></textarea>
+    </div>
   </div>
-</div>
-<div class="well well-sm">
-  <span class="label label-default">{{dateMaj|date:'d MMM yyyy'}}</span>
+  <div ng-hide="edition" class="panel-footer">
+    <span class="label label-default">{{dateMaj|date:'d MMM yyyy'}}</span>
+  </div>
 </div>
