@@ -121,13 +121,13 @@ angular.module('dcWiki')
     return ajouterEncadrement(element, "*", "*", "mot");
   };
   /**
-   * Fonction d'ajout de graisse
+   * Fonction d'ajout du motif de soulignement
    */
   function ajouterSouligne(element) {
     return ajouterEncadrement(element, "_", "_", "mot");
   };
   /**
-   * Fonction d'ajout de graisse
+   * Fonction d'ajout du motif d'italic
    */
   function ajouterItalic(element) {
     return ajouterEncadrement(element, "=", "=", "mot");
