@@ -1,37 +1,29 @@
 <div class="row page" ng-show="edition">
-    <div id="navbar-page" class="navbar sous-menu">
-        <ul class="nav navbar-nav navbar-left">
-            <li>
-                <a class="bouton-edition" ng-click="onHPlus()">
-                    <i class="fa fa-indent"></i>
-                </a>
-            </li>
-            <li>
-                <a class="bouton-edition" ng-click="onHMoins()">
-                    <i class="fa fa-outdent"></i>
-                </a>
-            </li>
-            <li>
-                <a class="bouton-edition" ng-click="onAjouterLien()">
-                    <i class="fa fa-link"></i>
-                </a>
-            </li>
-        </ul>
-    </div>
+  <div class="col-xs-12">
+    <a class="bouton-edition" ng-click="onHPlus()">
+      <i class="fa fa-indent"></i>
+    </a>
+    <a class="bouton-edition" ng-click="onHMoins()">
+      <i class="fa fa-outdent"></i>
+    </a>
+    <a class="bouton-edition" ng-click="onAjouterLien()">
+      <i class="fa fa-link"></i>
+    </a>
+  </div>
 </div>
 
 <div class="row page">
-    <div class="col-sm-12">
-        <div ng-hide="edition">
-            <p ng-bind-html="pagehtml"></p>
-        </div>
-        <form>
-            <div class="form-group" ng-show="edition">
-                <textarea dc-editeur ng-model="pagecontenu" class="form-control" rows="40"></textarea>
-            </div>
-        </form>
+  <div class="col-sm-12">
+    <div ng-hide="edition">
+      <p ng-bind-html="pagehtml"></p>
     </div>
+    <form>
+      <div class="form-group" ng-show="edition">
+        <textarea dc-editeur ng-model="pagecontenu" class="form-control" rows="40"></textarea>
+      </div>
+    </form>
+  </div>
 </div>
 <div class="well well-sm">
-    <span class="label label-default">{{dateMaj|date:'d MMM yyyy'}}</span>
+  <span class="label label-default">{{dateMaj|date:'d MMM yyyy'}}</span>
 </div>
