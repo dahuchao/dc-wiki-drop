@@ -114,6 +114,15 @@ angular.module('dcWiki', ['ui.bootstrap', 'angularFileUpload', 'ngSanitize', 'ui
     $scope.onAjouterLien = function () {
       $rootScope.$broadcast('ajouterLien');
     };
+    $scope.onAjouterGras = function () {
+      $rootScope.$broadcast('ajouterGras');
+    };
+    $scope.onAjouterSouligne = function () {
+      $rootScope.$broadcast('ajouterSouligne');
+    };
+    $scope.onAjouterItalic = function () {
+      $rootScope.$broadcast('ajouterItalic');
+    };
     $scope.$on("$stateChangeSuccess", function (event, toState, toParams, fromState, fromParams) {
       // Calcul du nom de la page demandée
       var nomPage = encodeURI($state.params.page);
