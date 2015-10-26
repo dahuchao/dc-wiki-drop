@@ -1,7 +1,7 @@
 'use strict';
 
 //Pages service used to communicate Pages REST endpoints
-angular.module('dcWiki', ['angularFileUpload', 'ngSanitize', 'ui.router', 'ngResource', 'ngCookies'])
+angular.module('dcWiki', ['ngMaterial', 'angularFileUpload', 'ngSanitize', 'ui.router', 'ngResource', 'ngCookies'])
 
 /**
  * Configuration des routes de l'application

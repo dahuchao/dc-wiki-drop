@@ -1,0 +1,73 @@
+<html lang="fr" ng-app="dcWiki">
+
+<head>
+  <link rel="stylesheet" href="lib/angular-material/angular-material.css">
+
+  <link rel="stylesheet" href="lib/fontawesome/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular-aria/angular-aria.js"></script>
+  <script src="lib/angular-animate/angular-animate.js"></script>
+  <script src="lib/angular-material/angular-material.js"></script>
+  <script src="lib/angular-bootstrap/ui-bootstrap.js"></script>
+  <script src="lib/angular-cookies/angular-cookies.js"></script>
+  <script src="lib/angular-resource/angular-resource.js"></script>
+  <script src="lib/angular-sanitize/angular-sanitize.min.js"></script>
+  <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="lib/pdfjs-dist/build/pdf.js"></script>
+  <script src="lib/angular-pdf-viewer/dist/angular-pdf-viewer.min.js"></script>
+  <script src="lib/angular-file-upload/dist/angular-file-upload.min.js"></script>
+  <script src="dc-wiki.js"></script>
+  <script src="dc-wiki-test.js"></script>
+  <script src="service/dc-wiki-fichier.js"></script>
+  <script src="service/dc-wiki-dropbox.js"></script>
+  <script src="connexion.js"></script>
+  <script src="service/dc-wiki-formateur.js"></script>
+  <script src="service/dc-wiki-editeur.js"></script>
+
+
+
+</head>
+
+<body ng-controller="dcWikiController">
+  <md-toolbar layout="row">
+    <div class="md-toolbar-tools">
+      <md-button ng-click="onRetour('left')" class="menuBtn">
+        <i class="fa fa-angle-left"></i> <span>Wiki</span>
+      </md-button>
+      <md-button ng-click="onTeleversement()" ng-show="edition" class="md-icon-button">
+        <i class="fa fa-cloud-upload"></i> <span>Televerser</span>
+      </md-button>
+
+      <md-button ng-click="onEnregistrer()" ng-show="edition" class="md-icon-button">
+        <i class="fa fa-floppy-o"></i> <span>Enregistrer</span>
+      </md-button>
+      <md-button ng-click="onAnnuler()" ng-show="edition" class="md-icon-button">
+        <i class="fa fa-undo"></i> <span>Annuler</span>
+      </md-button>
+
+      <h1 layout-align-gt-sm="center">Mon portail</h1>
+      <span flex></span>
+
+      <md-button ng-click="onEdition()" ng-hide="edition" class="md-icon-button" aria-label="Edition">
+        <md-icon md-svg-icon="social:android"></md-icon>
+      </md-button>
+      <md-button ng-click="onDeconnexion()" ng-hide="edition" class="md-icon-button">
+        <i class="fa fa-power-off"></i> <span>Déconnecter</span>
+      </md-button>
+
+
+    </div>
+  </md-toolbar>
+  <md-content layout="column" flex class="md-padding">
+    <md-card>
+      <md-card-content>
+        <div ui-view></div>
+      </md-card-content>
+    </md-card>
+  </md-content>
+</body>
+
+</html>
