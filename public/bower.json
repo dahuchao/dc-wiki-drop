@@ -12,7 +12,8 @@
     "angular-sanitize": "latest",
     "angular-ui-router": "latest",
     "bootstrap": "latest",
-    "fontawesome": "latest"
+    "fontawesome": "latest",
+    "material-design-icons": "~2.0.0"
   },
   "authors": [
     "dahuchao <dahu.chao@laposte.net>"

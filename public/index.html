@@ -1,13 +1,9 @@
-<!doctype html>
 <html lang="fr" ng-app="dcWiki">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Wiki de Dahu dans Dropbox</title>
-  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="lib/angular-material/angular-material.css">
   <link rel="stylesheet" href="lib/fontawesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <script src="lib/angular/angular.js"></script>
   <script src="lib/angular-aria/angular-aria.js"></script>
   <script src="lib/angular-animate/angular-animate.js"></script>
@@ -30,61 +26,47 @@
 </head>
 
 <body ng-controller="dcWikiController">
-  <div class="container">
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a href="" class="navbar-brand" ng-click="onRetour()"><i class="fa fa-angle-left"></i> <span>Wiki</span></a>
-          <button ng-click="onOuvertureMenu()" type="button" class="navbar-toggle" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div collapse="menuPrincipalFerme" id="navbar" class="navbar-collapse">
-          <ul class="nav navbar-nav navbar-left">
-            <li>
-              <a ui-sref="televersement" href="" ng-show="edition" ng-click="onTeleversement()">
-                <i class="fa fa-cloud-upload"></i> <span>Televerser</span>
-              </a>
-            </li>
-            <li>
-              <a href="" ng-show="edition" ng-click="onEnregistrer()">
-                <i class="fa fa-floppy-o"></i> <span>Enregistrer</span>
-              </a>
-            </li>
-            <li>
-              <a href="" ng-show="edition" ng-click="onAnnuler()">
-                <i class="fa fa-undo"></i> <span>Annuler</span>
-              </a>
-            </li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a href="" ng-hide="edition" ng-click="onEdition()">
-                <i class="fa fa-pencil-square-o"></i> <span>Editer</span>
-              </a>
-            </li>
-            <li>
-              <a href="" ng-click="onDeconnexion()">
-                <i class="fa fa-power-off"></i> <span>Déconnecter</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </div>
-  <div class="container-fluid wiki">
-    <div class="row bureau">
-      <div class="col-sm-12">
-        <div ui-view></div>
-      </div>
+  <md-toolbar layout="row">
+    <div class="md-toolbar-tools">
+      <md-button ng-click="onRetour('left')" class="menuBtn">
+        <i class="fa fa-angle-left"></i> <span>Wiki</span>
+      </md-button>
+      <md-button ng-click="onTeleversement()" ng-show="edition" class="md-icon-button">
+        <i class="fa fa-cloud-upload"></i> <span>Televerser</span>
+      </md-button>
+
+      <md-button ng-click="onEnregistrer()" ng-show="edition" class="md-icon-button">
+        <i class="fa fa-floppy-o"></i> <span>Enregistrer</span>
+      </md-button>
+      <md-button ng-click="onAnnuler()" ng-show="edition" class="md-icon-button">
+        <i class="fa fa-undo"></i> <span>Annuler</span>
+      </md-button>
+
+      <h2 layout-align-gt-sm="center">Mon portail</h2>
+      <span flex></span>
+
+      <md-button layout-align="start center" ng-click="onEdition()" ng-hide="edition" aria-label="Edition">
+        <!--        <md-icon md-svg-icon="social:android"></md-icon>-->
+        <span hide-sm>Edition</span>
+      </md-button>
+      <md-button class="md-fab md-primary" ng-click="onDeconnexion()" show-md ng-hide="edition">
+        <!--        <md-icon md-font-icon="fa fa-power-off"></md-icon>-->
+        <md-icon md-svg-icon="lib/accessibility"></md-icon>
+      </md-button>
+      <md-button ng-click="onDeconnexion()" show-sm ng-hide="edition">
+        <span>Déconnecter</span>
+      </md-button>
+
+
     </div>
-  </div>
-  <script src="lib/jquery/dist/jquery.min.js"></script>
-  <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+  </md-toolbar>
+  <md-content layout="column" flex class="md-padding">
+    <md-card>
+      <md-card-content>
+        <div ui-view></div>
+      </md-card-content>
+    </md-card>
+  </md-content>
 </body>
 
 </html>
