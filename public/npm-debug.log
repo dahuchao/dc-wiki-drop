@@ -1,24 +1,68 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'C:\\outils\\iojs\\node.exe',
-1 verbose cli   'C:\\outils\\iojs\\node_modules\\npm\\bin\\npm-cli.js',
-1 verbose cli   'stop' ]
-2 info using npm@2.13.3
-3 info using node@v3.3.0
-4 verbose stack Error: missing script: stop
-4 verbose stack     at run (C:\outils\iojs\node_modules\npm\lib\run-script.js:142:19)
-4 verbose stack     at C:\outils\iojs\node_modules\npm\lib\run-script.js:58:5
-4 verbose stack     at C:\outils\iojs\node_modules\npm\node_modules\read-package-json\read-json.js:345:5
-4 verbose stack     at checkBinReferences_ (C:\outils\iojs\node_modules\npm\node_modules\read-package-json\read-json.js:309:45)
-4 verbose stack     at final (C:\outils\iojs\node_modules\npm\node_modules\read-package-json\read-json.js:343:3)
-4 verbose stack     at then (C:\outils\iojs\node_modules\npm\node_modules\read-package-json\read-json.js:113:5)
-4 verbose stack     at C:\outils\iojs\node_modules\npm\node_modules\read-package-json\read-json.js:300:12
-4 verbose stack     at FSReqWrap.readFileAfterClose [as oncomplete] (evalmachine.<anonymous>:380:3)
-5 verbose cwd C:\travail\Chantiers\dc-wiki-drop\public
-6 error Windows_NT 6.3.9600
-7 error argv "C:\\outils\\iojs\\node.exe" "C:\\outils\\iojs\\node_modules\\npm\\bin\\npm-cli.js" "stop"
-8 error node v3.3.0
-9 error npm  v2.13.3
-10 error missing script: stop
-11 error If you need help, you may report this error at:
-11 error     <https://github.com/npm/npm/issues>
-12 verbose exit [ 1, true ]
+1 verbose cli [ 'D:\\outils\\iojs\\node.exe',
+1 verbose cli   'D:\\outils\\iojs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install' ]
+2 info using npm@2.13.0
+3 info using node@v2.4.0
+4 verbose readDependencies loading dependencies from D:\Travail\Chantiers divers\dc-wiki-drop\package.json
+5 warn package.json dc-wiki-drop@0.1.0 No repository field.
+6 warn package.json dc-wiki-drop@0.1.0 No license field.
+7 verbose install where, deps [ 'D:\\Travail\\Chantiers divers\\dc-wiki-drop',
+7 verbose install   [ 'bower', 'express', 'multer' ] ]
+8 verbose install where, peers [ 'D:\\Travail\\Chantiers divers\\dc-wiki-drop', [] ]
+9 verbose installManyTop reading for lifecycle D:\Travail\Chantiers divers\dc-wiki-drop\package.json
+10 info preinstall dc-wiki-drop@0.1.0
+11 verbose installManyTop reading scoped package data from D:\Travail\Chantiers divers\dc-wiki-drop\node_modules\bower\package.json
+12 verbose installManyTop reading scoped package data from D:\Travail\Chantiers divers\dc-wiki-drop\node_modules\express\package.json
+13 verbose installManyTop reading scoped package data from D:\Travail\Chantiers divers\dc-wiki-drop\node_modules\multer\package.json
+14 verbose readDependencies loading dependencies from D:\Travail\Chantiers divers\dc-wiki-drop\package.json
+15 verbose targetResolver reading package data from D:\Travail\Chantiers divers\dc-wiki-drop\node_modules\bower\package.json
+16 verbose targetResolver reading package data from D:\Travail\Chantiers divers\dc-wiki-drop\node_modules\express\package.json
+17 verbose targetResolver reading package data from D:\Travail\Chantiers divers\dc-wiki-drop\node_modules\multer\package.json
+18 verbose targetResolver reading package data from D:\Travail\Chantiers divers\dc-wiki-drop\node_modules\.bin\bower\package.json
+19 verbose targetResolver reading package data from D:\Travail\Chantiers divers\dc-wiki-drop\node_modules\.bin\bower.cmd\package.json
+20 verbose targetResolver reading package data from D:\Travail\Chantiers divers\dc-wiki-drop\node_modules\.bin\express\package.json
+21 verbose targetResolver reading package data from D:\Travail\Chantiers divers\dc-wiki-drop\node_modules\.bin\express.cmd\package.json
+22 verbose already installed skipping bower@^1.4.1 D:\Travail\Chantiers divers\dc-wiki-drop
+23 verbose already installed skipping express@3.x D:\Travail\Chantiers divers\dc-wiki-drop
+24 verbose already installed skipping multer@^1.0.3 D:\Travail\Chantiers divers\dc-wiki-drop
+25 silly install resolved []
+26 info build D:\Travail\Chantiers divers\dc-wiki-drop
+27 info linkStuff dc-wiki-drop@0.1.0
+28 silly linkStuff dc-wiki-drop@0.1.0 has D:\Travail\Chantiers divers as its parent node_modules
+29 verbose linkBins dc-wiki-drop@0.1.0
+30 verbose linkMans dc-wiki-drop@0.1.0
+31 verbose rebuildBundles dc-wiki-drop@0.1.0
+32 verbose rebuildBundles [ '.bin', 'bower', 'express', 'multer' ]
+33 info install dc-wiki-drop@0.1.0
+34 info postinstall dc-wiki-drop@0.1.0
+35 verbose unsafe-perm in lifecycle true
+36 info dc-wiki-drop@0.1.0 Failed to exec postinstall script
+37 verbose stack Error: dc-wiki-drop@0.1.0 postinstall: `cd public && bower cache clean && bower install`
+37 verbose stack Exit status 1
+37 verbose stack     at EventEmitter.<anonymous> (D:\outils\iojs\node_modules\npm\lib\utils\lifecycle.js:213:16)
+37 verbose stack     at emitTwo (events.js:87:13)
+37 verbose stack     at EventEmitter.emit (events.js:172:7)
+37 verbose stack     at ChildProcess.<anonymous> (D:\outils\iojs\node_modules\npm\lib\utils\spawn.js:24:14)
+37 verbose stack     at emitTwo (events.js:87:13)
+37 verbose stack     at ChildProcess.emit (events.js:172:7)
+37 verbose stack     at maybeClose (internal/child_process.js:764:16)
+37 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+38 verbose pkgid dc-wiki-drop@0.1.0
+39 verbose cwd D:\Travail\Chantiers divers\dc-wiki-drop\public
+40 error Windows_NT 6.1.7601
+41 error argv "D:\\outils\\iojs\\node.exe" "D:\\outils\\iojs\\node_modules\\npm\\bin\\npm-cli.js" "install"
+42 error node v2.4.0
+43 error npm  v2.13.0
+44 error code ELIFECYCLE
+45 error dc-wiki-drop@0.1.0 postinstall: `cd public && bower cache clean && bower install`
+45 error Exit status 1
+46 error Failed at the dc-wiki-drop@0.1.0 postinstall script 'cd public && bower cache clean && bower install'.
+46 error This is most likely a problem with the dc-wiki-drop package,
+46 error not with npm itself.
+46 error Tell the author that this fails on your system:
+46 error     cd public && bower cache clean && bower install
+46 error You can get their info via:
+46 error     npm owner ls dc-wiki-drop
+46 error There is likely additional logging output above.
+47 verbose exit [ 1, true ]
