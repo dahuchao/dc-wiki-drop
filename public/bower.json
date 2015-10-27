@@ -13,7 +13,8 @@
     "angular-ui-router": "latest",
     "bootstrap": "latest",
     "fontawesome": "latest",
-    "material-design-icons": "~2.0.0"
+    "material-design-icons": "~2.0.0",
+    "mdi": "~1.2.65"
   },
   "authors": [
     "dahuchao <dahu.chao@laposte.net>"

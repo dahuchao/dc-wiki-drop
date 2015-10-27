@@ -4,7 +4,7 @@
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="lib/angular-material/angular-material.css">
   <link rel="stylesheet" href="lib/fontawesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="lib/mdi/css/materialdesignicons.min.css">
   <script src="lib/angular/angular.js"></script>
   <script src="lib/angular-aria/angular-aria.js"></script>
   <script src="lib/angular-animate/angular-animate.js"></script>
@@ -32,33 +32,24 @@
       <md-button ng-click="onRetour('left')" class="menuBtn">
         <i class="fa fa-angle-left"></i> <span>Wiki</span>
       </md-button>
-      <md-button ng-click="onTeleversement()" ng-show="edition" class="md-icon-button">
-        <i class="fa fa-cloud-upload"></i> <span>Televerser</span>
+      <md-button class="md-fab md-primary" ng-click="onTeleversement()" ng-show="edition" class="md-icon-button" aria-label="Televerser">
+        <md-icon md-font-icon="fa fa-cloud-upload"></md-icon>
       </md-button>
-
-      <md-button ng-click="onEnregistrer()" ng-show="edition" class="md-icon-button">
-        <i class="fa fa-floppy-o"></i> <span>Enregistrer</span>
+      <md-button class="md-fab md-primary" ng-click="onEnregistrer()" ng-show="edition" aria-label="Enregistrer">
+        <md-icon md-font-icon="fa fa-floppy-o"></md-icon>
       </md-button>
-      <md-button ng-click="onAnnuler()" ng-show="edition" class="md-icon-button">
-        <i class="fa fa-undo"></i> <span>Annuler</span>
+      <md-button class="md-fab md-primary" ng-click="onAnnuler()" ng-show="edition" aria-label="Annuler">
+        <md-icon md-font-icon="fa fa-undo"></md-icon>
       </md-button>
-
       <h2 layout-align-gt-sm="center">Mon portail</h2>
       <span flex></span>
-
-      <md-button layout-align="start center" ng-click="onEdition()" ng-hide="edition" aria-label="Edition">
+      <md-button class="md-fab md-primary" layout-align="start center" ng-click="onEdition()" ng-hide="edition" aria-label="Edition">
         <!--        <md-icon md-svg-icon="social:android"></md-icon>-->
-        <span hide-sm>Edition</span>
+        <md-icon md-svg-src="lib/material-design-icons/editor/svg/design/ic_mode_edit_18px.svg"></md-icon>
       </md-button>
-      <md-button class="md-fab md-primary" ng-click="onDeconnexion()" show-md ng-hide="edition">
-        <!--        <md-icon md-font-icon="fa fa-power-off"></md-icon>-->
-        <md-icon md-svg-icon="lib/accessibility"></md-icon>
+      <md-button class="md-fab md-primary" ng-click="onDeconnexion()" ng-hide="edition" aria-label="Déconnecter">
+        <md-icon md-font-icon="mdi-logout"></md-icon>
       </md-button>
-      <md-button ng-click="onDeconnexion()" show-sm ng-hide="edition">
-        <span>Déconnecter</span>
-      </md-button>
-
-
     </div>
   </md-toolbar>
   <md-content layout="column" flex class="md-padding">
