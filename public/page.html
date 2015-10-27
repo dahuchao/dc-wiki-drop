@@ -1,36 +1,35 @@
-<div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div ng-show="edition" class="panel-heading">
-    <div class="btn-group" role="group" aria-label="barre de bouton">
-      <button ng-click="onHPlus()" type="button" class="btn btn-default" aria-label="Left Align">
-        <i class="fa fa-indent"></i>
-      </button>
-      <button ng-click="onHMoins()" type="button" class="btn btn-default" aria-label="Left Align">
+<section>
+  <md-toolbar layout="row" ng-show="edition">
+    <div class="md-toolbar-tools">
+      <md-button ng-click="onHPlus()" class="menuBtn">
+        <md-icon md-font-icon="fa fa-indent"></md-icon>
+      </md-button>
+      <md-button ng-click="onHMoins()" class="menuBtn">
         <i class="fa fa-outdent"></i>
-      </button>
-      <button ng-click="onAjouterLien()" type="button" class="btn btn-default" aria-label="Left Align">
+      </md-button>
+      <md-button ng-click="onAjouterLien()" class="menuBtn">
         <i class="fa fa-link"></i>
-      </button>
-      <button ng-click="onAjouterGras()" type="button" class="btn btn-default" aria-label="Left Align">
+      </md-button>
+      <md-button ng-click="onAjouterGras()" class="menuBtn">
         <i class="fa fa-bold"></i>
-      </button>
-      <button ng-click="onAjouterSouligne()" type="button" class="btn btn-default" aria-label="Left Align">
+      </md-button>
+      <md-button ng-click="onAjouterSouligne()" class="menuBtn">
         <i class="fa fa-underline"></i>
-      </button>
-      <button ng-click="onAjouterItalic()" type="button" class="btn btn-default" aria-label="Left Align">
+      </md-button>
+      <md-button ng-click="onAjouterItalic()" class="menuBtn">
         <i class="fa fa-italic"></i>
-      </button>
+      </md-button>
     </div>
-  </div>
-  <div class="panel-body">
+  </md-toolbar>
+  <md-content layout="column" flex class="md-padding">
     <div ng-hide="edition">
       <p ng-bind-html="pagehtml"></p>
     </div>
     <div class="form-group" ng-show="edition">
       <textarea dc-editeur ng-model="pagecontenu" class="page-contenu" rows="40"></textarea>
     </div>
-  </div>
-  <div ng-hide="edition" class="panel-footer">
-    <span class="label label-default">{{dateMaj|date:'d MMM yyyy'}}</span>
-  </div>
-</div>
+    </div>
+    <div ng-hide="edition" class="panel-footer">
+      <span class="label label-default">{{dateMaj|date:'d MMM yyyy'}}</span>
+    </div>
+</section>
