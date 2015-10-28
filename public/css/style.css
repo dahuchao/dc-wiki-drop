@@ -45,3 +45,7 @@ a.bouton-edition {
   line-height: 5px;
   color: brown;
 }
+
+.menuBtn {
+  min-width: 0px
+}
