@@ -6,7 +6,7 @@
     "angular-bootstrap": "latest",
     "angular-cookies": "latest",
     "angular-file-upload": "~2.1.1",
-    "angular-material": "~0.11.0",
+    "angular-material": "~1.0.0-RC1",
     "angular-pdf-viewer": "~0.2.7",
     "angular-resource": "latest",
     "angular-sanitize": "latest",
