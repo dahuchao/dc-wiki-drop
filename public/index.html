@@ -29,9 +29,14 @@
 <body ng-controller="dcWikiController">
   <md-toolbar layout="row">
     <div class="md-toolbar-tools">
-      <md-button ng-click="onRetour('left')" class="menuBtn">
-        <i class="fa fa-angle-left"></i> <span>Wiki</span>
+      <md-button class="md-fab md-primary" layout-align="start center" aria-label="Menu">
+        <md-icon md-svg-src="lib/material-design-icons/navigation/svg/design/ic_menu_18px.svg"></md-icon>
       </md-button>
+      <md-button ng-click="onRetour('left')" class="menuBtn">
+        <i class="fa fa-angle-left"></i>
+      </md-button>
+      <h2 layout-align-gt-sm="center">Wiki</h2>
+      <span flex></span>
       <md-button class="md-fab md-primary" ng-click="onTeleversement()" ng-show="edition" class="md-icon-button" aria-label="Televerser">
         <md-icon md-font-icon="fa fa-cloud-upload"></md-icon>
       </md-button>
@@ -41,10 +46,7 @@
       <md-button class="md-fab md-primary" ng-click="onAnnuler()" ng-show="edition" aria-label="Annuler">
         <md-icon md-font-icon="fa fa-undo"></md-icon>
       </md-button>
-      <h2 layout-align-gt-sm="center">Mon portail</h2>
-      <span flex></span>
       <md-button class="md-fab md-primary" layout-align="start center" ng-click="onEdition()" ng-hide="edition" aria-label="Edition">
-        <!--        <md-icon md-svg-icon="social:android"></md-icon>-->
         <md-icon md-svg-src="lib/material-design-icons/editor/svg/design/ic_mode_edit_18px.svg"></md-icon>
       </md-button>
       <md-button class="md-fab md-primary" ng-click="onDeconnexion()" ng-hide="edition" aria-label="Déconnecter">
