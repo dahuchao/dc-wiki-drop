@@ -47,5 +47,6 @@ a.bouton-edition {
 }
 
 .menuBtn {
-  min-width: 0px
+  font-size: 20px;
+  min-width: 0px;
 }
