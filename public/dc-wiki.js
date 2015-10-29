@@ -6,7 +6,7 @@ angular.module('dcWiki', ['ngMaterial', 'angularFileUpload', 'ngSanitize', 'ui.r
 /**
  * Configuration des routes de l'application
  */
-.config(function ($stateProvider, $urlRouterProvider) {
+.config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider) {
   //$urlRouterProvider.otherwise("/connexion");
   $urlRouterProvider.when("/", "/pages/homepage");
   $urlRouterProvider.when("/pages", "/pages/homepage");
@@ -41,6 +41,7 @@ angular.module('dcWiki', ['ngMaterial', 'angularFileUpload', 'ngSanitize', 'ui.r
       controller: "dcDocController"
     });
   //$locationProvider.html5Mode(true);
+  $mdThemingProvider.theme('default').primaryPalette('brown').accentPalette('orange');
 })
 
 /**
