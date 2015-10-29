@@ -1,6 +1,12 @@
 <section>
   <md-toolbar layout="row" ng-show="edition">
     <div class="md-toolbar-tools">
+      <md-button ng-click="onEnregistrer()" aria-label="Enregistrer">
+        <md-icon md-font-icon="fa fa-floppy-o"></md-icon>
+      </md-button>
+
+      <span flex></span>
+
       <md-button ng-click="onHPlus()" class="menuBtn">
         <md-icon md-font-icon="fa fa-indent"></md-icon>
       </md-button>
@@ -19,6 +25,17 @@
       <md-button ng-click="onAjouterItalic()" class="menuBtn">
         <i class="fa fa-italic"></i>
       </md-button>
+
+
+
+      <md-button class="md-fab md-primary" ng-click="onTeleversement()" class="md-icon-button" aria-label="Televerser">
+        <md-icon md-font-icon="fa fa-cloud-upload"></md-icon>
+      </md-button>
+      <md-button ng-click="onAnnuler()" aria-label="Annuler">
+        <md-icon md-font-icon="fa fa-undo"></md-icon>
+      </md-button>
+
+
     </div>
   </md-toolbar>
   <md-content layout="column" flex class="md-padding">
