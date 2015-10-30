@@ -2,8 +2,7 @@
   <md-toolbar layout="row" ng-show="edition">
     <div class="md-toolbar-tools">
       <md-button ng-click="onEnregistrer()" aria-label="Enregistrer">
-        <!--        <md-icon md-font-icon="fa fa-floppy-o"></md-icon>-->
-        <md-icon md-svg-src="lib\material-design-icons\navigation\svg\design/ic_arrow_back_18px.svg"></md-icon><span>Enregistrement</span>
+        <md-icon md-svg-src="lib\material-design-icons\navigation\svg\design/ic_arrow_back_18px.svg"></md-icon><span hide-sm>Enregistrement</span>
       </md-button>
       <span flex></span>
       <md-button ng-click="onHPlus()" class="menuBtn">
@@ -15,21 +14,40 @@
       <md-button ng-click="onAjouterLien()" class="menuBtn">
         <md-icon md-font-icon="fa fa-link"></md-icon>
       </md-button>
-      <md-button ng-click="onAjouterGras()" class="menuBtn">
+      <md-button ng-click="onAjouterGras()" hide-sm class="menuBtn">
         <md-icon md-font-icon="fa fa-bold"></md-icon>
       </md-button>
-      <md-button ng-click="onAjouterSouligne()" class="menuBtn">
+      <md-button ng-click="onAjouterSouligne()" hide-sm class="menuBtn">
         <md-icon md-font-icon="fa fa-underline"></md-icon>
       </md-button>
-      <md-button ng-click="onAjouterItalic()" class="menuBtn">
+      <md-button ng-click="onAjouterItalic()" hide-sm class="menuBtn">
         <md-icon md-font-icon="fa fa-italic"></md-icon>
       </md-button>
-      <md-button ng-click="onTeleversement()" class="menuBtn" aria-label="Televerser">
-        <md-icon md-font-icon="fa fa-cloud-upload"></md-icon>
-      </md-button>
-      <md-button ng-click="onAnnuler()" class="menuBtn" aria-label="Annuler">
-        <md-icon md-font-icon="fa fa-undo"></md-icon>
-      </md-button>
+
+      <md-menu>
+        <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
+          <md-icon md-menu-origin md-svg-icon="lib\material-design-icons\navigation\svg\design/ic_more_vert_24px.svg"></md-icon>
+        </md-button>
+        <md-menu-content width="3">
+          <md-menu-item>
+            <md-button ng-click="onTeleversement()" class="menuBtn" aria-label="Televerser">
+              <div layout="row">
+                <md-icon md-font-icon="fa fa-cloud-upload"></md-icon>
+                <p flex>Televerser</p>
+              </div>
+            </md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button ng-click="onAnnuler()" class="menuBtn" aria-label="Annuler">
+              <div layout="row">
+                <md-icon md-font-icon="fa fa-undo"></md-icon>
+                <p flex>Annuler</p>
+              </div>
+            </md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+
     </div>
   </md-toolbar>
   <md-content layout="column" flex class="md-padding">
