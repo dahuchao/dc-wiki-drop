@@ -203,8 +203,11 @@ angular.module('dcWiki', ['ngMaterial', 'angularFileUpload', 'ngSanitize', 'ui.r
 /**
  * Création du controleur du wiki
  */
-.controller('dcWikiController', ['$state', '$rootScope', '$scope', '$location', '$resource', 'IdentificationService',
-    function ($state, $rootScope, $scope, $location, $resource, IdentificationService) {
+.controller('dcWikiController', ['$state', '$rootScope', '$scope', '$location', '$resource', 'IdentificationService', '$mdSidenav',
+    function ($state, $rootScope, $scope, $location, $resource, IdentificationService, $mdSidenav) {
+    $scope.basculeMenu = function (menuId) {
+      $mdSidenav(menuId).toggle();
+    };
     // Fermeture du menu
     $scope.menuPrincipalFerme = true;
     // Calcul de l'URL
