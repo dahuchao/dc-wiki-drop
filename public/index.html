@@ -35,15 +35,17 @@
       </md-button>
       <h2 layout-align-gt-sm="center">Wiki</h2>
       <span flex></span>
-      <md-button class="md-icon-button launch" layout-align="start center" ng-click="onEdition()" ng-hide="edition" aria-label="Edition">
-        <md-icon md-svg-src="lib/material-design-icons/editor/svg/design/ic_mode_edit_18px.svg"></md-icon>
-      </md-button>
       <md-button class="md-icon-button launch" ng-click="onDeconnexion()" ng-hide="edition" aria-label="Déconnecter">
         <md-icon md-svg-src="lib\material-design-icons\action\svg\design/ic_power_settings_new_24px.svg"></md-icon>
       </md-button>
     </div>
   </md-toolbar>
   <div ui-view></div>
+  <div class="menuEdition">
+    <md-button class="md-fab md-primary" layout-align="start center" ng-click="onEdition()" ng-hide="edition" aria-label="Edition">
+      <md-icon md-svg-src="lib/material-design-icons/editor/svg/design/ic_mode_edit_18px.svg"></md-icon>
+    </md-button>
+  </div>
 </body>
 
 </html>

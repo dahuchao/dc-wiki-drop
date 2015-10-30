@@ -2,40 +2,34 @@
   <md-toolbar layout="row" ng-show="edition">
     <div class="md-toolbar-tools">
       <md-button ng-click="onEnregistrer()" aria-label="Enregistrer">
-        <md-icon md-font-icon="fa fa-floppy-o"></md-icon>
+        <!--        <md-icon md-font-icon="fa fa-floppy-o"></md-icon>-->
+        <md-icon md-svg-src="lib\material-design-icons\navigation\svg\design/ic_arrow_back_18px.svg"></md-icon><span>Enregistrement</span>
       </md-button>
-
       <span flex></span>
-
       <md-button ng-click="onHPlus()" class="menuBtn">
         <md-icon md-font-icon="fa fa-indent"></md-icon>
       </md-button>
       <md-button ng-click="onHMoins()" class="menuBtn">
-        <i class="fa fa-outdent"></i>
+        <md-icon md-font-icon="fa fa-outdent"></md-icon>
       </md-button>
       <md-button ng-click="onAjouterLien()" class="menuBtn">
-        <i class="fa fa-link"></i>
+        <md-icon md-font-icon="fa fa-link"></md-icon>
       </md-button>
       <md-button ng-click="onAjouterGras()" class="menuBtn">
-        <i class="fa fa-bold"></i>
+        <md-icon md-font-icon="fa fa-bold"></md-icon>
       </md-button>
       <md-button ng-click="onAjouterSouligne()" class="menuBtn">
-        <i class="fa fa-underline"></i>
+        <md-icon md-font-icon="fa fa-underline"></md-icon>
       </md-button>
       <md-button ng-click="onAjouterItalic()" class="menuBtn">
-        <i class="fa fa-italic"></i>
+        <md-icon md-font-icon="fa fa-italic"></md-icon>
       </md-button>
-
-
-
-      <md-button class="md-fab md-primary" ng-click="onTeleversement()" class="md-icon-button" aria-label="Televerser">
+      <md-button ng-click="onTeleversement()" class="menuBtn" aria-label="Televerser">
         <md-icon md-font-icon="fa fa-cloud-upload"></md-icon>
       </md-button>
-      <md-button ng-click="onAnnuler()" aria-label="Annuler">
+      <md-button ng-click="onAnnuler()" class="menuBtn" aria-label="Annuler">
         <md-icon md-font-icon="fa fa-undo"></md-icon>
       </md-button>
-
-
     </div>
   </md-toolbar>
   <md-content layout="column" flex class="md-padding">
@@ -49,4 +43,5 @@
     <div ng-hide="edition" class="panel-footer">
       <span class="label label-default">{{dateMaj|date:'d MMM yyyy'}}</span>
     </div>
+  </md-content>
 </section>
