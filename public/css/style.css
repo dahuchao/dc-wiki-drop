@@ -1,5 +1,9 @@
 body {}
 
+.page .html a{
+  color: firebrick
+}
+
 .entete {
   background-color: blueviolet;
   color: white;
