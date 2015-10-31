@@ -5,25 +5,24 @@
         <md-icon md-svg-src="lib\material-design-icons\navigation\svg\design/ic_arrow_back_18px.svg"></md-icon><span hide-sm>Enregistrement</span>
       </md-button>
       <span flex></span>
-      <md-button ng-click="onHPlus()" class="menuBtn">
+      <md-button ng-click="onHPlus()" class="menuBtn" aria-label="Augmenter le niveau du chapitre">
         <md-icon md-font-icon="fa fa-indent"></md-icon>
       </md-button>
-      <md-button ng-click="onHMoins()" class="menuBtn">
+      <md-button ng-click="onHMoins()" class="menuBtn" aria-label="Diminuer le niveau du chapitre">
         <md-icon md-font-icon="fa fa-outdent"></md-icon>
       </md-button>
-      <md-button ng-click="onAjouterLien()" class="menuBtn">
+      <md-button ng-click="onAjouterLien()" class="menuBtn" aria-label="Insérer un lien">
         <md-icon md-font-icon="fa fa-link"></md-icon>
       </md-button>
-      <md-button ng-click="onAjouterGras()" hide-sm class="menuBtn">
+      <md-button ng-click="onAjouterGras()" hide-sm class="menuBtn" aria-label="Gras">
         <md-icon md-font-icon="fa fa-bold"></md-icon>
       </md-button>
-      <md-button ng-click="onAjouterSouligne()" hide-sm class="menuBtn">
+      <md-button ng-click="onAjouterSouligne()" hide-sm class="menuBtn" aria-label="Souligner">
         <md-icon md-font-icon="fa fa-underline"></md-icon>
       </md-button>
-      <md-button ng-click="onAjouterItalic()" hide-sm class="menuBtn">
+      <md-button ng-click="onAjouterItalic()" hide-sm class="menuBtn" aria-label="Italic">
         <md-icon md-font-icon="fa fa-italic"></md-icon>
       </md-button>
-
       <md-menu>
         <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
           <md-icon md-menu-origin md-svg-icon="lib\material-design-icons\navigation\svg\design/ic_more_vert_24px.svg"></md-icon>
@@ -47,16 +46,19 @@
           </md-menu-item>
         </md-menu-content>
       </md-menu>
-
     </div>
   </md-toolbar>
   <md-content layout="column" flex class="md-padding">
     <div class="html" ng-hide="edition">
       <p ng-bind-html="pagehtml"></p>
+    <div class="menuEdition">
+      <md-button class="md-fab md-primary" layout-align="start center" ng-click="onEdition()" ng-hide="edition" aria-label="Edition">
+        <md-icon md-svg-src="lib/material-design-icons/editor/svg/design/ic_mode_edit_18px.svg"></md-icon>
+      </md-button>
+    </div>
     </div>
     <div class="form-group" ng-show="edition">
       <textarea dc-editeur ng-model="pagecontenu" class="page-contenu" rows="40"></textarea>
-    </div>
     </div>
     <div ng-hide="edition" class="panel-footer">
       <span class="label label-default">{{dateMaj|date:'d MMM yyyy'}}</span>

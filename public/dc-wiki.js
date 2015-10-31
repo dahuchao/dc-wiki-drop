@@ -100,7 +100,7 @@ angular.module('dcWiki', ['ngMaterial', 'angularFileUpload', 'ngSanitize', 'ui.r
     uploader.onAfterAddingFile = function (fileItem) {
       console.info('onAfterAddingFile', fileItem);
     };
-    }])
+}])
 
 // Controleur des pages de wiki
 .controller('dcPageController', ['$rootScope', '$state', '$scope', 'PagesDropboxService', 'dcWikiFormateur',
@@ -148,11 +148,11 @@ angular.module('dcWiki', ['ngMaterial', 'angularFileUpload', 'ngSanitize', 'ui.r
       }, function (reason) {
         if (reason.status === 404) {
           $scope.pagecontenu = "+ " + nomPage;
-          $scope.edition = true;
+          $rootScope.edition = true;
         }
         if (reason.status === 401) {
           $scope.pagehtml = "erreur";
-          $scope.edition = false;
+          $rootScope.edition = false;
           // Changement d'état pour ouvrir le wiki
           $state.go('connexion');
         }
@@ -187,6 +187,34 @@ angular.module('dcWiki', ['ngMaterial', 'angularFileUpload', 'ngSanitize', 'ui.r
         $scope.dateMaj = page.dateMaj;
       }
     });
+
+    $rootScope.edition = false;
+    $scope.onAnnuler = function () {
+      // Permutation du mode édition en mode lecture
+      $rootScope.edition = false;
+      // Fermeture du menu
+      $scope.menuPrincipalFerme = true;
+    };
+    $scope.onEdition = function () {
+      // Permutation du mode lecture en mode édition
+      $rootScope.edition = true;
+      // Fermeture du menu
+      $scope.menuPrincipalFerme = true;
+    };
+
+    $scope.onEnregistrer = function () {
+      // Si la page a été éditée
+      if ($rootScope.edition === true) {
+        // Diffusion de l'évènement aux scopes enfants
+        $scope.$broadcast('onEnregistrement');
+      }
+      // Permutation du mode édition en mode lecture ou inversement
+      $rootScope.edition = false;
+      // Fermeture du menu
+      $scope.menuPrincipalFerme = true;
+    };
+
+
 }])
 
 /**
@@ -240,30 +268,6 @@ angular.module('dcWiki', ['ngMaterial', 'angularFileUpload', 'ngSanitize', 'ui.r
       IdentificationService.logout();
       // Changement d'état pour déconnexion
       $state.go('connexion');
-      // Fermeture du menu
-      $scope.menuPrincipalFerme = true;
-    };
-    $scope.edition = false;
-    $scope.onAnnuler = function () {
-      // Permutation du mode édition en mode lecture
-      $scope.edition = false;
-      // Fermeture du menu
-      $scope.menuPrincipalFerme = true;
-    };
-    $scope.onEdition = function () {
-      // Permutation du mode lecture en mode édition
-      $scope.edition = true;
-      // Fermeture du menu
-      $scope.menuPrincipalFerme = true;
-    };
-    $scope.onEnregistrer = function () {
-      // Si la page a été éditée
-      if ($scope.edition === true) {
-        // Diffusion de l'évènement aux scopes enfants
-        $scope.$broadcast('onEnregistrement');
-      }
-      // Permutation du mode édition en mode lecture ou inversement
-      $scope.edition = false;
       // Fermeture du menu
       $scope.menuPrincipalFerme = true;
     };
