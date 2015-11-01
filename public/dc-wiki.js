@@ -255,8 +255,9 @@ angular.module('dcWiki', ['ngMaterial', 'angularFileUpload', 'ngSanitize', 'ui.r
       // Changement d'état pour ouvrir le wiki
       $state.go('wiki');
     }
-    $scope.onRetour = function () {
+    $scope.onAccueil = function () {
       // Changement d'état pour ouvrir le wiki
+      $mdSidenav("gauche").close();
       $state.go('wiki');
     }
     $scope.onOuvertureMenu = function () {
@@ -270,5 +271,6 @@ angular.module('dcWiki', ['ngMaterial', 'angularFileUpload', 'ngSanitize', 'ui.r
       $state.go('connexion');
       // Fermeture du menu
       $scope.menuPrincipalFerme = true;
+      $mdSidenav("gauche").close();
     };
 }]);

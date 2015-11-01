@@ -7,7 +7,7 @@ C'est la cerise sur le pompom !
 C'est l'étincelle qui fait déborder le vase !
 C'est la goutte d'eau qui met le feu aux poudres !
 Petit à petit l'oiseau devient forgeron !
-Les ciseaux à bois : Les chiens aussi.
+Les ciseaux à bois : Les [chiens] aussi.
 
 [[https://angular.io/][angular.io]]
 [http://www.polymer-project.org/1.0/]
