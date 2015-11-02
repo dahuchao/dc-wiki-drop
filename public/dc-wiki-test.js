@@ -88,4 +88,30 @@ angular.module('dcWiki')
         $scope.dateMaj = page.dateMaj;
       }
     });
+
+    $rootScope.edition = false;
+    $scope.onAnnuler = function () {
+      // Permutation du mode édition en mode lecture
+      $rootScope.edition = false;
+      // Fermeture du menu
+      $scope.menuPrincipalFerme = true;
+    };
+    $scope.onEdition = function () {
+      // Permutation du mode lecture en mode édition
+      $rootScope.edition = true;
+      // Fermeture du menu
+      $scope.menuPrincipalFerme = true;
+    };
+
+    $scope.onEnregistrer = function () {
+      // Si la page a été éditée
+      if ($rootScope.edition === true) {
+        // Diffusion de l'évènement aux scopes enfants
+        $scope.$broadcast('onEnregistrement');
+      }
+      // Permutation du mode édition en mode lecture ou inversement
+      $rootScope.edition = false;
+      // Fermeture du menu
+      $scope.menuPrincipalFerme = true;
+    };
 }]);
