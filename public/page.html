@@ -1,27 +1,28 @@
 <section class="page">
-  <md-toolbar layout="row" ng-show="edition">
+  <md-toolbar class="barre-menu" layout="row" ng-show="edition">
     <div class="md-toolbar-tools">
       <md-button ng-click="onEnregistrer()" aria-label="Enregistrer">
-        <md-icon md-svg-src="lib\material-design-icons\navigation\svg\design/ic_arrow_back_18px.svg"></md-icon><span hide-sm>Enregistrement</span>
+        <md-icon md-svg-src="lib\material-design-icons\navigation\svg\design/ic_arrow_back_18px.svg"></md-icon>
       </md-button>
+      <span hide-sm>Enregistrement</span>
       <span flex></span>
-      <md-button ng-click="onHPlus()" class="menuBtn" aria-label="Augmenter le niveau du chapitre">
-        <md-icon md-font-icon="fa fa-indent"></md-icon>
+      <md-button ng-click="onHPlus()" class="droite" aria-label="Augmenter le niveau du chapitre">
+        <md-icon md-menu-origin md-svg-icon="lib\material-design-icons\editor\svg\production\ic_format_indent_decrease_18px.svg"></md-icon>
       </md-button>
-      <md-button ng-click="onHMoins()" class="menuBtn" aria-label="Diminuer le niveau du chapitre">
-        <md-icon md-font-icon="fa fa-outdent"></md-icon>
+      <md-button ng-click="onHMoins()" class="droite" aria-label="Diminuer le niveau du chapitre">
+        <md-icon md-menu-origin md-svg-icon="lib\material-design-icons\editor\svg\production\ic_format_indent_increase_18px.svg"></md-icon>
       </md-button>
-      <md-button ng-click="onAjouterLien()" class="menuBtn" aria-label="Insérer un lien">
+      <md-button ng-click="onAjouterLien()" class="droite" aria-label="Insérer un lien">
         <md-icon md-font-icon="fa fa-link"></md-icon>
       </md-button>
-      <md-button ng-click="onAjouterGras()" hide-sm class="menuBtn" aria-label="Gras">
-        <md-icon md-font-icon="fa fa-bold"></md-icon>
+      <md-button ng-click="onAjouterGras()" hide-sm class="droite" aria-label="Gras">
+        <md-icon md-menu-origin md-svg-icon="lib\material-design-icons\editor\svg\production\ic_format_bold_18px.svg"></md-icon>
       </md-button>
-      <md-button ng-click="onAjouterSouligne()" hide-sm class="menuBtn" aria-label="Souligner">
-        <md-icon md-font-icon="fa fa-underline"></md-icon>
+      <md-button ng-click="onAjouterSouligne()" hide-sm class="droite" aria-label="Souligner">
+        <md-icon md-menu-origin md-svg-icon="lib\material-design-icons\editor\svg\production\ic_format_underlined_18px.svg"></md-icon>
       </md-button>
-      <md-button ng-click="onAjouterItalic()" hide-sm class="menuBtn" aria-label="Italic">
-        <md-icon md-font-icon="fa fa-italic"></md-icon>
+      <md-button ng-click="onAjouterItalic()" hide-sm class="droite" aria-label="Italic">
+        <md-icon md-menu-origin md-svg-icon="lib\material-design-icons\editor\svg\production\ic_format_italic_18px.svg"></md-icon>
       </md-button>
       <md-menu>
         <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
@@ -51,11 +52,11 @@
   <md-content layout="column" flex class="md-padding">
     <div class="html" ng-hide="edition">
       <p ng-bind-html="pagehtml"></p>
-    <div class="menuEdition">
-      <md-button class="md-fab md-primary" layout-align="start center" ng-click="onEdition()" ng-hide="edition" aria-label="Edition">
-        <md-icon md-svg-src="lib/material-design-icons/editor/svg/design/ic_mode_edit_18px.svg"></md-icon>
-      </md-button>
-    </div>
+      <div class="bouton-edition">
+        <md-button class="md-fab md-primary" layout-align="start center" ng-click="onEdition()" ng-hide="edition" aria-label="Edition">
+          <md-icon md-svg-src="lib/material-design-icons/editor/svg/design/ic_mode_edit_18px.svg"></md-icon>
+        </md-button>
+      </div>
     </div>
     <div class="form-group" ng-show="edition">
       <textarea dc-editeur ng-model="pagecontenu" class="page-contenu" rows="40"></textarea>

@@ -260,6 +260,15 @@ angular.module('dcWiki', ['ngMaterial', 'angularFileUpload', 'ngSanitize', 'ui.r
       // Ouverture du menu
       $scope.menuPrincipalFerme = !$scope.menuPrincipalFerme;
     };
+    $scope.onDebutRecherche = function () {
+      $scope.recherche = true;
+    };
+    $scope.onFinRecherche = function () {
+      $scope.recherche = false;
+    };
+    $scope.onInitRecherche = function () {
+      $scope.termeRecherche = "";
+    };
     $scope.onDeconnexion = function () {
       // Déconnexion du service
       IdentificationService.logout();
