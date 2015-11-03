@@ -1,67 +1,22 @@
 body {}
 
-.page .html a{
+.page .html a {
   color: firebrick
-}
-
-.entete {
-  background-color: blueviolet;
-  color: white;
-  padding-left: 1em;
-}
-
-h1 {
-  margin-top: 10px;
-}
-
-h2 {
-  margin-top: 10px;
-}
-
-h3 {
-  margin-top: 10px;
 }
 
 .wiki .bureau {
   padding: 10px;
 }
 
-.deconnexion {
-  margin-right: 20px;
-}
-
-.rubrique {
+.dc-wiki .barre-laterale .rubrique {
   cursor: pointer;
 }
 
-.sous-menu {
-  margin: 0px;
-  min-height: 10px;
-  padding-left: 15px;
-  padding-right: 15px;
+.dc-wiki .page .barre-menu .md-button {
+  min-width: 30px;
 }
 
-.page-contenu {
-  width: 100%;
-  border-style: none;
-}
-
-a.bouton-edition {
-  font-size: 18px;
-  padding: 5px;
-  line-height: 5px;
-  color: brown;
-}
-
-.menuBtn {
-  font-size: 20px;
-  min-width: 0px;
-  margin: 0;
-  padding-left: 12px;
-  padding-right: 12px;
-}
-
-.menuEdition {
+.dc-wiki .page .bouton-edition {
   margin-bottom: 25px;
   margin-left: 25px;
   margin-right: 25px;
@@ -70,4 +25,20 @@ a.bouton-edition {
   position: fixed;
   right: 0px;
   bottom: 0px;
+}
+
+.dc-wiki .page .barre-menu .md-button.droite {
+  font-size: 20px;
+  min-width: 0px;
+  margin: 0;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.dc-wiki .barre-menu .md-button.droite {
+  font-size: 20px;
+  min-width: 0px;
+  margin: 0;
+  padding-left: 12px;
+  padding-right: 12px;
 }
