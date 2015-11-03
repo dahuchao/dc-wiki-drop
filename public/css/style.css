@@ -12,6 +12,11 @@ body {}
   cursor: pointer;
 }
 
+.dc-wiki .page .contenu {
+  width: 100%;
+  border-style: none;
+}
+
 .dc-wiki .page .barre-menu .md-button {
   min-width: 30px;
 }

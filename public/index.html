@@ -51,17 +51,6 @@
           </md-item-content>
         </a>
       </md-item>
-      <md-item>
-        <a>
-          <md-item-content md-ink-ripple layout="row" layout-align="start center">
-            <div class="inset">
-              <md-icon md-svg-src="lib/material-design-icons/action/svg/design/ic_search_24px.svg"></md-icon>
-            </div>
-            <div class="inset">Recherche
-            </div>
-          </md-item-content>
-        </a>
-      </md-item>
       <md-divider></md-divider>
       <md-subheader>Management</md-subheader>
       <md-item class="rubrique">
@@ -86,7 +75,7 @@
     </md-list>
   </md-sidenav>
   <div class="barre-menu relative" layout="column" layout-fill role="main">
-    <md-toolbar layout="row"  ng-hide="recherche">
+    <md-toolbar layout="row"  ng-hide="edition || recherche">
       <div class="md-toolbar-tools">
         <md-button ng-click="basculeMenu('gauche')" class="md-icon-button launch" layout-align="start center" aria-label="Menu">
           <md-icon md-svg-src="lib/material-design-icons/navigation/svg/design/ic_menu_18px.svg"></md-icon>
