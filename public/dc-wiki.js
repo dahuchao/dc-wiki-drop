@@ -16,6 +16,11 @@ angular.module('dcWiki', ['ng-file-model', 'ngMaterial', 'angularFileUpload', 'n
       templateUrl: "connexion.html",
       controller: "dcWikiConnexion"
     })
+    .state("configuration", {
+      url: "/configuration",
+      templateUrl: "config.html",
+      controller: "dcWikiConfiguration"
+    })
     .state("wiki", {
       url: "/",
       controller: "dcWikiRedirect"
@@ -88,7 +93,11 @@ angular.module('dcWiki', ['ng-file-model', 'ngMaterial', 'angularFileUpload', 'n
         }
       });
     }
-    }])
+}])
+
+// Controleur des pages de wiki
+.controller('dcWikiConfiguration', ['$scope',
+    function ($scope) {}])
 
 // Controleur des pages de wiki
 .controller('dcTeleversementController', ['FileUploader', '$state', '$scope',
@@ -307,6 +316,12 @@ angular.module('dcWiki', ['ng-file-model', 'ngMaterial', 'angularFileUpload', 'n
     };
     $scope.onInitRecherche = function () {
       $scope.termeRecherche = "";
+    };
+    $scope.onConfiguration = function () {
+      // Changement d'état pour déconnexion
+      $state.go('configuration');
+      // Fermeture du menu
+      $mdSidenav("gauche").close();
     };
     $scope.onDeconnexion = function () {
       // Déconnexion du service
