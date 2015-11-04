@@ -1,0 +1,21 @@
+<md-bottom-sheet class="md-grid" layout="column" ng-cloak>
+  <div layout="row" layout-align="center center">
+    <h4>Appareil de téléversement de document</h4>
+  </div>
+  <md-content layout-padding>
+    <form name="userForm" ng-submit="submit(obj)">
+      <div layout layout-sm="column">
+        <md-input-container flex>
+          <label>Fichier</label>
+          <input type="file" ng-file-model="obj.testFile" />
+        </md-input-container>
+      </div>
+      <div layout layout-sm="column">
+        <md-input-container flex>
+          <input type="submit" value="Téléverser" />
+        </md-input-container>
+      </div>
+    </form>
+  </md-content>
+
+</md-bottom-sheet>
