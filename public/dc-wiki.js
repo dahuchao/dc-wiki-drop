@@ -1,7 +1,7 @@
 'use strict';
 
 //Pages service used to communicate Pages REST endpoints
-angular.module('dcWiki', ['ngMaterial', 'angularFileUpload', 'ngSanitize', 'ui.router', 'ngResource', 'ngCookies'])
+angular.module('dcWiki', ['ng-file-model', 'ngMaterial', 'angularFileUpload', 'ngSanitize', 'ui.router', 'ngResource', 'ngCookies'])
 
 /**
  * Configuration des routes de l'application
@@ -15,6 +15,11 @@ angular.module('dcWiki', ['ngMaterial', 'angularFileUpload', 'ngSanitize', 'ui.r
       url: "/connexion",
       templateUrl: "connexion.html",
       controller: "dcWikiConnexion"
+    })
+    .state("configuration", {
+      url: "/configuration",
+      templateUrl: "config.html",
+      controller: "dcWikiConfiguration"
     })
     .state("wiki", {
       url: "/",
@@ -88,7 +93,11 @@ angular.module('dcWiki', ['ngMaterial', 'angularFileUpload', 'ngSanitize', 'ui.r
         }
       });
     }
-    }])
+}])
+
+// Controleur des pages de wiki
+.controller('dcWikiConfiguration', ['$scope',
+    function ($scope) {}])
 
 // Controleur des pages de wiki
 .controller('dcTeleversementController', ['FileUploader', '$state', '$scope',
@@ -211,7 +220,46 @@ angular.module('dcWiki', ['ngMaterial', 'angularFileUpload', 'ngSanitize', 'ui.r
       // Fermeture du menu
       $scope.menuPrincipalFerme = true;
     };
+    $scope.alert = '';
+    $scope.showListBottomSheet = function ($event) {
+      $scope.alert = '';
+      $mdBottomSheet.show({
+        templateUrl: 'bottom-sheet-list-template.html',
+        controller: 'ListBottomSheetCtrl',
+        targetEvent: $event
+      }).then(function (clickedItem) {
+        $scope.alert = clickedItem['name'] + ' clicked!';
+      });
+    };
 }])
+
+/**
+ * Gestion des téléversement
+ */
+.controller('ListBottomSheetCtrl', function ($scope, $mdBottomSheet) {
+  $scope.items = [
+    {
+      name: 'Share',
+      icon: 'share-arrow'
+    },
+    {
+      name: 'Upload',
+      icon: 'upload'
+    },
+    {
+      name: 'Copy',
+      icon: 'copy'
+    },
+    {
+      name: 'Print this page',
+      icon: 'print'
+    },
+  ];
+  $scope.listItemClick = function ($index) {
+    var clickedItem = $scope.items[$index];
+    $mdBottomSheet.hide(clickedItem);
+  };
+})
 
 /**
  * Création du controleur du wiki
@@ -268,6 +316,12 @@ angular.module('dcWiki', ['ngMaterial', 'angularFileUpload', 'ngSanitize', 'ui.r
     };
     $scope.onInitRecherche = function () {
       $scope.termeRecherche = "";
+    };
+    $scope.onConfiguration = function () {
+      // Changement d'état pour déconnexion
+      $state.go('configuration');
+      // Fermeture du menu
+      $mdSidenav("gauche").close();
     };
     $scope.onDeconnexion = function () {
       // Déconnexion du service

@@ -4,8 +4,8 @@
 angular.module('dcWiki')
 
 // Controleur des pages de wiki
-.controller('dcPageTestController', ['$rootScope', '$state', '$scope', 'PagesLocalesService', 'dcWikiFormateur',
-    function ($rootScope, $state, $scope, PagesService, dcWikiFormateur) {
+.controller('dcPageTestController', ['$rootScope', '$state', '$scope', 'PagesLocalesService', 'dcWikiFormateur', '$mdBottomSheet',
+    function ($rootScope, $state, $scope, PagesService, dcWikiFormateur, $mdBottomSheet) {
     console.info("Emission Ajouter de texte.");
     $scope.onHPlus = function () {
       $rootScope.$broadcast('hPlus', '+');
@@ -113,5 +113,16 @@ angular.module('dcWiki')
       $rootScope.edition = false;
       // Fermeture du menu
       $scope.menuPrincipalFerme = true;
+    };
+    $scope.alert = '';
+    $scope.showListBottomSheet = function ($event) {
+      $scope.alert = '';
+      $mdBottomSheet.show({
+        templateUrl: 'page-doc-televersement.html',
+        controller: 'ListBottomSheetCtrl',
+        targetEvent: $event
+      }).then(function (clickedItem) {
+        $scope.alert = clickedItem['name'] + ' clicked!';
+      });
     };
 }]);

@@ -18,6 +18,9 @@
   <script src="lib/pdfjs-dist/build/pdf.js"></script>
   <script src="lib/angular-pdf-viewer/dist/angular-pdf-viewer.min.js"></script>
   <script src="lib/angular-file-upload/dist/angular-file-upload.min.js"></script>
+
+  <script src="lib/ng-file-model/ng-file-model.js"></script>
+
   <script src="dc-wiki.js"></script>
   <script src="dc-wiki-test.js"></script>
   <script src="service/dc-wiki-fichier.js"></script>
@@ -53,7 +56,7 @@
       </md-item>
       <md-divider></md-divider>
       <md-subheader>Gestion</md-subheader>
-      <md-item class="rubrique">
+      <md-item class="rubrique" ng-click="onConfiguration()">
         <md-item-content md-ink-ripple layout="row" layout-align="start center">
           <div class="inset">
             <md-icon md-svg-src="lib/material-design-icons/action/svg/design/ic_settings_24px.svg"></md-icon>
@@ -75,7 +78,7 @@
     </md-list>
   </md-sidenav>
   <div class="barre-menu relative" layout="column" layout-fill role="main">
-    <md-toolbar layout="row"  ng-hide="edition || recherche">
+    <md-toolbar layout="row" ng-hide="edition || recherche">
       <div class="md-toolbar-tools">
         <md-button ng-click="basculeMenu('gauche')" class="md-icon-button launch" layout-align="start center" aria-label="Menu">
           <md-icon md-svg-src="lib/material-design-icons/navigation/svg/design/ic_menu_18px.svg"></md-icon>
