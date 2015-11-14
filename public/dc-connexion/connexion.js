@@ -40,7 +40,7 @@ angular.module('dcWiki')
     }
 }])
 
-/** 
+/**
  * Création du controleur du wiki
  */
 .controller('dcWikiConnexion', ["$rootScope",'$scope', '$location', '$state',

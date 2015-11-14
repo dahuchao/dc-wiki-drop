@@ -17,17 +17,20 @@
   <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="lib/pdfjs-dist/build/pdf.js"></script>
   <script src="lib/angular-pdf-viewer/dist/angular-pdf-viewer.min.js"></script>
-
   <script src="lib/ng-file-model/ng-file-model.js"></script>
-
-  <script src="dc-wiki.js"></script>
-  <!--  <script src="dc-wiki-test.js"></script>-->
+  <!-- Scripts applicatifs -->
+  <script src="index.js"></script>
+  <script src="dc-wiki/wiki.js"></script>
+  <script src="dc-page/page.js"></script>
+  <script src="dc-configuration/config.js"></script>
+  <script src="dc-document/document.js"></script>
+  <script src="dc-connexion/connexion.js"></script>
   <script src="service/dc-wiki-fichier.js"></script>
   <script src="service/dc-wiki-dropbox.js"></script>
-  <script src="connexion.js"></script>
   <script src="service/dc-wiki-formateur.js"></script>
   <script src="service/dc-wiki-editeur.js"></script>
 </head>
+
 <body class="dc-wiki" layout="row" ng-controller="dcWikiController">
   <md-sidenav layout="column" class="barre-laterale md-sidenav-left md-whiteframe-z2" md-component-id="gauche" md-is-locked-open="$mdMedia('gt-md')">
     <md-toolbar class="md-tall md-hue-2">
@@ -103,4 +106,5 @@
     <div ui-view></div>
   </div>
 </body>
+
 </html>
