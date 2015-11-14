@@ -24,13 +24,13 @@
       <md-button ng-click="onAjouterItalic()" hide-sm class="droite" aria-label="Italic">
         <md-icon md-menu-origin md-svg-icon="lib\material-design-icons\editor\svg\production\ic_format_italic_18px.svg"></md-icon>
       </md-button>
-      <md-menu>
-        <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
-          <md-icon md-menu-origin md-svg-icon="lib\material-design-icons\navigation\svg\design/ic_more_vert_24px.svg"></md-icon>
+      <md-menu class="sous-menu">
+        <md-button class="md-icon-button" class="droite" aria-label="More" ng-click="$mdOpenMenu($event)">
+          <md-icon md-menu-origin md-svg-icon="lib\material-design-icons\navigation\svg\design/ic_more_vert_18px.svg"></md-icon>
         </md-button>
         <md-menu-content width="3">
           <md-menu-item>
-            <md-button ng-click="onOuvertureTeleversement($event)" class="menuBtn" aria-label="Televerser">
+            <md-button ng-click="onOuvertureTeleversement($event)" aria-label="Televerser">
               <div layout="row">
                 <md-icon md-font-icon="fa fa-cloud-upload"></md-icon>
                 <p flex>Televerser</p>
@@ -38,7 +38,7 @@
             </md-button>
           </md-menu-item>
           <md-menu-item>
-            <md-button ng-click="onAnnuler()" class="menuBtn" aria-label="Annuler">
+            <md-button ng-click="onAnnuler()" aria-label="Annuler">
               <div layout="row">
                 <md-icon md-font-icon="fa fa-undo"></md-icon>
                 <p flex>Annuler</p>

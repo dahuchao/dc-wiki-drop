@@ -72,3 +72,7 @@ h5 {
   padding-left: 12px;
   padding-right: 12px;
 }
+
+.dc-wiki .barre-menu .sous-menu {
+  padding: 0px;
+}
