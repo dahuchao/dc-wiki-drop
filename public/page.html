@@ -4,7 +4,7 @@
       <md-button ng-click="onEnregistrer()" aria-label="Enregistrer">
         <md-icon md-svg-src="lib\material-design-icons\navigation\svg\design/ic_arrow_back_18px.svg"></md-icon>
       </md-button>
-      <span hide-sm>Enregistrement</span>
+      <span hide-sm>Edition</span>
       <span flex></span>
       <md-button ng-click="onHPlus()" class="droite" aria-label="Augmenter le niveau du chapitre">
         <md-icon md-menu-origin md-svg-icon="lib\material-design-icons\editor\svg\production\ic_format_indent_increase_18px.svg"></md-icon>
@@ -30,7 +30,7 @@
         </md-button>
         <md-menu-content width="3">
           <md-menu-item>
-            <md-button ng-click="showListBottomSheet($event)" class="menuBtn" aria-label="Televerser">
+            <md-button ng-click="onOuvertureTeleversement($event)" class="menuBtn" aria-label="Televerser">
               <div layout="row">
                 <md-icon md-font-icon="fa fa-cloud-upload"></md-icon>
                 <p flex>Televerser</p>

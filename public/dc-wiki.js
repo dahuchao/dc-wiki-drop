@@ -1,7 +1,7 @@
 'use strict';
 
 //Pages service used to communicate Pages REST endpoints
-angular.module('dcWiki', ['ng-file-model', 'ngMaterial', 'angularFileUpload', 'ngSanitize', 'ui.router', 'ngResource', 'ngCookies'])
+angular.module('dcWiki', ['ng-file-model', 'ngMaterial', 'ngSanitize', 'ui.router', 'ngResource', 'ngCookies'])
 
 /**
  * Configuration des routes de l'application
@@ -24,11 +24,6 @@ angular.module('dcWiki', ['ng-file-model', 'ngMaterial', 'angularFileUpload', 'n
     .state("wiki", {
       url: "/",
       controller: "dcWikiRedirect"
-    })
-    .state("televersement", {
-      url: "/pages/{page}/televersement",
-      templateUrl: "televersement.html",
-      controller: "dcTeleversementController"
     })
     .state("pages", {
       url: "/pages/{page}",
@@ -100,20 +95,8 @@ angular.module('dcWiki', ['ng-file-model', 'ngMaterial', 'angularFileUpload', 'n
     function ($scope) {}])
 
 // Controleur des pages de wiki
-.controller('dcTeleversementController', ['FileUploader', '$state', '$scope',
-    function (FileUploader, $state, $scope) {
-    var uploader = $scope.uploader = new FileUploader({
-      url: '/docs'
-    });
-
-    uploader.onAfterAddingFile = function (fileItem) {
-      console.info('onAfterAddingFile', fileItem);
-    };
-}])
-
-// Controleur des pages de wiki
-.controller('dcPageController', ['$rootScope', '$state', '$scope', 'PagesDropboxService', 'dcWikiFormateur',
-    function ($rootScope, $state, $scope, PagesService, dcWikiFormateur) {
+.controller('dcPageController', ['$injector', '$rootScope', '$state', '$scope', 'dcWikiFormateur',
+    function ($injector, $rootScope, $state, $scope, dcWikiFormateur) {
     console.info("Emission Ajouter de texte.");
     $scope.onHPlus = function () {
       $rootScope.$broadcast('hPlus', '+');
@@ -139,36 +122,46 @@ angular.module('dcWiki', ['ng-file-model', 'ngMaterial', 'angularFileUpload', 'n
       // Pour les tests redéfinition du nom de la page
       //var nomPage = '206.txt';
       // Si le nom de la page n'est pas définie
-      if (nomPage.match("undefined")) {
+      if (nomPage.match("undefined") || nomPage == "") {
         // Nom de la page par défaut
         nomPage = 'homepage';
       }
       var nomPageDropbox = nomPage + '.txt';
       // Journalisation
       console.log('* Lecture de la page de wiki : ' + nomPageDropbox);
-      // Téléchargement de la page
-      PagesService.telecharger(nomPageDropbox, function (page) {
-        // Enregistrement du contenu de la page de wiki
-        $scope.pagecontenu = page;
-        // Calcul du code html de la page de wiki
-        $scope.pagehtml = dcWikiFormateur($scope.pagecontenu);
-        // Lecture de la date de mise à jour
-        $scope.dateMaj = page.dateMaj;
-      }, function (reason) {
-        if (reason.status === 404) {
-          $scope.pagecontenu = "+ " + nomPage;
-          $rootScope.edition = true;
-        }
-        if (reason.status === 401) {
+      // Calcul du nom du service
+      var nomService = $rootScope.PagesService;
+      // Si le nom du service est bien renseigné
+      if (nomService == undefined) {
+        // Changement d'état pour ouvrir le wiki
+        $state.go('connexion');
+      } else {
+        // Recherche du service
+        var PagesService = $injector.get(nomService);
+        // Téléchargement de la page
+        PagesService.telecharger(nomPageDropbox, function (page) {
+          // Enregistrement du contenu de la page de wiki
+          $scope.pagecontenu = page;
+          // Calcul du code html de la page de wiki
+          $scope.pagehtml = dcWikiFormateur($scope.pagecontenu);
+          // Lecture de la date de mise à jour
+          $scope.dateMaj = page.dateMaj;
+        }, function (reason) {
+          if (reason.status === 404) {
+            $scope.pagecontenu = "+ " + nomPage;
+            $rootScope.edition = true;
+          }
+          if (reason.status === 401) {
+            $scope.pagehtml = "erreur";
+            $rootScope.edition = false;
+            // Changement d'état pour ouvrir le wiki
+            $state.go('connexion');
+          }
+          // Une erreur s'est produite
           $scope.pagehtml = "erreur";
-          $rootScope.edition = false;
-          // Changement d'état pour ouvrir le wiki
-          $state.go('connexion');
-        }
-        // Une erreur s'est produite
-        $scope.pagehtml = "erreur";
-        console.error("Erreur : " + angular.fromJson(reason));
-      });
+          console.error("Erreur : " + angular.fromJson(reason));
+        });
+      }
     });
     // Mise à l'écoute de l'évènement d'enregistrement de la page de wiki
     $scope.$on('onEnregistrement', function () {
@@ -188,6 +181,10 @@ angular.module('dcWiki', ['ng-file-model', 'ngMaterial', 'angularFileUpload', 'n
         console.log('* Relecture de la page avant enregistrement.');
         // Modification du contenu de la page de wiki
         var page = $scope.pagecontenu;
+        // Calcul du nom du service
+        var nomService = $scope.PagesService;
+        // Recherche du service
+        var PagesService = $injector.get(nomService);
         // Enregistrement des modifications
         PagesService.enregistrer(nomPage, page);
         // Calcul du code html de la page de wiki
@@ -221,15 +218,32 @@ angular.module('dcWiki', ['ng-file-model', 'ngMaterial', 'angularFileUpload', 'n
       $scope.menuPrincipalFerme = true;
     };
     $scope.alert = '';
-    $scope.showListBottomSheet = function ($event) {
+    $scope.onOuvertureTeleversement = function ($event) {
       $scope.alert = '';
       $mdBottomSheet.show({
-        templateUrl: 'bottom-sheet-list-template.html',
+        templateUrl: 'page-doc-televersement.html', //'bottom-sheet-list-template.html',
         controller: 'ListBottomSheetCtrl',
         targetEvent: $event
       }).then(function (clickedItem) {
         $scope.alert = clickedItem['name'] + ' clicked!';
       });
+    };
+        }])
+
+// Controleur de la page de téléchargement de documents
+.controller('dcTeleversementController', ['$scope', 'PagesDropboxService',
+    function ($scope, PagesService) {
+    $scope.onTeleverser = function () {
+
+      var lastModified = $scope.fichier.lastModified; //": 1438583972000,
+      var lastModifiedDate = $scope.fichier.lastModifiedDate; //": "2015-08-03T06:39:32.000Z",
+      var name = $scope.fichier.name; //": "gitignore_global.txt",
+      var size = $scope.fichier.size; //": 236,
+      var type = $scope.fichier.type; //": "text/plain",
+      var data = $scope.fichier.data; //": "data:text/plain;base64,DQojaWdub3JlIHRodW1ibmFpbHMgY3JlYXRlZCBieSB3aW5kb3dz…xoDQoqLmJhaw0KKi5jYWNoZQ0KKi5pbGsNCioubG9nDQoqLmRsbA0KKi5saWINCiouc2JyDQo="
+
+      PagesService.enregistrer(name, data);
+
     };
 }])
 
@@ -296,6 +310,8 @@ angular.module('dcWiki', ['ng-file-model', 'ngMaterial', 'angularFileUpload', 'n
       IdentificationService.login(token);
       // Journalisation du jeton
       console.log("Jeton : " + $rootScope.jeton);
+      // Utilisation du service pilote de dropbox
+      $rootScope.PagesService = "PagesDropboxService";
       // Changement d'état pour ouvrir le wiki
       $state.go('wiki');
     }

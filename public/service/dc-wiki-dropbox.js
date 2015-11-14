@@ -76,7 +76,7 @@ angular.module('dcWiki')
       telecharger: telecharger,
       enregistrer: enregistrer
     }
-    }])
+}])
 
 /**
  * Service pilote du service dropbox

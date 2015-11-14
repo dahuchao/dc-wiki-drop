@@ -3,11 +3,12 @@
     <h4>Appareil de téléversement de document</h4>
   </div>
   <md-content layout-padding>
-    <form name="userForm" ng-submit="submit(obj)">
+    <form name="userForm" ng-submit="onTeleverser(obj)">
       <div layout layout-sm="column">
         <md-input-container flex>
           <label>Fichier</label>
-          <input type="file" ng-file-model="obj.testFile" />
+          <input type="file" ng-file-model="fichier" />
+          <input type="file" ng-file-model="obj.fichier" />
         </md-input-container>
       </div>
       <div layout layout-sm="column">
@@ -17,5 +18,4 @@
       </div>
     </form>
   </md-content>
-
 </md-bottom-sheet>
