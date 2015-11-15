@@ -18,7 +18,7 @@ angular.module('dcWiki', ['ng-file-model', 'ngMaterial', 'ngSanitize', 'ui.route
     })
     .state("configuration", {
       url: "/configuration",
-      templateUrl: "dc-configuration/config.html",
+      templateUrl: "dc-configuration/configuration.html",
       controller: "dcWikiConfigController"
     })
     .state("wiki", {
@@ -52,51 +52,6 @@ angular.module('dcWiki', ['ng-file-model', 'ngMaterial', 'ngSanitize', 'ui.route
       event.preventDefault();
     }
   });
-})
-
-// Controleur de la page de téléchargement de documents
-.controller('dcTeleversementController', ['$scope', 'PagesDropboxService',
-    function ($scope, PagesService) {
-    $scope.onTeleverser = function () {
-
-      var lastModified = $scope.fichier.lastModified; //": 1438583972000,
-      var lastModifiedDate = $scope.fichier.lastModifiedDate; //": "2015-08-03T06:39:32.000Z",
-      var name = $scope.fichier.name; //": "gitignore_global.txt",
-      var size = $scope.fichier.size; //": 236,
-      var type = $scope.fichier.type; //": "text/plain",
-      var data = $scope.fichier.data; //": "data:text/plain;base64,DQojaWdub3JlIHRodW1ibmFpbHMgY3JlYXRlZCBieSB3aW5kb3dz…xoDQoqLmJhaw0KKi5jYWNoZQ0KKi5pbGsNCioubG9nDQoqLmRsbA0KKi5saWINCiouc2JyDQo="
-
-      PagesService.enregistrer(name, data);
-
-    };
-}])
-
-/**
- * Gestion des téléversement
- */
-.controller('ListBottomSheetCtrl', function ($scope, $mdBottomSheet) {
-  $scope.items = [
-    {
-      name: 'Share',
-      icon: 'share-arrow'
-    },
-    {
-      name: 'Upload',
-      icon: 'upload'
-    },
-    {
-      name: 'Copy',
-      icon: 'copy'
-    },
-    {
-      name: 'Print this page',
-      icon: 'print'
-    },
-  ];
-  $scope.listItemClick = function ($index) {
-    var clickedItem = $scope.items[$index];
-    $mdBottomSheet.hide(clickedItem);
-  };
 })
 
 /**

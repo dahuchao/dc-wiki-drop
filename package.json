@@ -1,17 +1,18 @@
 {
-    "name": "dc-wiki-drop",
-    "description": "Wiki avec une base de données de fichiers textes dans dropbox.",
-    "version": "0.1.0",
-    "dependencies": {
-        "bower": "^1.4.1",
-        "express": "3.x",
-        "multer": "^1.0.3"
-    },
-    "engines": {
-        "iojs": "1.0.x"
-    },
-    "scripts": {
-        "postinstall": "cd public && bower cache clean && bower install",
-        "start": "iojs serveur.js"
-    }
+  "name": "dc-wiki-drop",
+  "description": "Wiki avec une base de données de fichiers textes dans dropbox.",
+  "version": "0.1.0",
+  "dependencies": {
+    "base-64": "^0.1.0",
+    "bower": "^1.4.1",
+    "express": "3.x",
+    "multer": "^1.0.3"
+  },
+  "engines": {
+    "iojs": "1.0.x"
+  },
+  "scripts": {
+    "postinstall": "cd public && bower cache clean && bower install",
+    "start": "iojs serveur.js"
+  }
 }

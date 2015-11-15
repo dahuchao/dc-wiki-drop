@@ -61,11 +61,33 @@ angular.module('dcWiki')
       });
       console.log('* Enregistré.');
     }
+
+    function televerserDocument(nomDocument, contenuDocument) {
+      // Ressource des documents du wiki 'http://localhost/docs';
+      var Docs = $resource('http://localhost/documents/:doc', {
+        doc: '@doc'
+      });
+      console.log('* fichier import : <<%s>>', contenuDocument);
+      //data:text/plain;base64, ...
+      var regexp = new RegExp("data:.*;base64,(.*)");
+      const contenu = contenuDocument.replace(regexp, "$1");
+      console.log('* fichier export : <<%s>>', contenu);
+      // Création d'un document
+      var doc = new Docs({
+        doc: nomDocument
+      });
+      // Modification du contenu de la page de wiki
+      doc.contenu = contenu;
+      // Enregistrement des modifications
+      doc.$save();
+    }
+
     return {
+      televerserDocument: televerserDocument,
       telecharger: telecharger,
       enregistrer: enregistrer
     }
-    }])
+        }])
 
 /**
  * Service pilote du service de fourniture de fichier sur la base du système local

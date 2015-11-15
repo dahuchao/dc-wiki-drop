@@ -4,8 +4,8 @@
 angular.module('dcWiki')
 
 // Controleur des pages de wiki
-.controller('dcPageController', ['$injector', '$rootScope', '$state', '$scope', 'dcWikiFormateur',
-    function ($injector, $rootScope, $state, $scope, dcWikiFormateur) {
+.controller('dcPageController', ['$injector', '$rootScope', '$state', '$scope', 'dcWikiFormateur', '$mdBottomSheet',
+    function ($injector, $rootScope, $state, $scope, dcWikiFormateur, $mdBottomSheet) {
     console.info("Emission Ajouter de texte.");
     $scope.onHPlus = function () {
       $rootScope.$broadcast('hPlus', '+');
@@ -91,15 +91,21 @@ angular.module('dcWiki')
         // Modification du contenu de la page de wiki
         var page = $scope.pagecontenu;
         // Calcul du nom du service
-        var nomService = $scope.PagesService;
-        // Recherche du service
-        var PagesService = $injector.get(nomService);
-        // Enregistrement des modifications
-        PagesService.enregistrer(nomPage, page);
-        // Calcul du code html de la page de wiki
-        $scope.pagehtml = dcWikiFormateur($scope.pagecontenu);
-        // Lecture de la date de mise à jour
-        $scope.dateMaj = page.dateMaj;
+        var nomService = $rootScope.PagesService;
+        // Si le nom du service est bien renseigné
+        if (nomService == undefined) {
+          // Changement d'état pour ouvrir le wiki
+          $state.go('connexion');
+        } else {
+          // Recherche du service
+          var PagesService = $injector.get(nomService);
+          // Enregistrement des modifications
+          PagesService.enregistrer(nomPage, page);
+          // Calcul du code html de la page de wiki
+          $scope.pagehtml = dcWikiFormateur($scope.pagecontenu);
+          // Lecture de la date de mise à jour
+          $scope.dateMaj = page.dateMaj;
+        }
       }
     });
     $rootScope.edition = false;
@@ -126,15 +132,51 @@ angular.module('dcWiki')
       // Fermeture du menu
       $scope.menuPrincipalFerme = true;
     };
-    $scope.alert = '';
-    $scope.onOuvertureTeleversement = function ($event) {
+    $scope.onOuvertureTeleversement = function () {
       $scope.alert = '';
       $mdBottomSheet.show({
-        templateUrl: 'page-doc-televersement.html', //'bottom-sheet-list-template.html',
-        controller: 'ListBottomSheetCtrl',
-        targetEvent: $event
+        templateUrl: 'dc-document/televersement.html',
+        controller: 'TeleversementController',
+        //targetEvent: $event
       }).then(function (clickedItem) {
-        $scope.alert = clickedItem['name'] + ' clicked!';
+        console.info('Televersement du fichier' + $scope.fichier);
       });
     };
+}])
+
+/**
+ * Gestion des téléversement
+ */
+.controller('TeleversementController', ['$state', '$injector', '$rootScope', '$scope', '$mdBottomSheet', function ($state, $injector, $rootScope, $scope, $mdBottomSheet) {
+  $scope.test = "test";
+  $scope.onTeleverser = function () {
+    // Calcul du fichier
+    const fichier = $scope.fichier;
+    // Journalisation du nom du fichier
+    console.info('Televerser le fichier ' + fichier.name);
+    //    {
+    //    "lastModified": 1438583972000,
+    //    "lastModifiedDate": "2015-08-03T06:39:32.000Z",
+    //    "name": "gitignore_global.txt",
+    //    "size": 236,
+    //    "type": "text/plain",
+    //    "data": "data:text/plain;base64,DQojaWdub3JlIHRodW1ibmFpbHMgY3JlYXRlZCBieSB3aW5kb3dz…xoDQoqLmJhaw0KKi5jYWNoZQ0KKi5pbGsNCioubG9nDQoqLmRsbA0KKi5saWINCiouc2JyDQo="
+    //}
+    // Calcul du nom du service
+    var nomService = $rootScope.PagesService;
+    // Si le nom du service est bien renseigné
+    if (nomService == undefined) {
+      // Changement d'état pour ouvrir le wiki
+      $state.go('connexion');
+    } else {
+      // Calcul du nom du fichier
+      const nomPage = fichier.name;
+      // Calcul du contenu du document
+      const contenuPage = fichier.data;
+      // Recherche du service
+      var PagesService = $injector.get(nomService);
+      // Enregistrement des modifications
+      PagesService.televerserDocument(nomPage, contenuPage);
+    }
+  };
 }]);
