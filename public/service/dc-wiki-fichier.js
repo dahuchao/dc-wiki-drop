@@ -58,6 +58,15 @@ angular.module('dcWiki')
         // Enregistrement des modifications
         page.$save();
         console.log('* Enregistré.');
+      }, function () {
+        // Journalisation
+        console.log('* Création de la page.');
+        var nouvellePage = new Pages({
+          nom: nomPage
+        });
+        nouvellePage.contenu = pageAEnregistrer;
+        nouvellePage.$save();
+        console.log('* Enregistré.');
       });
       console.log('* Enregistré.');
     }
@@ -87,7 +96,7 @@ angular.module('dcWiki')
       telecharger: telecharger,
       enregistrer: enregistrer
     }
-        }])
+}])
 
 /**
  * Service pilote du service de fourniture de fichier sur la base du système local
@@ -128,4 +137,4 @@ angular.module('dcWiki')
       resoudreLien: resoudreLien,
       telecharger: telecharger
     }
-    }]);
+}]);

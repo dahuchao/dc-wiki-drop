@@ -84,8 +84,13 @@ app.post('/documents/:nom', function (req, res) {
 app.post('/pages/:nom', function (req, res) {
   // Calcul du nom de la page
   var pageNom = req.params.nom;
-  // Journalisation du traitement
-  console.log('*** Enregistrement de la page : %s ***', pageNom);
+  // Si le fichier n'existe pas
+  if (!fs.existsSync(repertoireWiki + pageNom)) {
+    console.log('*** Création de la page : %s ***', pageNom);
+  } else {
+    // Journalisation du traitement
+    console.log('*** Enregistrement de la page : %s ***', pageNom);
+  }
   // Calcul du contenu de la page
   var pageContenu = req.param('contenu');
   // Journalisation du traitement
@@ -100,15 +105,12 @@ app.get('/pages/:nom', function (req, res) {
   var pageNom = req.params.nom;
   // Si le fichier n'existe pas
   if (!fs.existsSync(repertoireWiki + pageNom)) {
-    console.log('*** Création de la page : %s ***', pageNom);
-    // Création du fichier contenant la page
-    fs.writeFileSync(repertoireWiki + pageNom, "", 'utf8');
-    // Document json portant la page de wiki
-    res.jsonp({
-      nom: pageNom,
-      contenu: "",
-      dateMaj: null
-    });
+    //console.log('*** Création de la page : %s ***', pageNom);
+    console.log("*** La page %s n'existe pas ***", pageNom);
+    // Retour erreur
+    res.statusCode = 404;
+    // Message d'erreur
+    res.send("La page n'existe pas");
   } else {
     console.log('*** Lecture de la page %s ***', pageNom);
     // Lecture du fichier contenant la page de wiki

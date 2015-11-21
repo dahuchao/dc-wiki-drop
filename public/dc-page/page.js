@@ -56,8 +56,13 @@ angular.module('dcWiki')
           // Lecture de la date de mise à jour
           $scope.dateMaj = page.dateMaj;
         }, function (reason) {
+          // Si la page n'existe pas
           if (reason.status === 404) {
-            $scope.pagecontenu = "+ " + nomPage;
+            // Decodage du nom de la page
+            var nomPremierChapitre = decodeURIComponent(nomPage);
+            // Création du premier chapitre de la page avec son nom
+            $scope.pagecontenu = "+ " + nomPremierChapitre;
+            // Passage en mode édition
             $rootScope.edition = true;
           }
           if (reason.status === 401) {
@@ -68,7 +73,7 @@ angular.module('dcWiki')
           }
           // Une erreur s'est produite
           $scope.pagehtml = "erreur";
-          console.error("Erreur : " + angular.fromJson(reason));
+          //console.error("Erreur : " + angular.fromJson(reason));
         });
       }
     });
@@ -77,35 +82,32 @@ angular.module('dcWiki')
       // Calcul du nom de la page
       var nomPage = encodeURI($state.params.page);
       // Si le nom de la page n'est pas définie
-      if (nomPage.match("undefined")) {
+      if (nomPage.match("undefined") || nomPage == "") {
         // Nom de la page par défaut
         nomPage = 'homepage';
       }
       // Calcul du nom de page complet
       nomPage = nomPage + '.txt';
-      // Si le nom de la page n'est pas définie
-      if (!nomPage.match("undefined")) {
-        console.log('* Enregistrement de la page de wiki : ' + nomPage);
-        // Journalisation
-        console.log('* Relecture de la page avant enregistrement.');
-        // Modification du contenu de la page de wiki
-        var page = $scope.pagecontenu;
-        // Calcul du nom du service
-        var nomService = $rootScope.PagesService;
-        // Si le nom du service est bien renseigné
-        if (nomService == undefined) {
-          // Changement d'état pour ouvrir le wiki
-          $state.go('connexion');
-        } else {
-          // Recherche du service
-          var PagesService = $injector.get(nomService);
-          // Enregistrement des modifications
-          PagesService.enregistrer(nomPage, page);
-          // Calcul du code html de la page de wiki
-          $scope.pagehtml = dcWikiFormateur($scope.pagecontenu);
-          // Lecture de la date de mise à jour
-          $scope.dateMaj = page.dateMaj;
-        }
+      console.log('* Enregistrement de la page de wiki : ' + nomPage);
+      // Journalisation
+      console.log('* Relecture de la page avant enregistrement.');
+      // Modification du contenu de la page de wiki
+      var page = $scope.pagecontenu;
+      // Calcul du nom du service
+      var nomService = $rootScope.PagesService;
+      // Si le nom du service est bien renseigné
+      if (nomService == undefined) {
+        // Changement d'état pour ouvrir le wiki
+        $state.go('connexion');
+      } else {
+        // Recherche du service
+        var PagesService = $injector.get(nomService);
+        // Enregistrement des modifications
+        PagesService.enregistrer(nomPage, page);
+        // Calcul du code html de la page de wiki
+        $scope.pagehtml = dcWikiFormateur($scope.pagecontenu);
+        // Lecture de la date de mise à jour
+        $scope.dateMaj = page.dateMaj;
       }
     });
     $rootScope.edition = false;
