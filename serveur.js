@@ -27,8 +27,10 @@ app.use('/wiki', express.static(repertoireSite));
 
 //**********************************************
 // Répertoire de stockage des pages du wiki
-var repertoireWiki = 'test-wiki\\PersonalWiki\\WM_Wiki_Pages\\';
-var repertoireDocs = 'test-wiki\\PersonalWiki\\Wiki_documents\\';
+//var repertoireWiki = 'test-wiki\\PersonalWiki\\WM_Wiki_Pages\\';
+var repertoireWiki = "wiki-pages-demo\\dc-wiki\\dc-wiki-page\\";
+//var repertoireDocs = 'test-wiki\\PersonalWiki\\Wiki_documents\\';
+var repertoireDocs = "wiki-pages-demo\\dc-wiki\\dc-wiki-doc\\";
 //**********************************************
 
 // Configuration de muter
