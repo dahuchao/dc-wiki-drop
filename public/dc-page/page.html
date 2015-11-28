@@ -1,4 +1,4 @@
-<section class="page">
+<section class="page" layout="column" >
   <md-toolbar class="barre-menu" layout="row" ng-show="edition">
     <div class="md-toolbar-tools">
       <md-button ng-click="onEnregistrer()" aria-label="Enregistrer">
@@ -49,7 +49,7 @@
       </md-menu>
     </div>
   </md-toolbar>
-  <md-content layout="column" flex class="md-padding">
+  <md-content layout="column" class="md-padding">
     <div class="html" ng-hide="edition">
       <p ng-bind-html="pagehtml"></p>
       <div class="bouton-edition">

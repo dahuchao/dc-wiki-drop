@@ -14,7 +14,8 @@ angular.module('dcWiki')
       // URL du service REST de dropbox
       var urlDropbox = 'https://api-content.dropbox.com/1/files/auto';
       // Chemin du dossier des pages dans dropbox
-      var dossierDropbox = urlDropbox + '/PersonalWiki/WM_Wiki_Pages';
+      //var dossierDropbox = urlDropbox + '/PersonalWiki/WM_Wiki_Pages';
+      var dossierDropbox = urlDropbox + '/dc-wiki-page';
       // Ressource des pages du wiki
       var Pages = $resource(dossierDropbox + '/:page', {
         page: '@page'
@@ -54,7 +55,7 @@ angular.module('dcWiki')
       // URL du service REST de dropbox
       var urlDropbox = 'https://api-content.dropbox.com/1/files_put/auto';
       // Chemin du dossier des pages dans dropbox
-      var dossierDropbox = urlDropbox + '/PersonalWiki/WM_Wiki_Pages';
+      var dossierDropbox = urlDropbox + '/dc-wiki-page';
       // Ressource des pages du wiki
       var PagesPut = $resource(dossierDropbox + '/:nomPage', {
         nomPage: '@nomPpage'
@@ -88,7 +89,7 @@ angular.module('dcWiki')
       // URL du service REST de dropbox
       var urlDropbox = 'https://api-content.dropbox.com/1/files/auto';
       // Chemin du dossier des pages dans dropbox
-      var dossierDropbox = urlDropbox + '/PersonalWiki/Wiki_Documents';
+      var dossierDropbox = urlDropbox + '/dc-wiki-doc';
       // Ressource des pages du wiki
       var Documents = $resource(dossierDropbox + '/:document', {
         document: '@document'
@@ -117,7 +118,7 @@ angular.module('dcWiki')
       // URL du service REST de dropbox
       var urlDropbox = 'https://api.dropbox.com/1/shares/auto';
       // Chemin du dossier des pages dans dropbox
-      var dossierDropbox = urlDropbox + '/PersonalWiki/Wiki_Documents';
+      var dossierDropbox = urlDropbox + '/dc-wiki-doc';
       // Ressource des pages du wiki
       var Documents = $resource(dossierDropbox + '/:document', {
         document: '@document'

@@ -42,19 +42,12 @@ h5 {
   border-style: none;
 }
 
-.dc-wiki .page .barre-menu .md-button {
-  min-width: 30px;
+.dc-wiki .page .barre-menu {
+  position: relative;
 }
 
-.dc-wiki .page .bouton-edition {
-  margin-bottom: 25px;
-  margin-left: 25px;
-  margin-right: 25px;
-  margin-top: 25px;
-  padding-left: 0px;
-  position: fixed;
-  right: 0px;
-  bottom: 0px;
+.dc-wiki .page .barre-menu .md-button {
+  min-width: 30px;
 }
 
 .dc-wiki .page .barre-menu .md-button.droite {
@@ -75,4 +68,15 @@ h5 {
 
 .dc-wiki .barre-menu .sous-menu {
   padding: 0px;
+}
+
+.dc-wiki .page .bouton-edition {
+  margin-bottom: 25px;
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top: 25px;
+  padding-left: 0px;
+  position: fixed;
+  right: 0px;
+  bottom: 0px;
 }
