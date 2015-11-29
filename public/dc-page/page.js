@@ -135,13 +135,12 @@ angular.module('dcWiki')
       $scope.menuPrincipalFerme = true;
     };
     $scope.onOuvertureTeleversement = function () {
-      $scope.alert = '';
       $mdBottomSheet.show({
-        templateUrl: 'dc-document/televersement.html',
-        controller: 'TeleversementController',
+        templateUrl: "dc-document/televersement.html",
+        controller: "TeleversementController",
         //targetEvent: $event
       }).then(function (clickedItem) {
-        console.info('Televersement du fichier' + $scope.fichier);
+        console.info("Parcourir..." + $scope.fichier);
       });
     };
 }])
@@ -151,6 +150,9 @@ angular.module('dcWiki')
  */
 .controller('TeleversementController', ['$state', '$injector', '$rootScope', '$scope', '$mdBottomSheet', function ($state, $injector, $rootScope, $scope, $mdBottomSheet) {
   $scope.test = "test";
+  $scope.onAjouterLienDoc = function () {
+    $rootScope.$broadcast("ajouterLienDoc", $scope.lienDoc);
+  };
   $scope.onTeleverser = function () {
     // Calcul du fichier
     const fichier = $scope.fichier;
@@ -179,6 +181,8 @@ angular.module('dcWiki')
       var PagesService = $injector.get(nomService);
       // Enregistrement des modifications
       PagesService.televerserDocument(nomPage, contenuPage);
+      // Documentation du lien
+      $scope.lienDoc = "doc://test.pdf";
     }
   };
 }]);

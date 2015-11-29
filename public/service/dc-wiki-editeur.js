@@ -161,6 +161,18 @@ angular.module('dcWiki')
     }
     return htmlElement.value;
   };
+  /**
+   * Fonction d'ajout d'un lien sur un document
+   */
+  function ajouterLienDoc(element, lien) {
+    var htmlElement = element[0];
+    // Calcul de la position du curseur
+    var posCurseur = htmlElement.selectionStart;
+    var texteAvant = htmlElement.value.substring(0, posCurseur);
+    var texteApres = htmlElement.value.substring(posCurseur, htmlElement.value.length);
+    htmlElement.value = texteAvant + lien + texteApres;
+    return htmlElement.value;
+  };
   return {
     link: function (scope, element, attrs) {
       $rootScope.$on('hPlus', function (e, rang) {
@@ -180,6 +192,9 @@ angular.module('dcWiki')
       });
       $rootScope.$on('ajouterItalic', function (e, rang) {
         scope.pagecontenu = ajouterItalic(element);
+      });
+      $rootScope.$on("ajouterLienDoc", function (e, lien) {
+        scope.pagecontenu = ajouterLienDoc(element, lien);
       });
     }
   };

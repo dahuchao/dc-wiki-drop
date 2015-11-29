@@ -76,7 +76,7 @@ angular.module('dcWiki')
       var Docs = $resource('http://localhost/documents/:doc', {
         doc: '@doc'
       });
-      console.log('* fichier import : <<%s>>', contenuDocument);
+      console.log('* fichier import : <<%s>>', nomDocument);
       //data:text/plain;base64, ...
       var regexp = new RegExp("data:.*;base64,(.*)");
       const contenu = contenuDocument.replace(regexp, "$1");
@@ -128,7 +128,7 @@ angular.module('dcWiki')
 
     function resoudreLien(nomDocument, traitementDocument, traitementErreur) {
       // URL du service REST du système de fichier local
-      var url = 'http://localhost/docs/' + nomDocument;
+      var url = 'http://localhost/documents/' + nomDocument;
       var lien = new Object();
       lien.url = url;
       traitementDocument(lien);

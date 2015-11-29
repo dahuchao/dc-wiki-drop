@@ -12,3 +12,5 @@ Les ciseaux à bois : Les [chiens] aussi.
 [[https://angular.io/][angular.io]]
 [http://www.polymer-project.org/1.0/]
 Document test : doc://test.pdf
+
+doc://test.pdf

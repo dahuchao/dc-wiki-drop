@@ -66,7 +66,7 @@ angular.module('dcWiki')
 
       // Lien vers des documents
       var filePattern = new RegExp("doc:\\/\\/(.*)");
-      var fileReplacement = "<a href=\"#docs/$1\" target=\"_blank\" >$1</a>";
+      var fileReplacement = "<a href=\"#documents/$1\" target=\"_blank\" >$1</a>";
       //var goToReplacement = "<a href=\"#docs/$1\">$1</a>";
 
       var unorderedListDepth = 0;

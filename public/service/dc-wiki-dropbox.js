@@ -71,9 +71,36 @@ angular.module('dcWiki')
       PagesPut.update({
         nomPage: nomPage
       }, page);
-      console.log('* Enregistré.');
+      console.log('* Page enregistré.');
     }
+
+    function televerserDocument(nomDocument, contenuDocument) {
+      // Calcul du jeton de controle d'accès
+      var token = IdentificationService.getToken();
+      // URL du service REST de dropbox
+      var urlDropbox = 'https://api-content.dropbox.com/1/files_put/auto';
+      // Chemin du dossier des pages dans dropbox
+      var dossierDropbox = urlDropbox + '/dc-wiki-doc';
+      // Ressource des pages du wiki
+      var PagesPut = $resource(dossierDropbox + '/:nomDocument', {
+        nomDocument: '@nomDocument'
+      }, {
+        update: {
+          method: 'PUT',
+          headers: {
+            'Authorization': token
+          }
+        }
+      });
+      //page.$save();
+      PagesPut.update({
+        nomDocument: nomDocument
+      }, contenuDocument);
+      console.log('* Document enregistré.');
+    }
+
     return {
+      televerserDocument: televerserDocument,
       telecharger: telecharger,
       enregistrer: enregistrer
     }

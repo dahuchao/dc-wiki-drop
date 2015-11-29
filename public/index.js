@@ -31,7 +31,7 @@ angular.module('dcWiki', ['ng-file-model', 'ngMaterial', 'ngSanitize', 'ui.route
       controller: "dcPageController"
     })
     .state("docs", {
-      url: "/docs/{doc}",
+      url: "/documents/{doc}",
       templateUrl: "dc-document/document.html",
       controller: "dcDocController"
     });
