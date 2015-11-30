@@ -27,8 +27,9 @@ angular.module('dcWiki')
       IdentificationService.login(token);
       // Journalisation du jeton
       console.log("Jeton : " + $rootScope.jeton);
-      // Utilisation du service pilote de dropbox
+      // Utilisation des services pilote de dropbox
       $rootScope.PagesService = "PagesDropboxService";
+      $rootScope.DocumentsService = "DocumentsDropboxService";
       // Changement d'état pour ouvrir le wiki
       $state.go('wiki');
     }

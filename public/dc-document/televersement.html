@@ -1,13 +1,18 @@
 <md-bottom-sheet class="telechargement md-grid" layout="column" ng-cloak>
   <md-content layout-padding>
     <form layout="column">
-      <md-input-container>
+      <md-input-container ng-hide="fichier">
         <input type="file" ng-file-model="fichier" />
       </md-input-container>
-      <md-input-container ng-show="fichier">
-        <md-button ng-click="onTeleverser()" class="md-raised">Téléverser</md-button>
-      </md-input-container>
-      <div layout="row" ng-show="fichier">
+      <div layout="row" ng-show="fichier" ng-hide="lienDoc">
+        <md-input-container>
+          <p>{{fichier.name}}</p>
+        </md-input-container>
+        <md-input-container>
+          <md-button ng-click="onTeleverser()" class="md-raised">Téléverser</md-button>
+        </md-input-container>
+      </div>
+      <div layout="row" ng-show="lienDoc">
         <md-input-container>
           <p>{{lienDoc}}</p>
         </md-input-container>

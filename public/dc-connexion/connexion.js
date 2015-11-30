@@ -67,6 +67,7 @@ angular.module('dcWiki')
       // Journalisation
       console.log("Connexion de test.");
       $rootScope.PagesService = "PagesLocalesService";
+      $rootScope.DocumentsService = "DocumentsLocalService";
       $state.go("pages");
     }
 }]);
