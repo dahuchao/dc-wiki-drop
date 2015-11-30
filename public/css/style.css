@@ -42,8 +42,12 @@ h5 {
   border-style: none;
 }
 
+.dc-wiki .page md-content {
+  margin-top: 50px;
+}
+
 .dc-wiki .page .barre-menu {
-  position: relative;
+  position: fixed;
 }
 
 .dc-wiki .page .barre-menu .md-button {
