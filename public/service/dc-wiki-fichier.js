@@ -80,7 +80,7 @@ angular.module('dcWiki')
       //data:text/plain;base64, ...
       var regexp = new RegExp("data:.*;base64,(.*)");
       const contenu = contenuDocument.replace(regexp, "$1");
-      console.log('* fichier export : <<%s>>', contenu);
+      //console.log('* fichier export : <<%s>>', contenu);
       // Création d'un document
       var doc = new Docs({
         doc: nomDocument

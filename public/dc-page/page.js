@@ -1,29 +1,26 @@
-'use strict';
+"use strict";
 
 //Pages service used to communicate Pages REST endpoints
-angular.module('dcWiki')
+angular.module("dcWiki")
 
 // Controleur des pages de wiki
-.controller('dcPageController', ['$injector', '$rootScope', '$state', '$scope', 'dcWikiFormateur', '$mdBottomSheet',
+.controller("dcPageController", ["$injector", "$rootScope", "$state", "$scope", "dcWikiFormateur", "$mdBottomSheet",
     function ($injector, $rootScope, $state, $scope, dcWikiFormateur, $mdBottomSheet) {
     console.info("Emission Ajouter de texte.");
     $scope.onHPlus = function () {
-      $rootScope.$broadcast('hPlus', '+');
+      $rootScope.$broadcast("hPlus", "+");
     };
     $scope.onHMoins = function () {
-      $rootScope.$broadcast('hMoins', '+');
-    };
-    $scope.onAjouterLien = function () {
-      $rootScope.$broadcast('ajouterLien');
+      $rootScope.$broadcast("hMoins", "+");
     };
     $scope.onAjouterGras = function () {
-      $rootScope.$broadcast('ajouterGras');
+      $rootScope.$broadcast("ajouterGras");
     };
     $scope.onAjouterSouligne = function () {
-      $rootScope.$broadcast('ajouterSouligne');
+      $rootScope.$broadcast("ajouterSouligne");
     };
     $scope.onAjouterItalic = function () {
-      $rootScope.$broadcast('ajouterItalic');
+      $rootScope.$broadcast("ajouterItalic");
     };
     $scope.$on("$stateChangeSuccess", function (event, toState, toParams, fromState, fromParams) {
       // Calcul du nom de la page demandée
@@ -33,17 +30,17 @@ angular.module('dcWiki')
       // Si le nom de la page n'est pas définie
       if (nomPage.match("undefined") || nomPage == "") {
         // Nom de la page par défaut
-        nomPage = 'homepage';
+        nomPage = "homepage";
       }
-      var nomPageDropbox = nomPage + '.txt';
+      var nomPageDropbox = nomPage + ".txt";
       // Journalisation
-      console.log('* Lecture de la page de wiki : ' + nomPageDropbox);
+      console.log("* Lecture de la page de wiki : " + nomPageDropbox);
       // Calcul du nom du service
       var nomService = $rootScope.PagesService;
       // Si le nom du service est bien renseigné
       if (nomService == undefined) {
         // Changement d'état pour ouvrir le wiki
-        $state.go('connexion');
+        $state.go("connexion");
       } else {
         // Recherche du service
         var PagesService = $injector.get(nomService);
@@ -69,7 +66,7 @@ angular.module('dcWiki')
             $scope.pagehtml = "erreur";
             $rootScope.edition = false;
             // Changement d'état pour ouvrir le wiki
-            $state.go('connexion');
+            $state.go("connexion");
           }
           // Une erreur s'est produite
           $scope.pagehtml = "erreur";
@@ -78,19 +75,19 @@ angular.module('dcWiki')
       }
     });
     // Mise à l'écoute de l'évènement d'enregistrement de la page de wiki
-    $scope.$on('onEnregistrement', function () {
+    $scope.$on("onEnregistrement", function () {
       // Calcul du nom de la page
       var nomPage = encodeURI($state.params.page);
       // Si le nom de la page n'est pas définie
       if (nomPage.match("undefined") || nomPage == "") {
         // Nom de la page par défaut
-        nomPage = 'homepage';
+        nomPage = "homepage";
       }
       // Calcul du nom de page complet
       nomPage = nomPage + '.txt';
-      console.log('* Enregistrement de la page de wiki : ' + nomPage);
+      console.log("* Enregistrement de la page de wiki : " + nomPage);
       // Journalisation
-      console.log('* Relecture de la page avant enregistrement.');
+      console.log("* Relecture de la page avant enregistrement.");
       // Modification du contenu de la page de wiki
       var page = $scope.pagecontenu;
       // Calcul du nom du service
@@ -98,7 +95,7 @@ angular.module('dcWiki')
       // Si le nom du service est bien renseigné
       if (nomService == undefined) {
         // Changement d'état pour ouvrir le wiki
-        $state.go('connexion');
+        $state.go("connexion");
       } else {
         // Recherche du service
         var PagesService = $injector.get(nomService);
@@ -127,7 +124,7 @@ angular.module('dcWiki')
       // Si la page a été éditée
       if ($rootScope.edition === true) {
         // Diffusion de l'évènement aux scopes enfants
-        $scope.$broadcast('onEnregistrement');
+        $scope.$broadcast("onEnregistrement");
       }
       // Permutation du mode édition en mode lecture ou inversement
       $rootScope.edition = false;
@@ -148,16 +145,17 @@ angular.module('dcWiki')
 /**
  * Gestion des téléversement
  */
-.controller('TeleversementController', ['$state', '$injector', '$rootScope', '$scope', '$mdBottomSheet', function ($state, $injector, $rootScope, $scope, $mdBottomSheet) {
+.controller("TeleversementController", ["$state", "$injector", "$rootScope", "$scope", "$mdBottomSheet", function ($state, $injector, $rootScope, $scope, $mdBottomSheet) {
   $scope.test = "test";
   $scope.onAjouterLienDoc = function () {
     $rootScope.$broadcast("ajouterLienDoc", $scope.lienDoc);
+    $mdBottomSheet.hide();
   };
   $scope.onTeleverser = function () {
     // Calcul du fichier
     const fichier = $scope.fichier;
     // Journalisation du nom du fichier
-    console.info('Televerser le fichier ' + fichier.name);
+    console.info("Televerser le fichier %s", fichier.name);
     //    {
     //    "lastModified": 1438583972000,
     //    "lastModifiedDate": "2015-08-03T06:39:32.000Z",
@@ -171,7 +169,7 @@ angular.module('dcWiki')
     // Si le nom du service est bien renseigné
     if (nomService == undefined) {
       // Changement d'état pour ouvrir le wiki
-      $state.go('connexion');
+      $state.go("connexion");
     } else {
       // Calcul du nom du fichier
       const nomPage = fichier.name;
@@ -182,7 +180,7 @@ angular.module('dcWiki')
       // Enregistrement des modifications
       PagesService.televerserDocument(nomPage, contenuPage);
       // Documentation du lien
-      $scope.lienDoc = "doc://test.pdf";
+      $scope.lienDoc = "doc://" + nomPage;
     }
   };
 }]);
