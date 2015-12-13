@@ -1,5 +1,40 @@
 'use strict';
 
+/**
+ * Fonction d'ajout d'un lien
+ */
+function ajouterEncadrement(element, carGauche, carDroit, motCle) {
+  var htmlElement = element[0];
+  // Calcul de la position du curseur
+  var posDebSel = htmlElement.selectionStart;
+  console.info("Selection début : " + posDebSel);
+  var posFinSel = htmlElement.selectionEnd;
+  console.info("Selection fin : " + posFinSel);
+  var texteAvant = htmlElement.value.substring(0, posDebSel);
+  var texteSelectionne = htmlElement.value.substring(posDebSel, posFinSel);
+  console.info("texteSelectionne : -" + texteSelectionne + "-");
+  // Si le dernier caractère sélectionné est un caractère blanc
+  if (texteSelectionne.match(" $")) posFinSel--;
+  var texteApres = htmlElement.value.substring(posFinSel, htmlElement.value.length);
+  // Si le texte selectionné est vide
+  if (texteSelectionne.length == 0) {
+    htmlElement.value = texteAvant + carGauche + motCle + carDroit + texteApres;
+    // Repositionnement du curseur
+    htmlElement.selectionStart = posDebSel + 1;
+    htmlElement.selectionEnd = posDebSel + motCle.length + 1;
+  } else {
+    texteSelectionne = texteSelectionne.trim();
+    var texteAjoute = carGauche + texteSelectionne + carDroit;
+    htmlElement.value = texteAvant + texteAjoute + texteApres;
+    // Repositionnement du curseur
+    htmlElement.selectionStart = posDebSel + texteSelectionne.length + 2;
+    htmlElement.selectionEnd = htmlElement.selectionStart;
+  }
+  return htmlElement.value;
+};
+
+
+
 //Pages service used to communicate Pages REST endpoints
 angular.module('dcWiki')
 
@@ -131,35 +166,6 @@ angular.module('dcWiki')
    */
   function ajouterItalic(element) {
     return ajouterEncadrement(element, "=", "=", "mot");
-  };
-  /**
-   * Fonction d'ajout d'un lien
-   */
-  function ajouterEncadrement(element, carGauche, carDroit, motCle) {
-    var htmlElement = element[0];
-    // Calcul de la position du curseur
-    var posDebSel = htmlElement.selectionStart;
-    console.info("Selection début : " + posDebSel);
-    var posFinSel = htmlElement.selectionEnd;
-    console.info("Selection fin : " + posFinSel);
-    var texteAvant = htmlElement.value.substring(0, posDebSel);
-    var texteSelectionne = htmlElement.value.substring(posDebSel, posFinSel);
-    var texteApres = htmlElement.value.substring(posFinSel, htmlElement.value.length);
-    // Si le texte selectionné est vide
-    if (texteSelectionne.length == 0) {
-      htmlElement.value = texteAvant + carGauche + motCle + carDroit + texteApres;
-      // Repositionnement du curseur
-      htmlElement.selectionStart = posDebSel + 1;
-      htmlElement.selectionEnd = posDebSel + motCle.length + 1;
-    } else {
-      texteSelectionne = texteSelectionne.trim();
-      var texteAjoute = carGauche + texteSelectionne + carDroit;
-      htmlElement.value = texteAvant + texteAjoute + texteApres;
-      // Repositionnement du curseur
-      htmlElement.selectionStart = posDebSel + texteSelectionne.length + 2;
-      htmlElement.selectionEnd = htmlElement.selectionStart;
-    }
-    return htmlElement.value;
   };
   /**
    * Fonction d'ajout d'un lien sur un document

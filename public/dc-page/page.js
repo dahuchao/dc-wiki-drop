@@ -13,6 +13,9 @@ angular.module("dcWiki")
     $scope.onHMoins = function () {
       $rootScope.$broadcast("hMoins", "+");
     };
+    $scope.onAjouterLien = function () {
+      $rootScope.$broadcast('ajouterLien');
+    };
     $scope.onAjouterGras = function () {
       $rootScope.$broadcast("ajouterGras");
     };

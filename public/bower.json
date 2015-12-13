@@ -14,7 +14,8 @@
     "fontawesome": "latest",
     "material-design-icons": "~2.0.0",
     "mdi": "~1.2.65",
-    "ng-file-model": "*"
+    "ng-file-model": "*",
+    "angular-mocks": "~1.4.8"
   },
   "authors": [
     "dahuchao <dahu.chao@laposte.net>"

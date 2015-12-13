@@ -13,6 +13,15 @@
   },
   "scripts": {
     "postinstall": "cd public && bower cache clean && bower install",
-    "start": "iojs serveur.js"
+    "start": "iojs serveur.js",
+    "test": "karma start public/karma.conf.js",
+    "test2": "jasmine-node --autotest public/service/spec/ --watch public/service/dc-wiki-formateur.js"
+  },
+  "devDependencies": {
+    "jasmine": "^2.4.1",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.15",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-jasmine": "^0.3.6"
   }
 }
