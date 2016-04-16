@@ -1,52 +1,56 @@
-<section class="page" layout="column" >
-  <md-toolbar class="barre-menu" layout="row" ng-show="edition">
+<section class="page" layout="column">
+  <md-toolbar class="barre-menu" layout="column" ng-show="edition">
     <div class="md-toolbar-tools">
-      <md-button ng-click="onEnregistrer()" aria-label="Enregistrer">
-        <md-icon md-svg-src="lib\material-design-icons\navigation\svg\design/ic_arrow_back_18px.svg"></md-icon>
-      </md-button>
-      <span hide-sm>Edition</span>
-      <span flex></span>
-      <md-button ng-click="onHPlus()" class="droite" aria-label="Augmenter le niveau du chapitre">
-        <md-icon md-menu-origin md-svg-icon="lib\material-design-icons\editor\svg\production\ic_format_indent_increase_18px.svg"></md-icon>
-      </md-button>
-      <md-button ng-click="onHMoins()" class="droite" aria-label="Diminuer le niveau du chapitre">
-        <md-icon md-menu-origin md-svg-icon="lib\material-design-icons\editor\svg\production\ic_format_indent_decrease_18px.svg"></md-icon>
-      </md-button>
-      <md-button ng-click="onAjouterLien()" class="droite" aria-label="Insérer un lien">
-        <md-icon md-font-icon="fa fa-link"></md-icon>
-      </md-button>
-      <md-button ng-click="onAjouterGras()" hide-sm class="droite" aria-label="Gras">
-        <md-icon md-menu-origin md-svg-icon="lib\material-design-icons\editor\svg\production\ic_format_bold_18px.svg"></md-icon>
-      </md-button>
-      <md-button ng-click="onAjouterSouligne()" hide-sm class="droite" aria-label="Souligner">
-        <md-icon md-menu-origin md-svg-icon="lib\material-design-icons\editor\svg\production\ic_format_underlined_18px.svg"></md-icon>
-      </md-button>
-      <md-button ng-click="onAjouterItalic()" hide-sm class="droite" aria-label="Italic">
-        <md-icon md-menu-origin md-svg-icon="lib\material-design-icons\editor\svg\production\ic_format_italic_18px.svg"></md-icon>
-      </md-button>
-      <md-menu class="sous-menu">
-        <md-button class="md-icon-button" class="droite" aria-label="More" ng-click="$mdOpenMenu($event)">
-          <md-icon md-menu-origin md-svg-icon="lib\material-design-icons\navigation\svg\design/ic_more_vert_18px.svg"></md-icon>
+      <div flex="auto">
+        <md-button ng-click="onEnregistrer()" aria-label="Enregistrer">
+          <md-icon md-svg-src="lib\material-design-icons\navigation\svg\design/ic_arrow_back_18px.svg"></md-icon>
         </md-button>
-        <md-menu-content width="3">
-          <md-menu-item>
-            <md-button ng-click="onOuvertureTeleversement()" aria-label="Televerser">
-              <div layout="row">
-                <md-icon md-font-icon="fa fa-cloud-upload"></md-icon>
-                <p flex>Televerser</p>
-              </div>
-            </md-button>
-          </md-menu-item>
-          <md-menu-item>
-            <md-button ng-click="onAnnuler()" aria-label="Annuler">
-              <div layout="row">
-                <md-icon md-font-icon="fa fa-undo"></md-icon>
-                <p flex>Annuler</p>
-              </div>
-            </md-button>
-          </md-menu-item>
-        </md-menu-content>
-      </md-menu>
+        <span hide-sm>Edition</span>
+      </div>
+      <span flex="auto"></span>
+      <div flex="auto">
+        <md-button ng-click="onHPlus()" class="droite" aria-label="Augmenter le niveau du chapitre">
+          <md-icon md-menu-origin md-svg-icon="lib\material-design-icons\editor\svg\production\ic_format_indent_increase_18px.svg"></md-icon>
+        </md-button>
+        <md-button ng-click="onHMoins()" class="droite" aria-label="Diminuer le niveau du chapitre">
+          <md-icon md-menu-origin md-svg-icon="lib\material-design-icons\editor\svg\production\ic_format_indent_decrease_18px.svg"></md-icon>
+        </md-button>
+        <md-button ng-click="onAjouterLien()" class="droite" aria-label="Insérer un lien">
+          <md-icon md-font-icon="fa fa-link"></md-icon>
+        </md-button>
+        <md-button ng-click="onAjouterGras()" hide-sm class="droite" aria-label="Gras">
+          <md-icon md-menu-origin md-svg-icon="lib\material-design-icons\editor\svg\production\ic_format_bold_18px.svg"></md-icon>
+        </md-button>
+        <md-button ng-click="onAjouterSouligne()" hide-sm class="droite" aria-label="Souligner">
+          <md-icon md-menu-origin md-svg-icon="lib\material-design-icons\editor\svg\production\ic_format_underlined_18px.svg"></md-icon>
+        </md-button>
+        <md-button ng-click="onAjouterItalic()" hide-sm class="droite" aria-label="Italic">
+          <md-icon md-menu-origin md-svg-icon="lib\material-design-icons\editor\svg\production\ic_format_italic_18px.svg"></md-icon>
+        </md-button>
+        <md-menu class="sous-menu">
+          <md-button class="md-icon-button" class="droite" aria-label="More" ng-click="$mdOpenMenu($event)">
+            <md-icon md-menu-origin md-svg-icon="lib\material-design-icons\navigation\svg\design/ic_more_vert_18px.svg"></md-icon>
+          </md-button>
+          <md-menu-content width="3">
+            <md-menu-item>
+              <md-button ng-click="onOuvertureTeleversement()" aria-label="Televerser">
+                <div layout="row">
+                  <md-icon md-font-icon="fa fa-cloud-upload"></md-icon>
+                  <p flex>Televerser</p>
+                </div>
+              </md-button>
+            </md-menu-item>
+            <md-menu-item>
+              <md-button ng-click="onAnnuler()" aria-label="Annuler">
+                <div layout="row">
+                  <md-icon md-font-icon="fa fa-undo"></md-icon>
+                  <p flex>Annuler</p>
+                </div>
+              </md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+      </div>
     </div>
   </md-toolbar>
   <md-content layout="column" class="md-padding">

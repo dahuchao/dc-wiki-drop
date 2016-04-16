@@ -5,7 +5,7 @@ var express = require('express');
 var multer = require('multer');
 // Codec base 64
 var base64 = require('base-64')
-  // Chargement du module de gestion du système de fichier
+// Chargement du module de gestion du système de fichier
 var fs = require('fs');
 // Création de l'application express
 var app = express();

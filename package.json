@@ -9,11 +9,11 @@
     "multer": "^1.0.3"
   },
   "engines": {
-    "iojs": "1.0.x"
+    "node": "4.2.6"
   },
   "scripts": {
     "postinstall": "cd public && bower cache clean && bower install",
-    "start": "iojs serveur.js",
+    "start": "node serveur.js",
     "test": "karma start public/karma.conf.js",
     "test2": "jasmine-node --autotest public/service/spec/ --watch public/service/dc-wiki-formateur.js"
   },

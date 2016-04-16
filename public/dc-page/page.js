@@ -4,8 +4,8 @@
 angular.module("dcWiki")
 
 // Controleur des pages de wiki
-.controller("dcPageController", ["$injector", "$rootScope", "$state", "$scope", "dcWikiFormateur", "$mdBottomSheet",
-    function ($injector, $rootScope, $state, $scope, dcWikiFormateur, $mdBottomSheet) {
+.controller("dcPageController", ["$sce", "$injector", "$rootScope", "$state", "$scope", "dcWikiFormateur", "$mdBottomSheet",
+    function ($sce, $injector, $rootScope, $state, $scope, dcWikiFormateur, $mdBottomSheet) {
     console.info("Emission Ajouter de texte.");
     $scope.onHPlus = function () {
       $rootScope.$broadcast("hPlus", "+");
@@ -52,7 +52,9 @@ angular.module("dcWiki")
           // Enregistrement du contenu de la page de wiki
           $scope.pagecontenu = page;
           // Calcul du code html de la page de wiki
-          $scope.pagehtml = dcWikiFormateur($scope.pagecontenu);
+          var codeHtml = dcWikiFormateur($scope.pagecontenu);
+          // Assainissement du code HTML avant chargement
+          $scope.pagehtml = $sce.trustAsHtml(codeHtml);
           // Lecture de la date de mise à jour
           $scope.dateMaj = page.dateMaj;
         }, function (reason) {
@@ -105,7 +107,9 @@ angular.module("dcWiki")
         // Enregistrement des modifications
         PagesService.enregistrer(nomPage, page);
         // Calcul du code html de la page de wiki
-        $scope.pagehtml = dcWikiFormateur($scope.pagecontenu);
+        var codeHtml = dcWikiFormateur($scope.pagecontenu);
+        // Assainissement du code HTML avant chargement
+        $scope.pagehtml = $sce.trustAsHtml(codeHtml);
         // Lecture de la date de mise à jour
         $scope.dateMaj = page.dateMaj;
       }

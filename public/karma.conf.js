@@ -22,7 +22,7 @@ module.exports = function (config) {
         'dc-wiki/wiki.js',
         'service/dc-wiki-editeur.js',
         'service/dc-wiki-formateur.js',
-        'service/spec/*.js'
+        'service/spec/dc-wiki-formateur-spec.js'
     ],
 
 

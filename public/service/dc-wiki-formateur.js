@@ -1,6 +1,6 @@
 'use strict';
 
-function formateur($sce) {
+function formateur() {
   // Formatting
   var boldPattern = new RegExp("\\*(.*?)\\*", "g");
   var boldReplacement = "<b>$1</b>";
@@ -95,7 +95,8 @@ function formateur($sce) {
       lines[i] = Replace(lines[i], imagePattern, imageReplacement);
       output += lines[i];
     }
-    return $sce.trustAsHtml(output);
+    //    return $sce.trustAsHtml(output);
+    return output;
   }
 
   function Replace(ligne, motifWiki, motifHtml) {
@@ -196,4 +197,4 @@ angular.module('dcWiki')
   /**
    * Formateur des pages du wiki
    */
-  .factory('dcWikiFormateur', ['$sce', formateur]);
+  .factory('dcWikiFormateur', formateur);
