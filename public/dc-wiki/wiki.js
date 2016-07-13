@@ -16,7 +16,8 @@ angular.module('dcWiki')
     // Calcul de l'URL
     var token = $location.url();
     // Expression régulière pour calculer le token
-    var reg = new RegExp("/access_token=(.*)&.*&.*", "g");
+    // token = "/access_token=IhePVG47Wzc7WESf61N&token_type=bearer&uid=33449300&account_id=dbid:AADHdnLK-n5mi_deQb-PgRNDa1a5c_I0QbU", $location = LocationHashbangUrl {$$protocol: "http", $$host: "localhost", $$port: 80, $$path: "/access_token=IhePVG47WzcAAAAAAAB22u0yQEQFUAGHPoQa…count_id=dbid:AADHdnLK-n5mi_deQb-PgRNDa1a5c_I0QbU", $$search: Object…}
+    var reg = new RegExp("/access_token=(.*)&token_type.*", "g");
     // Si l'URL porte un token de controle d'accès
     if (token.match(reg)) {
       // Calcul du token
