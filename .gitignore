@@ -2,6 +2,8 @@
 /node_modules/**
 /public/lib
 /public/lib/**
+/public/node_modules
+/public/node_modules/**
 /public/.bower-cache
 /public/.bower-cache/**
 /public/.bower-registry

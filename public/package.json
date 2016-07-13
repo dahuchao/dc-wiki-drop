@@ -1,0 +1,27 @@
+{
+  "name": "dc-wiki-public",
+  "description": "Wiki dropbox.",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "latest",
+    "angular-bootstrap": "latest",
+    "angular-cookies": "latest",
+    "angular-material": "~1.0.0-RC1",
+    "angular-resource": "latest",
+    "angular-sanitize": "latest",
+    "angular-ui-router": "latest",
+    "bootstrap": "latest",
+    "fontawesome": "latest",
+    "material-design-icons": "~2.0.0",
+    "mdi": "~1.2.65",
+    "ng-file-model": "*"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.4.8"
+  },
+  "engines": {
+    "node": "4.2.6"
+  },
+  "scripts": {
+  }
+}

@@ -19,7 +19,7 @@
     "node": "4.2.6"
   },
   "scripts": {
-    "postinstall": "cd public && bower cache clean && bower install",
+    "postinstall": "cd public && npm install",
     "start": "node serveur.js",
     "test": "karma start public/karma.conf.js",
     "test2": "jasmine-node --autotest public/service/spec/ --watch public/service/dc-wiki-formateur.js"
