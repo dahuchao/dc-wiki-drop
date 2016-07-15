@@ -1,0 +1,85 @@
+<html ng-app="dcWiki">
+
+<head>
+  <title>wiki-drop</title>
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="theme.css">
+</head>
+
+<body ng-controller="dcWikiController">
+  <md-sidenav layout="column" class="barre-laterale md-sidenav-left md-whiteframe-z2" md-component-id="gauche" md-is-locked-open="$mdMedia('gt-md')">
+    <md-toolbar class="md-tall md-hue-2">
+      <span flex></span>
+      <div layout="column" class="md-toolbar-tools-bottom inset">
+        <user-avatar></user-avatar>
+        <span></span>
+        <div>Emmanuel GRANDIERE</div>
+        <div>emmanuel@laposte.net</div>
+      </div>
+    </md-toolbar>
+    <md-list>
+      <md-item class="rubrique">
+        <a ng-click="onAccueil()">
+          <md-item-content md-ink-ripple layout="row" layout-align="start center">
+            <div class="inset">
+              <md-icon md-svg-src="icones\action\svg\production/ic_home_24px.svg"></md-icon>
+            </div>
+            <div class="inset">Accueil
+            </div>
+          </md-item-content>
+        </a>
+      </md-item>
+      <md-divider></md-divider>
+      <md-subheader>Gestion</md-subheader>
+      <md-item class="rubrique" ng-click="onConfiguration()">
+        <md-item-content md-ink-ripple layout="row" layout-align="start center">
+          <div class="inset">
+            <md-icon md-svg-src="icones/action/svg/design/ic_settings_24px.svg"></md-icon>
+          </div>
+          <div class="inset">Configuration
+          </div>
+        </md-item-content>
+      </md-item>
+      <md-item ng-click="onDeconnexion()" class="rubrique">
+        <md-item-content md-ink-ripple layout="row" layout-align="start center">
+          <div class="inset">
+            <md-icon md-svg-src="icones\action\svg\design/ic_power_settings_new_24px.svg"></md-icon>
+          </div>
+          <div class="inset">
+            Déconnexion
+          </div>
+        </md-item-content>
+      </md-item>
+    </md-list>
+  </md-sidenav>
+  <div class="barre-menu relative" layout="column" layout-fill role="main">
+    <md-toolbar layout="row" ng-hide="edition || recherche">
+      <div class="md-toolbar-tools">
+        <md-button ng-click="basculeMenu('gauche')" class="md-icon-button launch" layout-align="start center" aria-label="Menu">
+          <md-icon md-svg-src="icones/navigation/svg/design/ic_menu_18px.svg"></md-icon>
+        </md-button>
+        <h2 layout-align-gt-sm="center">Wiki</h2>
+        <span flex></span>
+        <md-button ng-click="onDebutRecherche()" class="droite" aria-label="Augmenter le niveau du chapitre">
+          <md-icon md-svg-src="icones/action/svg/design/ic_search_24px.svg"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-toolbar class="barre-recherche" layout="row" ng-show="recherche">
+      <div class="md-toolbar-tools">
+        <md-button ng-click="onFinRecherche()" class="md-icon-button launch" layout-align="start center" aria-label="Menu">
+          <md-icon md-svg-src="icones\navigation\svg\design/ic_arrow_back_18px.svg"></md-icon>
+        </md-button>
+        <md-input-container flex>
+          <input aria-label="critères de recherche" ng-model="termeRecherche">
+        </md-input-container>
+        <md-button ng-click="onInitRecherche()" class="droite" aria-label="Augmenter le niveau du chapitre">
+          <md-icon md-svg-src="icones/content/svg/production/ic_clear_24px.svg"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <div ui-view></div>
+    <script src="app.js"></script>
+</body>
+
+</html>

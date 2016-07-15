@@ -1,0 +1,81 @@
+@import "node_modules/angular-material/angular-material.scss";
+@import "node_modules/font-awesome/scss/font-awesome.scss";
+@import "node_modules/mdi/scss/materialdesignicons.scss";
+h1 {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+h2 {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+h3 {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+h4 {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+h5 {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+.wiki {
+  .bureau {
+    padding: 10px;
+  }
+  .barre-laterale .rubrique {
+    cursor: pointer;
+  }
+  .page {
+    .contenu {
+      width: 100%;
+      border-style: none;
+      margin-top: 50px;
+    }
+    md-content {}
+    .barre-menu {
+      position: fixed;
+      .md-button.droite {
+        font-size: 20px;
+        min-width: 0;
+        margin: 0;
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+      .sous-menu {
+        padding: 0;
+      }
+      .md-button {
+        min-width: 30px;
+      }
+      .md-button.droite {
+        font-size: 20px;
+        min-width: 0;
+        margin: 0;
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+    }
+    .bouton-edition {
+      margin: 25px;
+      padding-left: 0;
+      position: fixed;
+      right: 0;
+      bottom: 0;
+    }
+  }
+  md-bottom-sheet.telechargement {
+    padding-bottom: inherit;
+  }
+  .telechargement {
+    md-input-container {
+      margin-bottom: 2px;
+      margin-top: 2px;
+    }
+    form {
+      margin-bottom: inherit;
+    }
+  }
+}

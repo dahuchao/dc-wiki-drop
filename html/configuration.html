@@ -1,0 +1,21 @@
+<section class="config">
+  <md-content layout-padding>
+    <h1>Panneau de configuration</h1>
+    <form layout="column">
+      <md-input-container flex>
+        <label for="selectLangue">Langue</label>
+        <md-select name="selectLangue" ng-model="config.langue" ng-change="onChange()">
+          <md-option value="fr">Francais</md-option>
+          <md-option value="en">English</md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container flex>
+        <label>Theme</label>
+        <md-select name="selectTheme" ng-model="config.theme" ng-change="onChange()">
+          <md-option value="bleu">bleu</md-option>
+          <md-option value="vert">vert</md-option>
+        </md-select>
+      </md-input-container>
+    </form>
+  </md-content>
+</section>
