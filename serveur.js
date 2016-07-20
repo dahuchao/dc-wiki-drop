@@ -23,15 +23,15 @@ if (!fs.existsSync(repertoireSite)) {
   console.error('Répertoire des pages indisponible');
 }
 // Répertoire du wiki2
-app.use('/wiki', express.static(repertoireSite));
+app.use('/wikiold', express.static(repertoireSite));
 // Répertoire des pages du site web
-var repertoireWiki2 = 'wiki2';
-console.log('Ouverture du répertoire du wiki2 : %s', repertoireWiki2);
-if (!fs.existsSync(repertoireWiki2)) {
-  console.error('Répertoire des pages du wiki2 est indisponible');
+var siteWiki = 'wiki';
+console.log('Ouverture du répertoire du wiki : %s', siteWiki);
+if (!fs.existsSync(siteWiki)) {
+  console.error('Répertoire des pages du wiki est indisponible');
 }
 // Répertoire du wiki
-app.use('/wiki2', express.static(repertoireWiki2));
+app.use('/wiki', express.static(siteWiki));
 
 //**********************************************
 // Répertoire de stockage des pages du wiki
@@ -113,6 +113,8 @@ app.post('/pages/:nom', function (req, res) {
 app.get('/pages/:nom', function (req, res) {
   // Calcul du nom de la page recherchée
   var pageNom = req.params.nom;
+  // Autorisation d'accès à cette ress pour les req venant de l'out de test
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
   // Si le fichier n'existe pas
   if (!fs.existsSync(repertoireWiki + pageNom)) {
     //console.log('*** Création de la page : %s ***', pageNom);

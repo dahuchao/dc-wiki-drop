@@ -2,7 +2,6 @@ var angular = require("angular");
 var modules = [require("angular-material"),
   require("angular-aria"),
   require("angular-animate"),
-  require("angular-material"),
   require("angular-ui-bootstrap"),
   require("angular-cookies"),
   require("angular-resource"),

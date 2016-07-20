@@ -10,3 +10,8 @@
 /public/.bower-registry/**
 /public/.bower-tmp
 /public/.bower-tmp/**
+/wiki/html/**
+/wiki/icones/**
+/wiki/img/**
+/wiki/app.js
+/wiki/theme.css
