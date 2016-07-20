@@ -15,23 +15,15 @@ app.set('port', (process.env.PORT || 80));
 app.use(express.urlencoded());
 app.use(express.json());
 // Répertoire racine
-app.use('/', express.static('.'));
+//app.use('/', express.static('.'));
 // Répertoire des pages du site web
-var repertoireSite = 'public';
-console.log('Ouverture du répertoire des pages du site web : %s', repertoireSite);
+var repertoireSite = 'wiki';
+console.log('Ouverture du répertoire du site : %s', repertoireSite);
 if (!fs.existsSync(repertoireSite)) {
-  console.error('Répertoire des pages indisponible');
-}
-// Répertoire du wiki2
-app.use('/wikiold', express.static(repertoireSite));
-// Répertoire des pages du site web
-var siteWiki = 'wiki';
-console.log('Ouverture du répertoire du wiki : %s', siteWiki);
-if (!fs.existsSync(siteWiki)) {
-  console.error('Répertoire des pages du wiki est indisponible');
+  console.error('Répertoire des pages du site est indisponible');
 }
 // Répertoire du wiki
-app.use('/wiki', express.static(siteWiki));
+app.use('/wiki', express.static(repertoireSite));
 
 //**********************************************
 // Répertoire de stockage des pages du wiki

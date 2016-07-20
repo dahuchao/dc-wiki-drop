@@ -18,6 +18,8 @@ gulp.task("img", function () {
 gulp.task("html", function () {
   gulp.src("html/**/*.html")
     .pipe(gulp.dest("wiki/html"))
+  gulp.src("index.html")
+    .pipe(gulp.dest("wiki"))
 })
 
 gulp.task("icones", function () {
@@ -60,11 +62,11 @@ gulp.task("fabrique", ["bin", 'styles', "icones", "html", "img"], function () {
 gulp.task("dev", function () {
   browserSync.init({
     server: {
-      baseDir: ".",
+      baseDir: "./wiki",
     }
   })
   server.run(["serveur.js"])
-  gulp.watch("html/**/*.html", ["html"])
+  gulp.watch(["index.html","html/**/*.html"], ["html"])
   gulp.watch("sass/**/*.scss", ["styles"])
   gulp.watch("js/**/*.js", ["bin", "test"])
   gulp.watch("spec/**/*.js", ["test"])
