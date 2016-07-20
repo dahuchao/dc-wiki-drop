@@ -11,7 +11,7 @@ module.exports = function ($rootScope, $scope, $location, $state) {
     if (host == 'dc-wiki-drop.herokuapp.com') {
       port = '';
     }
-    var url = prot + '://' + host + port + '/wiki/';
+    var url = prot + '://' + host + port + '/';
     // Journalisation du jeton
     console.log("URL : " + url);
     // URL de redirection

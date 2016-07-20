@@ -23,8 +23,8 @@ module.exports = function ($state, $rootScope, $scope, $location, $resource, Ide
       $rootScope.PagesService = "PagesDropboxService";
       $rootScope.DocumentsService = "DocumentsDropboxService";
       // Changement d'état pour ouvrir le wiki
-      $state.go('wiki');
     }
+      $state.go('wiki');
     $scope.onAccueil = function () {
       // Changement d'état pour ouvrir le wiki
       $mdSidenav("gauche").close();
