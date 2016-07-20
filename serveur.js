@@ -17,13 +17,13 @@ app.use(express.json());
 // Répertoire racine
 //app.use('/', express.static('.'));
 // Répertoire des pages du site web
-var repertoireSite = 'wiki';
+var repertoireSite = "public";
 console.log('Ouverture du répertoire du site : %s', repertoireSite);
 if (!fs.existsSync(repertoireSite)) {
   console.error('Répertoire des pages du site est indisponible');
 }
 // Répertoire du wiki
-app.use('/wiki', express.static(repertoireSite));
+app.use('/', express.static(repertoireSite));
 
 //**********************************************
 // Répertoire de stockage des pages du wiki

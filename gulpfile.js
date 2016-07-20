@@ -12,25 +12,25 @@ const jasmine = require("gulp-jasmine")
 
 gulp.task("img", function () {
   gulp.src("img/**/*")
-    .pipe(gulp.dest("wiki/img"))
+    .pipe(gulp.dest("public/img"))
 })
 
 gulp.task("html", function () {
   gulp.src("html/**/*.html")
-    .pipe(gulp.dest("wiki/html"))
+    .pipe(gulp.dest("public/html"))
   gulp.src("index.html")
-    .pipe(gulp.dest("wiki"))
+    .pipe(gulp.dest("public"))
 })
 
 gulp.task("icones", function () {
   gulp.src("node_modules/material-design-icons/**/*.svg")
-    .pipe(gulp.dest("wiki/icones"))
+    .pipe(gulp.dest("public/icones"))
 })
 
 gulp.task("styles", function () {
   gulp.src("sass/**/*.scss")
     .pipe(sass().on("error", sass.logError))
-    .pipe(gulp.dest("wiki/"))
+    .pipe(gulp.dest("public/"))
   //.pipe(browserSync.stream())
 })
 
@@ -45,7 +45,7 @@ gulp.task("bin", function () {
     .bundle()
     .on("error", gutil.log)
     .pipe(source("app.js"))
-    .pipe(gulp.dest("wiki"))
+    .pipe(gulp.dest("public"))
 })
 
 gulp.task("test", () =>
@@ -62,7 +62,7 @@ gulp.task("fabrique", ["bin", 'styles', "icones", "html", "img"], function () {
 gulp.task("dev", function () {
   browserSync.init({
     server: {
-      baseDir: "./wiki",
+      baseDir: "./public",
     }
   })
   server.run(["serveur.js"])
@@ -70,7 +70,7 @@ gulp.task("dev", function () {
   gulp.watch("sass/**/*.scss", ["styles"])
   gulp.watch("js/**/*.js", ["bin", "test"])
   gulp.watch("spec/**/*.js", ["test"])
-  gulp.watch("wiki/**/*").on("change", browserSync.reload)
+  gulp.watch("public/**/*").on("change", browserSync.reload)
 })
 
 // Tache de démarrage du serveur
