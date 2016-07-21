@@ -30,7 +30,7 @@ gulp.task("icones", function () {
 gulp.task("styles", function () {
   gulp.src("sass/**/*.scss")
     .pipe(sass().on("error", sass.logError))
-    .pipe(gulp.dest("public/"))
+    .pipe(gulp.dest("public"))
   //.pipe(browserSync.stream())
 })
 
