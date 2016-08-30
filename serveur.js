@@ -1,7 +1,7 @@
 'use strict';
 // Chargement du module expressjs
 var express = require('express');
-// Plugin busboy de expressjs pour les téléversement de fichier
+// Plugin busboy de expressjs pour les téléversement de fichiers
 var multer = require('multer');
 // Codec base 64
 var base64 = require('base-64')
