@@ -30,9 +30,17 @@ h5 {
   .bureau {
     padding: 10px;
   }
-  .barre-laterale .rubrique {
-    cursor: pointer;
-  }
+  .barre-laterale{
+    .rubrique {
+      cursor: pointer;
+    }
+    #nom {
+      color: red;
+    }
+    #adresse {
+      font-size: 0.8em;
+    }
+  } 
   .page {
     .contenu {
       width: 100%;
