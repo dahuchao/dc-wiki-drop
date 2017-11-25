@@ -17,7 +17,7 @@ app.use(express.json());
 // Répertoire racine
 //app.use('/', express.static('.'));
 // Répertoire des pages du site web
-var repertoireSite = "public";
+var repertoireSite = "client/dist";
 console.log('Ouverture du répertoire du site : %s', repertoireSite);
 if (!fs.existsSync(repertoireSite)) {
   console.error('Répertoire des pages du site est indisponible');
