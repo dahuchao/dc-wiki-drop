@@ -3,7 +3,8 @@
   "description": "Wiki avec une base de données de fichiers textes dans dropbox.",
   "version": "0.1.0",
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "multer": "^1.3.0"
   },
   "devDependencies": {},
   "license": "BSD-3-Clause",

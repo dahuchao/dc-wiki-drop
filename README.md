@@ -13,7 +13,7 @@ sudo docker build -t dahu.chao/dc-wiki-drop .
 
 Démarrage d'un conteneur
 
-sudo docker run --restart always -d -p 82:80 dahu.chao/dc-wiki-drop
+sudo docker run --restart always -d -p 80:80 dahu.chao/dc-wiki-drop
 
 Voir la liste des conteneurs
 
