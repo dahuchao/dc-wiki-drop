@@ -4,13 +4,13 @@ FROM dahu.chao/rpi-node
 ADD ./ /app
 
 # Define working directory
-WORKDIR /app
+WORKDIR /app/client
 
 # Install app dependencies
 RUN npm install
 
 # Define working directory
-WORKDIR /app/client
+WORKDIR /app
 
 # Install app dependencies
 RUN npm install
