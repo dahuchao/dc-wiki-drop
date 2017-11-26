@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
+    "postinstall": "npm run-script build",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
