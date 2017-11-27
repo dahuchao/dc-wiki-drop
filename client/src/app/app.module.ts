@@ -6,6 +6,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {AppComponent} from './app.component';
 import {MatIconModule} from '@angular/material/icon';
 import {HttpClientModule} from '@angular/common/http';
+// import { MarkdownModule } from 'ngx-markdown';
+// import {LMarkdownEditorModule} from 'ngx-markdown-editor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,7 +17,9 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserModule,
     MatToolbarModule,
     MatIconModule,
-    MatSidenavModule
+    MatSidenavModule,
+    // MarkdownModule.forRoot(),
+    // LMarkdownEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

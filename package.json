@@ -17,7 +17,6 @@
     "node": "8.6.0"
   },
   "scripts": {
-    "postinstall": "cd client && npm install",
     "start": "node serveur",
     "start-dev": "cd client && npm start"
   }
