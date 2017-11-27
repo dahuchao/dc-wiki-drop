@@ -1,0 +1,7 @@
+/node_modules
+/node_modules/**
+/public/html/**
+/public/icones/**
+/public/img/**
+/public/app.js
+/public/theme.css
