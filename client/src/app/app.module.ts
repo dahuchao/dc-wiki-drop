@@ -35,6 +35,7 @@ import { AccComponent } from './acc/acc.component';
     MatButtonModule,
     MatSidenavModule,
     MatButtonToggleModule,
+    MatCardModule,
     // MarkdownModule.forRoot(),
     // LMarkdownEditorModule
   ],
