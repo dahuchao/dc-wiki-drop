@@ -5,6 +5,8 @@ var express = require('express');
 var multer = require('multer');
 // Codec base 64
 var base64 = require('base-64')
+// Réglage CORS
+var cors = require('cors')
 // Chargement du module de gestion du système de fichier
 var fs = require('fs');
 // Création de l'application express
@@ -12,6 +14,7 @@ var app = express();
 // Définition du port d'écoute
 app.set('port', (process.env.PORT || 80));
 // Configuration de l'application express
+app.use(cors())
 app.use(express.urlencoded());
 app.use(express.json());
 // Répertoire racine
@@ -105,8 +108,6 @@ app.post('/pages/:nom', function (req, res) {
 app.get('/pages/:nom', function (req, res) {
   // Calcul du nom de la page recherchée
   var pageNom = req.params.nom;
-  // Autorisation d'accès à cette ress pour les req venant de l'out de test
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
   // Si le fichier n'existe pas
   if (!fs.existsSync(repertoireWiki + pageNom)) {
     //console.log('*** Création de la page : %s ***', pageNom);
