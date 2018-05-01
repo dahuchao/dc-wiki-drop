@@ -5,3 +5,13 @@
 .menu-spacer {
     flex: 1 1 auto;
 }
+
+.wiki {
+    display: grid;
+}
+
+textarea {
+    border-style: none;
+    grid-column: 1;
+    grid-row: 1;
+}

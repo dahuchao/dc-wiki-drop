@@ -10,9 +10,6 @@
   <mat-icon class="menu-icon">delete</mat-icon>
 </mat-toolbar>
 <mat-card>
-  <mat-card-title>
-    Page d'accueil de test
-  </mat-card-title>
   <mat-card-content>
     <div class="html" *ngIf="!edition">
       <!-- <p ng-bind-html="pagehtml"></p> -->
@@ -21,7 +18,7 @@
       aux poudres ! Petit à petit l'oiseau devient forgeron ! Les ciseaux à bois : Les [chiens] aussi.
     </div>
     <div class="wiki" *ngIf="edition">
-      <textarea rows="20"></textarea>
+      <textarea rows="20">{{page}}</textarea>
     </div>
   </mat-card-content>
 </mat-card>
