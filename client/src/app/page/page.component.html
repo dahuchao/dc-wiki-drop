@@ -1,0 +1,37 @@
+<mat-sidenav #sidenav class="example-sidenav">
+  Jolly good!
+</mat-sidenav>
+
+<!-- <div class="example-sidenav-content">
+  <button type="button" mat-button (click)="sidenav.open()">
+    Open sidenav
+  </button>
+</div> -->
+
+<mat-toolbar color="primary">
+  <button mat-icon-button>
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <span>Wiki</span>
+</mat-toolbar>
+S<div class="corp">
+  <h1>
+    Page d'accueil de test
+  </h1>
+  <div class="html" *ngIf="!edition">
+    <!-- <p ng-bind-html="pagehtml"></p> -->
+    <p>
+      Il ne faut pas *vendre* la _peau_ de l'ourse =avant= d'avoir crier victoire trop tot !! Tel est pris qui rira *bien* le _dernier_
+      ! C'est la cerise sur le pompom ! C'est l'étincelle qui fait déborder le vase ! C'est la goutte d'eau qui met le feu
+      aux poudres ! Petit à petit l'oiseau devient forgeron ! Les ciseaux à bois : Les [chiens] aussi.
+    </p>
+    <button mat-button color="primary">
+      Edition
+    </button>
+  </div>
+  <div class="wiki" *ngIf="edition">
+    <textarea rows="20"></textarea>
+  </div>
+  <mat-button-toggle>Toggle me!</mat-button-toggle>
+
+</div>
