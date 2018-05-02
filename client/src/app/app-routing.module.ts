@@ -6,7 +6,7 @@ import {AccComponent} from './acc/acc.component'
 
 const routes : Routes = [
   {
-    path: 'page', component: PageComponent
+    path: 'pages/:id', component: PageComponent
   },
   {
     path: '', component: AccComponent

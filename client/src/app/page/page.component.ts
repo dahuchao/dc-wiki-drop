@@ -1,28 +1,26 @@
 import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, ParamMap} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
 import {Page} from './page';
 
 @Component({selector: 'app-page', templateUrl: './page.component.html', styleUrls: ['./page.component.css']})
 export class PageComponent implements OnInit {
   edition : boolean = true
-  page : string = `Il ne faut pas *vendre* la _peau_ de l 'ourse =avant= 
-d' avoir crier victoire 
-trop tot !!Tel est pris qui rira * bien * le _dernier_
- ! C 'est la cerise sur le pompom ! C'est l'étincelle qui 
-fait déborder le vase ! C'est la goutte d'eau qui met le feu
-aux poudres ! Petit à petit l'oiseau devient forgeron ! Les 
-ciseaux à bois : Les [chiens] aussi.
-`
-  constructor(private http : HttpClient) {}
+  page : string
+
+  constructor(private route : ActivatedRoute, private http : HttpClient) {}
 
   ngOnInit() {
     this
-      .http
-      .get("http://localhost/pages/test.txt")
-      .subscribe((page : Page) => {
-        console.log(`data: ${JSON.stringify(page)}`)
-        this.page = page.contenu;
-      })
+      .route
+      .paramMap
+      .map((params : ParamMap) => params.get("id"))
+      .switchMap(idPage => this.http.get(`http://localhost/pages/${idPage}`))
+      .map((page : Page) => page.contenu)
+      .subscribe(texte => this.page = texte);
   }
 
   editer() {
