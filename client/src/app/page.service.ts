@@ -45,12 +45,12 @@ export class PageService {
   anchorReplacement = "<a name=\"$1\"></a>";
 
   goToPattern = new RegExp("\\[([-_'ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ\\s\\w\\.]+)\\]", "g");
-  goToReplacement = "<a href=\"#pages/$1\">$1</a>";
+  goToReplacement = "<a href=\"pages/$1\">$1</a>";
 
   goToPatternLabel = new RegExp("\\[\\[([-_'ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ\\s\\w\\.]+)\\]" +
       "\\[([-_'ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ\\s\\w\\.]+)\\]\\]",
   "g");
-  goToReplacementLabel = "<a href=\"#pages/$1\">$2</a>";
+  goToReplacementLabel = "<a href=\"pages/$1\">$2</a>";
 
   // External Links
   urlPattern = new RegExp("\\[(http[s]?://.*?)\\]");
