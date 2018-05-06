@@ -12,8 +12,7 @@
 <mat-card>
   <mat-card-content>
     <div class="html" *ngIf="!edition">
-      <!-- <p ng-bind-html="pagehtml"></p> -->
-      {{page}}
+      <p [innerHTML]="pagehtml"></p>
     </div>
     <div class="wiki" *ngIf="edition">
       <textarea rows="20">{{page}}</textarea>

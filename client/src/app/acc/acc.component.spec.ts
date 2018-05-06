@@ -1,5 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import {
+  MatToolbarModule,
+  MatIconModule,
+  MatButtonModule,
+  MatMenuModule,
+  MatCardModule
+} from '@angular/material';
 import { AccComponent } from './acc.component';
 
 describe('AccComponent', () => {
@@ -8,7 +15,12 @@ describe('AccComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AccComponent ]
+      declarations: [ AccComponent ],
+      imports: [
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonModule,
+      ]
     })
     .compileComponents();
   }));
