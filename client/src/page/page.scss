@@ -1,0 +1,74 @@
+@import "../../node_modules/materialize-css/dist/css/materialize.css";
+// @import "../../node_modules/font-awesome/scss/font-awesome.scss";
+$vert: #99cc00;
+$mobile: "(max-width: 767px)";
+$tablet: "(min-width: 768px) and (max-width: 1023px)";
+$desktop: "(min-width: 1024px)";
+html{
+    @media #{$desktop} {
+        font-size: 18px;
+    }
+    @media #{$tablet} {
+        font-size: 15px;
+    }
+    @media #{$mobile} {
+        font-size: 11px;
+    }
+}
+body{
+    margin: 20px;
+}
+#titre{
+    color: inherit;
+    h1{
+        font-size: 3.5rem;
+    }
+    h2{
+        font-size: 2.5rem;
+    }
+}
+#titre:hover{
+    text-decoration: none;
+    cursor: pointer;
+}
+#rencontre{
+    h3{
+        font-size: 2rem;
+    }
+    video{
+        @media #{$desktop} {
+            width: 50%;
+        }
+        @media #{$tablet} {
+            width: 70%;
+        }
+        @media #{$mobile} {
+            width: 100%;
+        }
+    }
+}
+#rencontres {
+    display: grid;
+    @media #{$desktop} {
+        grid-template-columns: auto auto auto auto;
+    }
+    @media #{$tablet} {
+        grid-template-columns: auto auto;
+    }
+    @media #{$mobile} {
+        grid-template-columns: auto;
+    }
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+}
+
+.card {
+    justify-self: stretch;
+    max-width: 320px;
+    .card-title{
+        font-size: 1.3rem;
+    }
+    .card-text{
+        font-size: 0.9rem;
+    }
+}
