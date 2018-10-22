@@ -5,9 +5,13 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {Page} from './page';
-import {PageService} from '../page.service';
+import {PageService} from './page.service';
+import { environment } from '../../environments/environment';
 
-@Component({selector: 'app-page', templateUrl: './page.component.html', styleUrls: ['./page.component.css']})
+@Component({
+  selector: 'app-page', 
+  templateUrl: './page.component.html', 
+  styleUrls: ['./page.component.css']})
 export class PageComponent implements OnInit {
   urlPages : string
   edition : boolean = false
@@ -16,7 +20,7 @@ export class PageComponent implements OnInit {
   constructor(private servicePage : PageService, private route : ActivatedRoute, private http : HttpClient) {}
 
   ngOnInit() {
-    this.urlPages = "http://localhost"
+    this.urlPages = environment.urlBack
     this
       .route
       .paramMap

@@ -4,7 +4,7 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module'
-import {PageService} from './page.service';
+import {PageService} from './page/page.service';
 
 import {
   MatToolbarModule,
