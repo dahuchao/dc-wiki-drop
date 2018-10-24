@@ -4,7 +4,7 @@ $vert: #99cc00;
 $mobile: "(max-width: 767px)";
 $tablet: "(min-width: 768px) and (max-width: 1023px)";
 $desktop: "(min-width: 1024px)";
-html{
+html {
     @media #{$desktop} {
         font-size: 18px;
     }
@@ -15,38 +15,39 @@ html{
         font-size: 11px;
     }
 }
-body{
+
+body {
     margin: 20px;
 }
-#titre{
+
+#titre {
     color: inherit;
-    h1{
-        font-size: 3.5rem;
-    }
-    h2{
-        font-size: 2.5rem;
-    }
 }
-#titre:hover{
+
+#titre:hover {
     text-decoration: none;
     cursor: pointer;
 }
-#rencontre{
-    h3{
+
+#page {
+    h1 {
         font-size: 2rem;
+        margin-top: 0.8rem;
+        margin-bottom: 0.1rem;
     }
-    video{
-        @media #{$desktop} {
-            width: 50%;
-        }
-        @media #{$tablet} {
-            width: 70%;
-        }
-        @media #{$mobile} {
-            width: 100%;
-        }
+    h2 {
+        font-size: 1.3rem;
+        margin-top: 0.8rem;
+        margin-bottom: 0.1rem;
+    }
+    p {
+        margin: 0;
+    }
+    textarea {
+        height: 15rem;
     }
 }
+
 #rencontres {
     display: grid;
     @media #{$desktop} {
@@ -65,10 +66,10 @@ body{
 .card {
     justify-self: stretch;
     max-width: 320px;
-    .card-title{
+    .card-title {
         font-size: 1.3rem;
     }
-    .card-text{
+    .card-text {
         font-size: 0.9rem;
     }
 }
