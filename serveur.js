@@ -86,7 +86,7 @@ app.post('/documents/:nom', function (req, res) {
 
 //**********************************************
 // Traitement d'une requête POST d'enregistrement de la page
-app.post('/pages/:nom', function (req, res) {
+app.post('/page/:nom', function (req, res) {
   // Calcul du nom de la page
   var pageNom = req.params.nom;
   // Si le fichier n'existe pas
@@ -105,7 +105,7 @@ app.post('/pages/:nom', function (req, res) {
 });
 //**********************************************
 // Traitement de la requête http://localhost:3000/pages/test
-app.get('/pages/:nom', function (req, res) {
+app.get('/page/:nom', function (req, res) {
   // Calcul du nom de la page recherchée
   var pageNom = req.params.nom;
   // Si le fichier n'existe pas

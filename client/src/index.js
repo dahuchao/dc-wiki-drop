@@ -2,6 +2,8 @@ import './page/page.scss'
 import '../node_modules/materialize-css/dist/js/materialize'
 import { map } from "rxjs/operators"
 import { html, render } from 'lit-html'
+import router from "./routes"
+import {defroute} from 'lit-router';
 
 import { cmd$, etat$ } from "./repartiteur"
 import litPage from './page/page.lit'
@@ -22,3 +24,15 @@ const app = etat => html`
 etat$
   .pipe(map(app))
   .subscribe(html => render(html, document.body))
+
+router({
+  home: [defroute``, (context) => {
+    window.location.hash = "#page"
+  }],
+  homepage: [defroute`#page`, (context) => {
+    cmd$.next({type: 'SUR_PAGE', id: 'homepage'})
+  }],
+  show: [defroute`#page/${'id'}`, (context, params) => {
+    cmd$.next({type: 'SUR_PAGE', id: params.id})
+  }]
+})

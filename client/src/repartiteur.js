@@ -10,11 +10,15 @@ const etat$ = cmd$.pipe(scan((etat, cmd) => {
   const commandes = {
     ["DEFAUT"]: cmd => {
       etat.edition = false
-      etat.page.push(mdPage)
       return etat
     },
     ["SUR_EDITER"]: cmd => {
       etat.edition = !etat.edition
+      return etat
+    },
+    ["SUR_PAGE"]: cmd => {
+      etat.url = Array()
+      etat.url.push(`http://localhost/page/${cmd.id}.md`)
       return etat
     },
   }
@@ -25,6 +29,7 @@ const etat$ = cmd$.pipe(scan((etat, cmd) => {
 }, {
   edition: false,
   page: Array(),
+  url: Array()
 }))
 
 export {cmd$, etat$}
