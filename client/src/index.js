@@ -7,6 +7,7 @@ import {defroute} from 'lit-router';
 
 import { cmd$, etat$ } from "./repartiteur"
 import litPage from './page/page.lit'
+import fetchPage from './page/page.fetch'
 
 const app = etat => html`
   <nav>
@@ -24,6 +25,9 @@ const app = etat => html`
 etat$
   .pipe(map(app))
   .subscribe(html => render(html, document.body))
+
+etat$
+  .subscribe(etat => fetchPage(etat))
 
 router({
   home: [defroute``, (context) => {

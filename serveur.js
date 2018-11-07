@@ -103,6 +103,14 @@ app.post('/page/:nom', function (req, res) {
   console.log(`*** Contenu : ${pageContenu} ***`);
   // Enregistrement du contenu de la page
   fs.writeFileSync(repertoireWiki + pageNom, pageContenu, 'utf8');
+  // Calcul des proprietes sur le fichier
+  var stat = fs.statSync(repertoireWiki + pageNom);
+  // Document json portant la page de wiki
+  res.jsonp({
+    nom: pageNom,
+    contenu: pageContenu,
+    dateMaj: stat.mtime
+  });
 });
 //**********************************************
 // Traitement de la requête http://localhost:3000/pages/test
