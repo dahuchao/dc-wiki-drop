@@ -1,6 +1,5 @@
 import { BehaviorSubject } from "rxjs"
 import { scan } from "rxjs/operators"
-import mdPage from "./page/page.md"
 
 const cmd$ = new BehaviorSubject({type: "DEFAUT"})
 
@@ -9,27 +8,40 @@ const etat$ = cmd$.pipe(scan((etat, cmd) => {
   console.log(`/ -${JSON.stringify(cmd)}`)
   const commandes = {
     ["DEFAUT"]: cmd => {
-      etat.edition = false
+      return etat
+    },
+    ["SUR_OUVRIR"]: cmd => {
+      etat.type = "ETAT_CHARGEMENT"
+      etat.url = `http://localhost/page/${cmd.id}`
+      return etat
+    },
+    ["SUR_LECTURE"]: cmd => {
+      etat.type = "ETAT_OUVERT"
+      etat.page = cmd.page
       return etat
     },
     ["SUR_EDITER"]: cmd => {
-      etat.edition = !etat.edition
+      etat.type = "ETAT_EDITION"
       return etat
     },
-    ["SUR_PAGE"]: cmd => {
-      etat.url = Array()
-      etat.url.push(`http://localhost/page/${cmd.id}.md`)
+    ["SUR_ENREGISTRER"]: cmd => {
+      etat.type = "ETAT_ENREGISTREMENT"
+      etat.page.contenu = cmd.page
+      return etat
+    },
+    ["SUR_ANNULER"]: cmd => {
+      etat.type = "ETAT_OUVERT"
       return etat
     },
   }
   etat = (commandes[cmd.type] || commandes["DEFAUT"])(cmd);
-  console.log(`${JSON.stringify(etat)}`)
+  console.log(`etat: ${JSON.stringify(etat)}`)
   console.log(`\\__________________________________`)
   return etat
 }, {
-  edition: false,
-  page: Array(),
-  url: Array()
+  type: "ETAT_INIT",
+  page: String(),
+  url: String(),
 }))
 
 export {cmd$, etat$}

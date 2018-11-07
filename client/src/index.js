@@ -12,7 +12,7 @@ const app = etat => html`
   <nav>
     <div class="nav-wrapper">
       <a class="brand-logo"><i class="material-icons">dehaze</i>Wiki</a>
-      <ul class="right hide-on-med-and-down">
+      <ul class="right">
         <li><a><i class="material-icons">search</i></a></li>
         <li><a @click="${e => cmd$.next({type: "SUR_EDITER"})}"><i class="material-icons">create</i></a></li>
         <li><a><i class="material-icons">more_vert</i></a></li>
@@ -27,12 +27,9 @@ etat$
 
 router({
   home: [defroute``, (context) => {
-    window.location.hash = "#page"
+    window.location.hash = "#page/homepage.md"
   }],
-  homepage: [defroute`#page`, (context) => {
-    cmd$.next({type: 'SUR_PAGE', id: 'homepage'})
-  }],
-  show: [defroute`#page/${'id'}`, (context, params) => {
-    cmd$.next({type: 'SUR_PAGE', id: params.id})
+  page: [defroute`#page/${'id'}`, (context, params) => {
+    cmd$.next({type: 'SUR_OUVRIR', id: params.id})
   }]
 })

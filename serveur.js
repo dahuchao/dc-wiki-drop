@@ -96,10 +96,11 @@ app.post('/page/:nom', function (req, res) {
     // Journalisation du traitement
     console.log('*** Enregistrement de la page : %s ***', pageNom);
   }
+  console.log(`*** req.body : ${JSON.stringify(req.body)} ***`);
   // Calcul du contenu de la page
-  var pageContenu = req.param('contenu');
+  var pageContenu = req.body.contenu;
   // Journalisation du traitement
-  console.log('*** Contenu : %s ***', pageContenu);
+  console.log(`*** Contenu : ${pageContenu} ***`);
   // Enregistrement du contenu de la page
   fs.writeFileSync(repertoireWiki + pageNom, pageContenu, 'utf8');
 });

@@ -16,4 +16,4 @@ Les ciseaux à bois : Les [chiens] aussi.
 
 [angular.io](https://angular.io/).
 
-[test](#page/test).
+[test](#page/test.md).

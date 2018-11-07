@@ -16,19 +16,6 @@ html {
     }
 }
 
-body {
-    margin: 20px;
-}
-
-#titre {
-    color: inherit;
-}
-
-#titre:hover {
-    text-decoration: none;
-    cursor: pointer;
-}
-
 #page {
     h1 {
         font-size: 2rem;
@@ -45,31 +32,5 @@ body {
     }
     textarea {
         height: 15rem;
-    }
-}
-
-#rencontres {
-    display: grid;
-    @media #{$desktop} {
-        grid-template-columns: auto auto auto auto;
-    }
-    @media #{$tablet} {
-        grid-template-columns: auto auto;
-    }
-    @media #{$mobile} {
-        grid-template-columns: auto;
-    }
-    grid-column-gap: 20px;
-    grid-row-gap: 20px;
-}
-
-.card {
-    justify-self: stretch;
-    max-width: 320px;
-    .card-title {
-        font-size: 1.3rem;
-    }
-    .card-text {
-        font-size: 0.9rem;
     }
 }
