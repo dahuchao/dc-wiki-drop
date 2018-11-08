@@ -1,4 +1,4 @@
-import { defroute, routeTo } from 'lit-router';
+import { routeTo } from 'lit-router';
 import { fromEvent, BehaviorSubject } from "rxjs"
 
 export default routes => {

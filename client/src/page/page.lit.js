@@ -1,6 +1,6 @@
 import { html } from 'lit-html'
 import marked from "marked"
-import { cmd$ } from "../repartiteur"
+import { cmd$ } from "./page.repartiteur"
 
 export default etat => {
   const divPage = document.createElement('div')
@@ -15,6 +15,17 @@ export default etat => {
     .map(page => `<textarea id="textPage">${page.contenu}</textarea>`)
     .map(page => divPage.innerHTML = page)
   return  html`
+    <nav>
+      <div class="nav-wrapper">
+        <ul class="left">
+          <li><a href="#page"><i class="material-icons">navigate_before</i></a></li>
+        </ul>
+        <a class="brand-logo">${etat.page.nom}</a>
+        <ul class="right">
+          <li><a @click="${e => cmd$.next({type: "SUR_EDITER"})}"><i class="material-icons">create</i></a></li>
+        </ul>
+      </div>
+    </nav>
     <div class="card">
       <div class="card-content">
         <div id="page">${divPage}</div>
