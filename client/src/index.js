@@ -27,9 +27,9 @@ router({
   root: [defroute``, (context) => {
     render(app, document.body)
   }],
-  // home: [defroute`#page`, (context) => {
-  //   window.location.hash = "#page/homepage.md"
-  // }],
+  home: [defroute`#page`, (context) => {
+    window.location.hash = "#page/homepage.md"
+  }],
   page: [defroute`#page/${'id'}`, (context, params) => {
     page(params.id)
   }]
