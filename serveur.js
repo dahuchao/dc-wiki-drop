@@ -113,7 +113,7 @@ app.post('/page/:nom', function (req, res) {
   });
 });
 //**********************************************
-// Traitement de la requête http://localhost:3000/pages/test
+// Traitement de la requête http://localhost:3000/page/test
 app.get('/page/:nom', function (req, res) {
   // Calcul du nom de la page recherchée
   var pageNom = req.params.nom;
@@ -122,9 +122,15 @@ app.get('/page/:nom', function (req, res) {
     //console.log('*** Création de la page : %s ***', pageNom);
     console.log("*** La page %s n'existe pas ***", pageNom);
     // Retour erreur
-    res.statusCode = 404;
+    // res.statusCode = 404;
     // Message d'erreur
-    res.send("La page n'existe pas");
+    // res.send("La page n'existe pas");
+    // Document json portant la page de wiki
+    res.jsonp({
+      nom: pageNom,
+      contenu: "",
+      dateMaj: new Date()
+    });
   } else {
     console.log('*** Lecture de la page %s ***', pageNom);
     // Lecture du fichier contenant la page de wiki

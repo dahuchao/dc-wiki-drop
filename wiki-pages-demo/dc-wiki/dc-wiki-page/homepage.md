@@ -12,7 +12,7 @@ C'est la goutte d'eau qui met le feu aux poudres !
 
 Petit à petit l'oiseau devient forgeron !
 
-Les ciseaux à bois : Les [chiens] aussi.
+Les ciseaux à bois : Les [chiens](#page/chiens.md) aussi.
 
 [angular.io](https://angular.io/).
 
