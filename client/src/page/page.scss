@@ -16,9 +16,16 @@ html {
     }
 }
 
-.card .card-content {
-    padding: 1.4rem;
-    padding-top:0.4rem;
+.card {
+    .card-content {
+        padding: 1.4rem;
+        padding-top:0.4rem;
+    }
+    #maj {
+        font-style: italic;
+        text-align: right;
+        margin: 1em;
+    }
 }
 
 #page {
