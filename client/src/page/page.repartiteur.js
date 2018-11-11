@@ -5,7 +5,7 @@ const cmd$ = new BehaviorSubject({type: "DEFAUT"})
 
 const etat$ = cmd$.pipe(scan((etat, cmd) => {
   console.log(` ___________________________________`)
-  console.log(`/ -${JSON.stringify(cmd)}`)
+  console.log(`/ commande: ${JSON.stringify(cmd)}`)
   const commandes = {
     ["DEFAUT"]: cmd => {
       return etat
