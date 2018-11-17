@@ -18,7 +18,7 @@ const etat$ = cmd$.pipe(scan((etat, cmd) => {
       etat.dropbox.clientId = "7197bd0eih7r4cb"
       return etat
     },
-    ["SUR_AUTH"]: cmd => {
+    ["SUR_AUTHENTIFICATON"]: cmd => {
       etat.dropbox.accessToken = cmd.accessToken
       return etat
     },

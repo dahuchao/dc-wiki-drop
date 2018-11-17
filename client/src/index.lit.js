@@ -1,7 +1,6 @@
 import 'materialize-css'
 import './style.scss'
 import { html } from 'lit-html'
-import litSession from  './session.lit'
 import litPage from  './page.lit'
 
 export default etat => etat.page.contenu
@@ -21,7 +20,7 @@ export default etat => etat.page.contenu
         <p>Bienvenu sur le wiki</p>
         ${etat.session.ouverte
           ? html`<a href="#page">page d'accueil</a>`
-          : litSession(etat)
+          : html`<a @click="${e => {cmd$.next({type: "SUR_CONNEXION"})}}" class="waves-effect waves-light btn">Connexion</a>`
         }
       </div>
     </div>

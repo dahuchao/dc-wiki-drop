@@ -14,20 +14,14 @@ etat$
 
 router({
   root: [
-    defroute ``, (context) => {
-      cmd$.next({type: 'SUR_ACCUEIL'})
-    }
+    defroute ``, (context) => cmd$.next({type: 'SUR_ACCUEIL'})
   ],
   home: [
-    defroute `#page`, (context) => {
-      window.location.hash = "#page/homepage.md"
-    }
+    defroute `#page`, (context) => window.location.hash = "#page/homepage.md"
   ],
   page: [
     defroute `#page/${'id'}`,
-    (context, params) => {
-      cmd$.next({type: 'SUR_OUVRIR', id: params.id})
-    }
+    (context, params) => cmd$.next({type: 'SUR_OUVRIR', id: params.id})
   ],
   //http://localhost:8080/auth
   // #access_token=IhePVG47WzcAAAAAAAMt6uOu_lrGSWMUdWsM715lTwiqpiHnsI7I1wwrJbbQ938b
@@ -36,8 +30,6 @@ router({
   // &account_id=dbid%3AAADHdnLK-n5mi_deQb-PgRNDa1a5c_I0QbU
   access: [
     defroute `#access_token=${'accessToken'}&token_type=bearer&uid=.*&account_id=.*`,
-    (context, params) => {
-      cmd$.next({type: 'SUR_AUTH', accessToken: params.accessToken})
-    }
+    (context, params) => cmd$.next({type: 'SUR_AUTHENTIFICATON', accessToken: params.accessToken})
   ]
 })
