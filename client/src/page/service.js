@@ -1,6 +1,16 @@
-import { cmd$ } from "../repartiteur"
+import {cmd$, etat$} from "../repartiteur"
+import { map,filter } from "rxjs/operators"
 
-export default etat => {
+etat$.pipe(
+  filter(etat => etat.page.url), 
+  filter(etat => !etat.page.content), 
+)
+.subscribe(etat => fetch(etat.page.url)
+  .then(reponse => reponse.json())
+  .then(page => cmd$.next({type: "SUR_LECTURE", page}))
+)
+
+etat => {
   Array(etat)
     .filter(etat => /ETAT_CHARGEMENT/.test(etat.type))
     .map(etat => fetch(etat.url)

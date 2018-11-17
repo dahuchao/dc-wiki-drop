@@ -1,10 +1,9 @@
 import './style.scss'
-import servicePage from './service'
-import litPage from './lit'
+import './service'
+import lit from './lit'
 
 export default etat => {
-  servicePage(etat)
   return Array(etat)
     .filter(etat => Boolean(etat.page))
-    .map(litPage)
+    .map(lit)
 }

@@ -2,8 +2,11 @@ import 'materialize-css'
 import {html} from 'lit-html'
 import {cmd$} from "./repartiteur"
 import session from  './session/index'
+import page from  './page'
 
-export default etat => html`
+export default etat => etat.page.contenu
+  ? page(etat)
+  : html`
     <nav>
       <div class="nav-wrapper">
         <a class="brand-logo"><i class="material-icons">dehaze</i>Wiki</a>

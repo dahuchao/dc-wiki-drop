@@ -25,12 +25,15 @@ const etat$ = cmd$.pipe(scan((etat, cmd) => {
     },
     ["SUR_OUVRIR"]: cmd => {
       etat.type = "ETAT_CHARGEMENT"
-      etat.url = `http://localhost/page/${cmd.id}`
+      etat.page.url = `http://localhost/page/${cmd.id}`
       return etat
     },
     ["SUR_LECTURE"]: cmd => {
       etat.type = "ETAT_OUVERT"
-      etat.page = cmd.page
+      etat.page.contenu = cmd.page.contenu
+      etat.page.nom = cmd.page.nom
+      etat.page.dateMaj = cmd.page.dateMaj
+      etat.page.url = null
       return etat
     },
     ["SUR_EDITER"]: cmd => {
@@ -60,10 +63,11 @@ const etat$ = cmd$.pipe(scan((etat, cmd) => {
     }
   },
   page: {
-    content: null,
+    nom: null,
+    contenu: null,
+    dateMaj: null,
     url: null
-  },
-  url: String()
+  }
 }))
 
 export {cmd$, etat$}
