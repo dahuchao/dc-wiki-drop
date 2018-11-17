@@ -1,9 +1,9 @@
 import '../node_modules/materialize-css/dist/js/materialize'
-import {render,html} from 'lit-html'
-import {defroute} from 'lit-router';
+import { render, html } from 'lit-html'
+import { defroute } from 'lit-router';
 import router from "./router"
 import { map } from "rxjs/operators"
-import {cmd$, etat$} from "./repartiteur"
+import { cmd$, etat$ } from "./repartiteur"
 import litIndex from "./index.lit"
 import './dropbox/service'
 import './maison.service'

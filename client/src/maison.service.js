@@ -1,4 +1,4 @@
-import {cmd$, etat$} from "./repartiteur"
+import { cmd$, etat$ } from "./repartiteur"
 import { map,filter } from "rxjs/operators"
 
 etat$.subscribe(etat => {

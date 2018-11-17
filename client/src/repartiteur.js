@@ -1,5 +1,5 @@
-import {BehaviorSubject} from "rxjs"
-import {scan} from "rxjs/operators"
+import { BehaviorSubject } from "rxjs"
+import { scan } from "rxjs/operators"
 // import { env } from "../environments/environments"
 
 const cmd$ = new BehaviorSubject({type: "DEFAUT"})

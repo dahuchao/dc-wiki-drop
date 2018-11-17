@@ -1,6 +1,6 @@
 import 'materialize-css'
 import './style.scss'
-import {html} from 'lit-html'
+import { html } from 'lit-html'
 import litSession from  './session.lit'
 import litPage from  './page.lit'
 
