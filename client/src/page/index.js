@@ -1,7 +1,6 @@
-import './page.scss'
-
-import servicePage from './page.service'
-import litPage from './page.lit'
+import './style.scss'
+import servicePage from './service'
+import litPage from './lit'
 
 export default etat => {
   servicePage(etat)

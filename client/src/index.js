@@ -4,26 +4,16 @@ import {defroute} from 'lit-router';
 import router from "./router"
 import { map } from "rxjs/operators"
 import {cmd$, etat$} from "./repartiteur"
-import litAccueil from "./accueil.lit"
-import litPage from './page/index'
-
-const app = etat =>  html`
-  ${Array(etat)
-      .filter(etat => /ETAT_ACCUEIL/.test(etat.type))
-      .map(litAccueil)}
-  ${Array(etat)
-      .map(litPage)}
-  `
+import lit from "./lit"
 
 etat$
-  .pipe(map(app))
+  .pipe(map(etat => lit(etat)))
   .subscribe(html => render(html, document.body))
 
 router({
   root: [
     defroute ``, (context) => {
       cmd$.next({type: 'SUR_ACCUEIL'})
-      // render(app, document.body)
     }
   ],
   home: [
@@ -32,10 +22,20 @@ router({
     }
   ],
   page: [
-    defroute `#page/${ 'id'}`,
+    defroute `#page/${'id'}`,
     (context, params) => {
-      // page(params.id)
       cmd$.next({type: 'SUR_OUVRIR', id: params.id})
+    }
+  ],
+  //http://localhost:8080/auth
+  // #access_token=IhePVG47WzcAAAAAAAMt6uOu_lrGSWMUdWsM715lTwiqpiHnsI7I1wwrJbbQ938b
+  // &token_type=bearer
+  // &uid=33449300
+  // &account_id=dbid%3AAADHdnLK-n5mi_deQb-PgRNDa1a5c_I0QbU
+  access: [
+    defroute `#access_token=${'accessToken'}&token_type=bearer&uid=.*&account_id=.*`,
+    (context, params) => {
+      cmd$.next({type: 'SUR_AUTH', accessToken: params.accessToken})
     }
   ]
 })

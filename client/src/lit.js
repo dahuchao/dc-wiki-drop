@@ -1,5 +1,7 @@
-import '../node_modules/materialize-css/dist/js/materialize'
-import { html } from 'lit-html'
+import 'materialize-css'
+import {html} from 'lit-html'
+import {cmd$} from "./repartiteur"
+import session from  './session/index'
 
 export default etat => html`
     <nav>
@@ -14,8 +16,13 @@ export default etat => html`
     <div class="card">
       <div class="card-content">
         <p>Bienvenu sur le wiki</p>
-        <p><a href="#page/homepage.md">premiere page</a></p>
       </div>
+      ${etat.session.dropbox.accessToken
+        ? html`
+            <div>
+              <a href="#page">page d'accueil</a>
+            </div>`
+        : session(etat)
+      }
     </div>
     `
-

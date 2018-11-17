@@ -1,5 +1,5 @@
-import { BehaviorSubject } from "rxjs"
-import { scan } from "rxjs/operators"
+import {BehaviorSubject} from "rxjs"
+import {scan} from "rxjs/operators"
 // import { env } from "../environments/environments"
 
 const cmd$ = new BehaviorSubject({type: "DEFAUT"})
@@ -13,6 +13,14 @@ const etat$ = cmd$.pipe(scan((etat, cmd) => {
     },
     ["SUR_ACCUEIL"]: cmd => {
       etat.type = "ETAT_ACCUEIL"
+      return etat
+    },
+    ["SUR_CONNEXION"]: cmd => {
+      etat.session.dropbox.clientId = "7197bd0eih7r4cb"
+      return etat
+    },
+    ["SUR_AUTH"]: cmd => {
+      etat.session.dropbox.accessToken = cmd.accessToken
       return etat
     },
     ["SUR_OUVRIR"]: cmd => {
@@ -37,7 +45,7 @@ const etat$ = cmd$.pipe(scan((etat, cmd) => {
     ["SUR_ANNULER"]: cmd => {
       etat.type = "ETAT_OUVERT"
       return etat
-    },
+    }
   }
   etat = (commandes[cmd.type] || commandes["DEFAUT"])(cmd);
   console.log(`etat: ${JSON.stringify(etat)}`)
@@ -45,8 +53,17 @@ const etat$ = cmd$.pipe(scan((etat, cmd) => {
   return etat
 }, {
   type: "ETAT_ACCUEIL",
-  page: null,
-  url: String(),
+  session: {
+    dropbox: {
+      clientId: null,
+      accessToken: null
+    }
+  },
+  page: {
+    content: null,
+    url: null
+  },
+  url: String()
 }))
 
 export {cmd$, etat$}
