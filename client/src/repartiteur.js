@@ -1,5 +1,6 @@
 import { BehaviorSubject } from "rxjs"
 import { scan } from "rxjs/operators"
+// import { env } from "../environments/environments"
 
 const cmd$ = new BehaviorSubject({type: "DEFAUT"})
 
@@ -8,6 +9,10 @@ const etat$ = cmd$.pipe(scan((etat, cmd) => {
   console.log(`/ commande: ${JSON.stringify(cmd)}`)
   const commandes = {
     ["DEFAUT"]: cmd => {
+      return etat
+    },
+    ["SUR_ACCUEIL"]: cmd => {
+      etat.type = "ETAT_ACCUEIL"
       return etat
     },
     ["SUR_OUVRIR"]: cmd => {
@@ -39,8 +44,8 @@ const etat$ = cmd$.pipe(scan((etat, cmd) => {
   console.log(`\\__________________________________`)
   return etat
 }, {
-  type: "ETAT_INIT",
-  page: String(),
+  type: "ETAT_ACCUEIL",
+  page: null,
   url: String(),
 }))
 

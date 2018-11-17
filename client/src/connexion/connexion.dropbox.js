@@ -1,4 +1,5 @@
-import { cmd$ } from "../repartiteur"
+import { cmd$ } from "./connexion.repartiteur"
+import { Dropbox } from 'dropbox'
 
 export default etat => {
   Array(etat)

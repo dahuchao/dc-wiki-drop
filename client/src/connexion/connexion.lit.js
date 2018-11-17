@@ -1,6 +1,6 @@
 import { html } from 'lit-html'
 import marked from "marked"
-import { cmd$ } from "../repartiteur"
+import { cmd$ } from "./connexion.repartiteur"
 
 export default etat => {
   const divPage = document.createElement('div')
