@@ -10,7 +10,7 @@ export default etat => {
     .map(etat => etat.page)
     .map(page => `<p>${marked(page.contenu)}</p>`)
     .map(page => divPage.innerHTML = page)
-    Array(etat)
+  Array(etat)
     .filter(etat => etat.page.edition)
     .map(etat => etat.page)
     .map(page => `<textarea id="textPage">${page.contenu}</textarea>`)
@@ -31,7 +31,7 @@ export default etat => {
       <div class="card-content">
         <div id="page">${divPage}</div>
       </div>
-      ${/ETAT_EDITION/.test(etat.type)
+      ${etat.page.edition
         ? html`
           <div class="card-action">
             <a @click="${e => {cmd$.next({type: "SUR_ENREGISTRER", page: document.getElementById("textPage").value})}}" class="waves-effect waves-light btn">Enregistrer</a>

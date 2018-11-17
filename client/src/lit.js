@@ -1,6 +1,5 @@
 import 'materialize-css'
 import {html} from 'lit-html'
-import {cmd$} from "./repartiteur"
 import litSession from  './session/lit'
 import litPage from  './page/lit'
 
@@ -19,13 +18,10 @@ export default etat => etat.page.contenu
     <div class="card">
       <div class="card-content">
         <p>Bienvenu sur le wiki</p>
+        ${etat.session.ouverte
+          ? html`<a href="#page">page d'accueil</a>`
+          : litSession(etat)
+        }
       </div>
-      ${etat.session.ouverte
-        ? html`
-            <div>
-              <a href="#page">page d'accueil</a>
-            </div>`
-        : litSession(etat)
-      }
     </div>
     `

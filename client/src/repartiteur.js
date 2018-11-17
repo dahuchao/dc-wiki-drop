@@ -15,21 +15,22 @@ const etat$ = cmd$.pipe(scan((etat, cmd) => {
       return etat
     },
     ["SUR_CONNEXION"]: cmd => {
-      etat.session.dropbox.clientId = "7197bd0eih7r4cb"
+      etat.dropbox.clientId = "7197bd0eih7r4cb"
       return etat
     },
     ["SUR_AUTH"]: cmd => {
-      etat.session.dropbox.accessToken = cmd.accessToken
+      etat.dropbox.accessToken = cmd.accessToken
       return etat
     },
     ["SUR_OUVRIR"]: cmd => {
       etat.maison.page.nom = cmd.id
+      etat.maison.get = true
       return etat
     },
     ["SUR_LECTURE"]: cmd => {
       etat.page  = cmd.page
-      etat.maison.page.nom = null
-      etat.maison.page.contenu = null
+      etat.maison.get = false
+      etat.maison.post = false
       return etat
     },
     ["SUR_EDITER"]: cmd => {
@@ -38,6 +39,7 @@ const etat$ = cmd$.pipe(scan((etat, cmd) => {
     },
     ["SUR_ENREGISTRER"]: cmd => {
       etat.maison.page.contenu = cmd.page
+      etat.maison.post = true
       etat.page.edition = false
       return etat
     },
@@ -66,7 +68,9 @@ const etat$ = cmd$.pipe(scan((etat, cmd) => {
     page: {
       nom: null,
       contenu: null
-    }
+    },
+    get: false,
+    post: false
   },
   page: {
     nom: null,
