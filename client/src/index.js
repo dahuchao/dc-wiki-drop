@@ -4,12 +4,12 @@ import {defroute} from 'lit-router';
 import router from "./router"
 import { map } from "rxjs/operators"
 import {cmd$, etat$} from "./repartiteur"
-import lit from "./lit"
+import litIndex from "./index.lit"
 import './dropbox/service'
 import './maison.service'
 
 etat$
-  .pipe(map(etat => lit(etat)))
+  .pipe(map(etat => litIndex(etat)))
   .subscribe(html => render(html, document.body))
 
 router({
