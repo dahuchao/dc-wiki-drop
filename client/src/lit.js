@@ -1,11 +1,11 @@
 import 'materialize-css'
 import {html} from 'lit-html'
 import {cmd$} from "./repartiteur"
-import session from  './session/index'
-import page from  './page'
+import litSession from  './session/lit'
+import litPage from  './page/lit'
 
 export default etat => etat.page.contenu
-  ? page(etat)
+  ? litPage(etat)
   : html`
     <nav>
       <div class="nav-wrapper">
@@ -20,12 +20,12 @@ export default etat => etat.page.contenu
       <div class="card-content">
         <p>Bienvenu sur le wiki</p>
       </div>
-      ${etat.session.dropbox.accessToken
+      ${etat.session.ouverte
         ? html`
             <div>
               <a href="#page">page d'accueil</a>
             </div>`
-        : session(etat)
+        : litSession(etat)
       }
     </div>
     `

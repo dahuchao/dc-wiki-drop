@@ -1,3 +1,4 @@
+import './style.scss'
 import { html } from 'lit-html'
 import { cmd$ } from "../repartiteur"
 

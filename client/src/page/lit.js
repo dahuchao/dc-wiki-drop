@@ -1,3 +1,4 @@
+import './style.scss'
 import { html } from 'lit-html'
 import marked from "marked"
 import { cmd$ } from "../repartiteur"
@@ -5,12 +6,12 @@ import { cmd$ } from "../repartiteur"
 export default etat => {
   const divPage = document.createElement('div')
   Array(etat)
-    .filter(etat => /ETAT_OUVERT/.test(etat.type))
+    .filter(etat => !etat.page.edition)
     .map(etat => etat.page)
     .map(page => `<p>${marked(page.contenu)}</p>`)
     .map(page => divPage.innerHTML = page)
-  Array(etat)
-    .filter(etat => /ETAT_EDITION/.test(etat.type))
+    Array(etat)
+    .filter(etat => etat.page.edition)
     .map(etat => etat.page)
     .map(page => `<textarea id="textPage">${page.contenu}</textarea>`)
     .map(page => divPage.innerHTML = page)

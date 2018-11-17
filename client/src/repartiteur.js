@@ -12,7 +12,6 @@ const etat$ = cmd$.pipe(scan((etat, cmd) => {
       return etat
     },
     ["SUR_ACCUEIL"]: cmd => {
-      etat.type = "ETAT_ACCUEIL"
       return etat
     },
     ["SUR_CONNEXION"]: cmd => {
@@ -24,29 +23,26 @@ const etat$ = cmd$.pipe(scan((etat, cmd) => {
       return etat
     },
     ["SUR_OUVRIR"]: cmd => {
-      etat.type = "ETAT_CHARGEMENT"
-      etat.page.url = `http://localhost/page/${cmd.id}`
+      etat.maison.page.nom = cmd.id
       return etat
     },
     ["SUR_LECTURE"]: cmd => {
-      etat.type = "ETAT_OUVERT"
-      etat.page.contenu = cmd.page.contenu
-      etat.page.nom = cmd.page.nom
-      etat.page.dateMaj = cmd.page.dateMaj
-      etat.page.url = null
+      etat.page  = cmd.page
+      etat.maison.page.nom = null
+      etat.maison.page.contenu = null
       return etat
     },
     ["SUR_EDITER"]: cmd => {
-      etat.type = "ETAT_EDITION"
+      etat.page.edition = true
       return etat
     },
     ["SUR_ENREGISTRER"]: cmd => {
-      etat.type = "ETAT_ENREGISTREMENT"
-      etat.page.contenu = cmd.page
+      etat.maison.page.contenu = cmd.page
+      etat.page.edition = false
       return etat
     },
     ["SUR_ANNULER"]: cmd => {
-      etat.type = "ETAT_OUVERT"
+      etat.page.edition = false
       return etat
     }
   }
@@ -55,18 +51,28 @@ const etat$ = cmd$.pipe(scan((etat, cmd) => {
   console.log(`\\__________________________________`)
   return etat
 }, {
-  type: "ETAT_ACCUEIL",
   session: {
-    dropbox: {
-      clientId: null,
-      accessToken: null
+    ouverte: true
+  },
+  dropbox: {
+    clientId: null,
+    accessToken: null,
+    page: {
+      nom: null,
+      contenu: null
+    }
+  },
+  maison:{
+    page: {
+      nom: null,
+      contenu: null
     }
   },
   page: {
     nom: null,
     contenu: null,
     dateMaj: null,
-    url: null
+    edition: false
   }
 }))
 

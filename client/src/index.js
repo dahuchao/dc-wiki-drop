@@ -5,6 +5,8 @@ import router from "./router"
 import { map } from "rxjs/operators"
 import {cmd$, etat$} from "./repartiteur"
 import lit from "./lit"
+import './dropbox/service'
+import './maison/service'
 
 etat$
   .pipe(map(etat => lit(etat)))
