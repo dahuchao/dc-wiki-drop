@@ -1,5 +1,5 @@
-import {Dropbox} from 'dropbox'
-import {cmd$, etat$} from "../repartiteur"
+import { Dropbox } from 'dropbox'
+import { cmd$, etat$ } from "../repartiteur"
 import { map,filter } from "rxjs/operators"
 
 etat$.pipe(
@@ -8,4 +8,3 @@ etat$.pipe(
     map(dbx => dbx.getAuthenticationUrl('http://localhost:8080'))
   )
   .subscribe(authUrl => window.location = authUrl)
-

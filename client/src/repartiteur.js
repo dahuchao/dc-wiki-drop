@@ -57,12 +57,14 @@ const etat$ = cmd$.pipe(scan((etat, cmd) => {
     ouverte: true
   },
   dropbox: {
-    clientId: null,
-    accessToken: null,
     page: {
       nom: null,
       contenu: null
-    }
+    },
+    get: false,
+    post: false,
+    clientId: null,
+    accessToken: null,
   },
   maison:{
     page: {

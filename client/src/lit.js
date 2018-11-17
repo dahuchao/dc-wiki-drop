@@ -1,7 +1,8 @@
 import 'materialize-css'
+import './style.scss'
 import {html} from 'lit-html'
-import litSession from  './session/lit'
-import litPage from  './page/lit'
+import litSession from  './session.lit'
+import litPage from  './page.lit'
 
 export default etat => etat.page.contenu
   ? litPage(etat)

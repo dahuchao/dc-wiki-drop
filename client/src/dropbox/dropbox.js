@@ -1,5 +1,5 @@
-import {Dropbox} from 'dropbox'
-import {cmd$, etat$} from "../repartiteur"
+import { Dropbox } from 'dropbox'
+import { cmd$, etat$ } from "../repartiteur"
 import { map,filter } from "rxjs/operators"
 
 etat$.pipe(
