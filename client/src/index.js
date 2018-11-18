@@ -5,7 +5,7 @@ import router from "./router"
 import { map } from "rxjs/operators"
 import { cmd$, etat$ } from "./repartiteur"
 import litIndex from "./index.lit"
-import './dropbox/service'
+import './dropbox.service'
 import './maison.service'
 
 etat$

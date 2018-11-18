@@ -20,6 +20,7 @@ const etat$ = cmd$.pipe(scan((etat, cmd) => {
     },
     ["SUR_AUTHENTIFICATON"]: cmd => {
       etat.dropbox.accessToken = cmd.accessToken
+      etat.session.ouverte = true
       return etat
     },
     ["SUR_OUVRIR"]: cmd => {
@@ -55,7 +56,7 @@ const etat$ = cmd$.pipe(scan((etat, cmd) => {
   return etat
 }, {
   session: {
-    ouverte: true
+    ouverte: false
   },
   dropbox: {
     page: {
