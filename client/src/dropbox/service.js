@@ -5,6 +5,6 @@ import { map,filter } from "rxjs/operators"
 etat$.pipe(
     filter(etat => etat.dropbox.clientId), 
     map(etat => new Dropbox({clientId: etat.dropbox.clientId})),
-    map(dbx => dbx.getAuthenticationUrl('http://localhost:8080'))
+    map(dbx => dbx.getAuthenticationUrl(location.origin))
   )
   .subscribe(authUrl => window.location = authUrl)

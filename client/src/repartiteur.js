@@ -5,8 +5,8 @@ import { scan } from "rxjs/operators"
 const cmd$ = new BehaviorSubject({type: "DEFAUT"})
 
 const etat$ = cmd$.pipe(scan((etat, cmd) => {
-  console.log(` ___________________________________`)
-  console.log(`/ commande: ${JSON.stringify(cmd)}`)
+  console.debug(` ___________________________________`)
+  console.debug(`/ commande: ${JSON.stringify(cmd)}`)
   const commandes = {
     ["DEFAUT"]: cmd => {
       return etat
@@ -49,8 +49,9 @@ const etat$ = cmd$.pipe(scan((etat, cmd) => {
     }
   }
   etat = (commandes[cmd.type] || commandes["DEFAUT"])(cmd);
-  console.log(`etat: ${JSON.stringify(etat)}`)
-  console.log(`\\__________________________________`)
+  console.debug(`------------------------------------`)
+  console.debug(`etat: ${JSON.stringify(etat)}`)
+  console.debug(`\\__________________________________`)
   return etat
 }, {
   session: {

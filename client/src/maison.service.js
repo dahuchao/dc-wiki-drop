@@ -2,7 +2,7 @@ import { cmd$, etat$ } from "./repartiteur"
 import { map,filter } from "rxjs/operators"
 
 etat$.subscribe(etat => {
-  const url = `http://localhost/page/${etat.maison.page.nom}`
+  const url = `${location.protocol}//${location.hostname}/page/${etat.maison.page.nom}`
   Array(etat)
     .filter(etat => etat.maison.get)
     .map(etat => fetch(url)

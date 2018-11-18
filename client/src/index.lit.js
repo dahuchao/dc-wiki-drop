@@ -1,6 +1,7 @@
 import 'materialize-css'
 import './style.scss'
 import { html } from 'lit-html'
+import { cmd$, etat$ } from "./repartiteur"
 import litPage from  './page.lit'
 
 export default etat => etat.page.contenu
