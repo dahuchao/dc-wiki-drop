@@ -30,7 +30,7 @@
     "mdi": "~1.2.65",
     "multer": "^1.0.3",
     "ng-file-model": "latest",
-    "npm": "^3.7.2",
+    "npm": "^6.13.7",
     "pdfjs-dist": "latest",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.2.3"
